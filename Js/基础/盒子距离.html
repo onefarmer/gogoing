@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		body{margin: 0;padding: 0;height: 1000px;position: relative;}
+   		.out{
+	   		width: 200px;
+	   		height: 300px;
+	   		background:black;
+	   		margin:50px;
+	   		padding: 50px;
+	   		border-left: solid 5px red;
+	   		border-top: solid 5px blue;
+	   		position: absolute;
+	   		top: 50px;
+   		}   
+		</style>
+	</head>
+	<body>
+		<div class="out"></div>
+	</body>
+</html>
+<script type="text/javascript">
+	var boXout = document.querySelector('.out')
+	var boXin = document.querySelector('.in')
+	// 浏览器宽高
+	console.log('浏览器宽高')
+	console.log(document.documentElement.clientWidth)
+	console.log(document.documentElement.clientHeight)
+	// 文档宽高度
+	console.log('文档宽高度')
+	console.log(document.documentElement.scrollHeight)
+	console.log(document.documentElement.scrollWidth)
+	// 滚动条
+	console.log('滚动条')
+	console.log(document.documentElement.scrollTop)
+	console.log(document.documentElement.scrollLeft)
+	console.log(document.body.scrollTop)
+	console.log(document.body.scrollLeft)
+	//上左边框
+	console.log('边框')
+	console.log(boXout.clientTop)
+	console.log(boXout.clientLeft)
+	//盒子宽高包括内填充，受overflow影响
+	console.log('盒子宽高包括内填充，受overflow影响')
+	console.log(boXout.clientWidth)
+	console.log(boXout.clientHeight)
+	//盒子宽高，包括边框和内填充,不包括因 overflow 而未显示的部分，也就是其实际占据的宽度，整型，单位像素。
+	console.log('盒子宽高，包括边框和内填充')
+	console.log(boXout.offsetWidth)
+	console.log(boXout.offsetHeight)
+	//盒子距离父级距离,父亲定位,计算盒子margin.指 obj 相对于版面或由 offsetParent 属性指定的父坐标的计算上侧位置，整型，单位像素。
+	console.log('盒子距离父级距离,父亲定位,计算margin')
+	console.log(boXout.offsetTop)
+	console.log(boXout.offsetLeft)	
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+</head>
+<body>
+    <h1>v-on</h1>
+    <hr>
+    <div id="app">
+        本场比赛得分：{{fraction}}
+        <p>
+            <button v-on:click="add">加分</button>
+            <button @click="del">减分</button>
+            <br>
+            <!-- 或者可以用keyup.13 -->
+            <input type="text" v-on:keyup.enter="onEnter" v-model = "fraction2">
+        </p>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                fraction:0,
+                fraction2:1
+            },
+            methods:{
+                add:function(){
+                    this.fraction++;
+                },
+                del:function(){
+                    this.fraction--;
+                },
+                onEnter:function(){
+                    this.fraction = this.fraction + parseInt(this.fraction2)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

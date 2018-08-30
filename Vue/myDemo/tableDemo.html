@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <style>
+        *{padding: 0;margin: 0;}
+        .box{width: 600px;min-height: 800px;background-color: #EEEEEE;padding: 50px}
+        .box h1{color: orange;font-size: 40px;border-bottom: solid 2px #666;padding-bottom: 10px;}
+        .box .icon{font-size: 40px;font-weight: bolder;color: #666;cursor: pointer;border: 0;outline: 0;background-color: transparent;text-align: center;width: 20px}
+        form{padding: 10px 0;}
+        form label{color:#999;font-size: 30px;height: 30px;line-height: 30px;}
+        form input{width: 100%;height: 30px;border-radius:5px ;border: solid 1px #999; text-indent: 2em}
+        form button{cursor: pointer;;width: 300px;color:#FFF;font-size: 25px;height: 40px;line-height:40px;display: block;margin: 10px auto}
+        form .add{background: #c81623}
+        form .reset{background: orange}
+        table,tr,th,td{border: solid 1px #333;border-collapse: collapse;text-align: center;}
+        table th,table td{padding: 5px 0}
+        table{width: 600px}	
+        table .delAll,table .del{width: 80%;background:#ccc;font-size: 20px;line-height: 20px;color: #fff}	
+        .modelWindow{width: 700px;height: 100%;background:rgba(0,0,0,.8);padding: 10px;position: absolute;left: 0;top: 0;}	
+        .modelWindow p{text-align: center;background: #000;color: #FFF;font-size: 30px;line-height: 40px;height: 40px}	
+        .modelWindow button{width: 300px;height: 50px;background: #C81623;margin: 300px 20px 0;cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div id="app" class="box">
+        <h1>代办事项</h1>
+        <button class="icon" @click="show()">{{icon}}</button>
+        <form v-show="bol">
+            <label for="">代办日期：</label><br><br>
+            <input type="text" placeholder="日期" v-model="date"><br><br>
+            <label for="">代办事项：</label><br><br>
+            <input type="text" placeholder="事项" v-model="things"><br><br>
+            <button type="button" class="add" @click="add()">添加</button>
+            <button type="button" class="reset" @click="reset()">重置</button>
+        </form>
+        <h1>表格</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>日期</th>
+                    <th>事项</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for = "(something,index) in somethings">
+                    <td>{{index+1}}</td>
+                    <td>{{something.date}}</td>
+                    <td>{{something.doing}}</td>
+                    <td><button class="del" @click="del(index,1)">删除</button></td>
+                </tr>
+                <tr v-show="somethings.length==0">
+                    <td colspan="4">暂无数据</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><button class="delAll" @click="del(0,somethings.length)">删除全部</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modelWindow" v-show="isShow">
+            <p>确认删除</p>
+            <button @click="sureDel()">确认</button>
+            <button @click="isShow=!isShow">取消</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            bol:false,
+            isShow:false,
+            icon:'+',
+            date:'',
+            things:'',
+            beginNum:0,
+            endNum:1,
+            somethings:[
+                {"date":"2008-8-8","doing":"北京奥运会开幕式"},
+                {"date":"2008-5-12","doing":"汶川大地震"},
+                {"date":"2014-6-15","doing":"南非世界杯"},
+                {"date":"2016-1-1","doing":"阿里巴巴上市"}
+            ]
+        },
+        methods:{
+            show:function(){
+                this.bol =!this.bol;
+                this.icon = this.icon=="+"?"-":"+"
+            },
+            add:function(){
+                if( isNull(this.date) && isNull(this.things) ){
+                    alert('空值');
+                    return
+                }
+                this.somethings.push({date:this.date,doing:this.things});
+                this.date = '';
+                this.things = ''
+            },
+            reset:function(){
+                this.date = '';
+                this.things = ''               
+            },
+            del:function(begin,end){
+                this.isShow = !this.isShow;
+                this.beginNum = begin;
+                this.endNum = end;
+            },
+            sureDel:function(){
+                this.somethings.splice(this.beginNum,this.endNum)
+                this.isShow =!this.isShow;
+            }
+        }
+    })
+    // 判断字符串为空或者全空格
+    function isNull( str ){
+        if ( str == "" ) return true;
+        var regu = "^[ ]+$";
+        var re = new RegExp(regu);
+        return re.test(str);
+    }
+</script>

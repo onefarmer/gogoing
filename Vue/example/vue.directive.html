@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-directive</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+</head>
+<body>
+    <h1>vue-directive 自定义指令</h1>
+    <hr>
+    <div id="app">
+        <div v-diycolor="color">{{num}}</div>
+        <p><button @click="add">增加</button></p>
+        <div v-diycolor2="color2">{{num2}}</div>
+        <p><button @click="add2">递增</button></p>
+    </div>
+    <p>
+        <button onclick="unbind()">解绑</button>
+    </p>
+    <script type="text/javascript">
+        function unbind(){
+            //VUE自带解绑函数，解绑后VUE指令失效
+            app.$destroy()
+        }
+        //接受两个参数
+        Vue.directive("diycolor",function(el,binding){
+            el.style ="color:"+binding.value;
+        })
+        Vue.directive("diycolor2",{
+            //被绑定
+            bind:function(el,binding){
+                el.style = "color:"+binding.value;
+                console.log('1 - bind')
+            },
+            //绑定到节点
+            inserted:function(){console.log('2 - inserted')},
+            //组件更新
+            update:function(){console.log('3 - update')},
+            //组件更新完成
+            componentUpdated:function(){console.log('4 - componentUpdated')},
+            //解绑
+            unbind:function(){console.log('5 - unbind')}
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:10,
+                color:'#ff0000',
+                num2:5,
+                color2:"#08e1fd"
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                },
+                add2:function(){
+                    this.num2++;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

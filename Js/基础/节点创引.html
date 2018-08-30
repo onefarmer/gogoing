@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li{padding: 10px;color: blue;}
+		</style>
+	</head>
+	<body>
+		<ul>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	var arr = ['一念一剑','吾虽浪迹天涯，却未迷失本心','断剑重铸之日,骑士归来之时','我渴望有价值的对手','肮脏的蠢蛋']
+	var oUl = document.createElement('ul');
+	for(var i=0;i<5;i++){
+		var oLi = document.createElement('li')
+		oLi.innerHTML = arr[i];
+		oUl.appendChild(oLi)
+	}
+	document.body.appendChild(oUl)
+</script>

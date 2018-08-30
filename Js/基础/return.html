@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//	return结束整个函数,break结束整个循环体,continue结束当前循环.
+	function fn(){
+		for(var i=0;i<10;i++){
+			// 函数弹出
+			if(i==3){return}
+			console.log('我是第'+i+'个')
+		}
+		console.log('执行我吗')
+	}
+	fn()
+</script>

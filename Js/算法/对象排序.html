@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var students=[
+        {name:'raven',age:20},
+        {name:'soybean',age:22},
+        {name:'Aming',age:33},
+        {name:'disco',age:30},
+        {name:'alon',age:27}
+    ]
+    //数组对象方法排序:
+    function sortByKey(array,key){
+        // 传入array数组 以及 key值，以key值为准排序。
+        return array.sort(function(a,b){
+        var x=a[key];
+        var y=b[key];
+        console.log(x,y)
+        var c = (x<y)?-1:( (x>y)?1:0 )  ;
+        console.log(c)
+        // 从数组第一个，第二个开始对比，第一次进来20,22
+        // 如果x<y 则为-1 不然如果x>y 则为1不然为0 考虑到相等
+        return (    (x<y)?-1:( (x>y)?1:0 )    );
+        });
+    }
+    sortByKey(students,'age');
+    //console.log(students)
+</script>
