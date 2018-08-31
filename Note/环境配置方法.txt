@@ -1,0 +1,13 @@
+1、安装node.js;
+	安装完成后，输入“node -v”查看是否安装成功
+
+2、安装vue-cli
+	“npm install -g vue-cli”,可使用“npm vue”查看是否安装成功
+
+3、安装webpack
+	"npm install webpack -g"
+
+4、创建项目
+	"vue init webpack my-vue"
+
+5、注：创建项目过程中，一直按“enter”，选择安装的部分，只有router选择安装按‘y’，其他都按‘n’
