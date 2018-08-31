@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-自定义组件</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+</head>
+<body>
+    <h1>Vue-自定义组件</h1>
+    <hr>
+    <div id="app">
+        <my-name></my-name>
+    </div>
+    <template id="mine">
+        <div class="container">
+            <h1 @click='fn("we are family")'>{{msg}}</h1>
+        </div>
+    </template>
+    <script type="text/javascript">
+        //驼峰命名用-链接
+        Vue.component('myName',{
+            template:"#mine",
+            data:()=>{
+                return{
+                    msg:'hello world'
+                }
+            },
+            methods:{
+                fn:function(x){
+                    alert(x)
+                }
+            }
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{}
+        })
+    </script>
+</body>
+</html>

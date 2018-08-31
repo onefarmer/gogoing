@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue event</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <style>
+        body{padding: 0;margin: 0}
+        .box{display: inline-block;margin: 10px;padding: 10px;width: 200px;height: 200px;background-color: navajowhite}
+        .in{width: 100px;height: 100px;margin: 10px;padding: 10px;background-color: mediumvioletred}
+    </style>
+</head>
+<body>
+    <h1>Vue $event</h1>
+    <hr>
+    <div id="app">
+        <!-- stop阻止冒泡，prevent阻止默认 -->
+        <div class="box" @click.stop = "fn($event)" @contextmenu.prevent="fn3($event)">
+            <div class="in" @click = "fn2($event)"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{},
+            methods:{
+                fn:(e)=>{
+                    //浏览器左偏距
+                    //console.log(e.clientX)
+                    //鼠标距离容器左偏距，含padding
+                    //console.log(e.offsetX)
+                },
+                fn2:(e)=>{
+                    //包含滚动条,鼠标到浏览器边缘
+                    console.log(e.pageX,e.type)
+                },
+                fn3:(e)=>{
+                    //获取当前事件客户区的坐标，从标签开始算。
+                    //console.log(e.screenX)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
