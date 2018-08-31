@@ -1,0 +1,11 @@
+1.JQUERY获取当前页面的URL信息
+http://blog.unvs.cn/archives/jquery-local-url-param.html
+
+2.flex布局
+http://www.ruanyifeng.com/blog/2015/07/flex-examples.html
+
+3.图片压缩
+https://tinypng.com/
+
+4.Js处理输入为空等判断
+https://www.jb51.net/article/86543.htm
