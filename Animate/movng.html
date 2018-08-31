@@ -6,10 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        @keyframes bg_play {
-            0% {  opacity: 0;  }
-            100% {  opacity: 1;  }
-        }
+        @keyframes bg_play {  0% {  opacity: 0;  }  100% {  opacity: 1;  }  }
         @keyframes text01_play {
             from {  transform: skew(0,-1deg) translate(10%,0) matrix3d(0.95,0,0.00,0.002,0.00,1,0.00,0,0,0,1,0,0,0,0,1);  opacity: 0;  }
             to   {  transform: skew(0,1deg) translate(0,0) matrix3d(0.95,0,0.00,0.002,0.00,1,0.00,0,0,0,1,0,0,0,0,1);  opacity: 1;  }
@@ -18,24 +15,18 @@
             from {  transform: translate(-10%,0);  opacity: 0;  }
             to {  transform: translate(0,0);  opacity: 1;  }
         }
-        @keyframes btn_play {
-            from {  opacity: 0;  }
-            to {  opacity: 1;  }
-        }
+        @keyframes btn_play { from {  opacity: 0;  } to {  opacity: 1;  } }
         .box{display: block;height: 250px;position: relative;width: 400px}
         .exterior{transition: all 0.5s ease; }
         .backbg{width: 300px; height: 165px;margin: 0 auto;background: url(img/0.jpg) no-repeat 0 0;background-size: cover}
         .in{opacity: 1;display: none;position: absolute;left: 0;top: 0;right: 0;bottom: 0;margin: auto;}
         .into{ position: relative; height: 235px;margin-bottom: 15px;overflow: hidden;}
         .intoBg{
-            z-index: 2;opacity: 0;background: url(img/1.jpg) no-repeat 0 0;background-size: cover;
-            width: 353px;height: 227px;
-            position: absolute; right: 38px;bottom: 0;
+            z-index: 2;opacity: 0;background: url(img/1.jpg) no-repeat 0 0;background-size: cover; width: 353px;height: 227px; position: absolute; right: 38px;bottom: 0;
             animation: bg_play 0.4s ease-out 0.4s forwards;    
         }
         .text01{
-            color: #00c2ff;text-shadow: 1px 1px 2px #000;font-size: 46px;font-weight:bold;
-            position: absolute; right: 70px;top: 65px;z-index: 5; opacity: 0;
+            color: #00c2ff;text-shadow: 1px 1px 2px #000;font-size: 46px;font-weight:bold; position: absolute; right: 70px;top: 65px;z-index: 5; opacity: 0;
             animation: text01_play 1s ease 0.7s forwards; 
         }
         .text02{color: #fff;text-shadow: 1px 1px 2px #000;font-size: 35px;font-weight: bold;
