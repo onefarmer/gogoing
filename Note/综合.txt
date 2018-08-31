@@ -9,3 +9,44 @@ https://tinypng.com/
 
 4.Js处理输入为空等判断
 https://www.jb51.net/article/86543.htm
+
+5.WX程序学习
+https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/debug.html
+
+6.百度地图
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zKa6p3dYXWBjwEiRerUCGpPGvPBtwdXb"></script>
+
+7.rem
+document.documentElement.style.fontSize=document.documentElement.clientWidth/12.42+"px";
+
+8.判断
+-是否是IE
+if(browser.versions.trident){ alert(“is IE”); } 
+-是否webKit内核 
+if(browser.versions.webKit){ alert(“is webKit”); } 
+-是否为mac系统
+var isMac = function() {return /macintosh|mac os x/i.test(navigator.userAgent);}();
+-是否为windows系统
+var isWindows = function() {return /windows|win32/i.test(navigator.userAgent);}();
+-手机端
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+alert('是否是Android：'+isAndroid);
+alert('是否是iOS：'+isiOS);
+
+9.数字滚动
+var i3 = 28653646.25 + parseInt(Math.random() * 1000, 10);
+var max3 = 39840280.89;
+var id3;
+function jackpot() {
+ if (i3 < max3) {
+ i3 += 25.5;
+ id3 = setTimeout("jackpot()", 1000);
+ document.getElementById("jackpot-num").innerHTML = Number(i3).toLocaleString();
+} 
+ else {
+  clearTimeout(id3);
+ }
+}
+jackpot();

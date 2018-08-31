@@ -12,7 +12,6 @@ this.$http.jsonp('http://suggest.taobao.com/sug',{
         this.hotNews=res.body.events
       }
     })
-
 <router-link :to = {name:组件名,params:{id:谁的ID}}></router-link>
 
 import axios from 'axios'
@@ -20,21 +19,13 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios,axios)
 
 https://developers.douban.com/wiki/?title=api_v2
-
 http://api.douban.com/v2/movie/in_theaters?start=0&count=2   正在上映的电影-北京
-
-
 http://api.douban.com/v2/movie/coming_soon   "即将上映的电影"
-
-
 http://api.douban.com/v2/movie/subject/26363254   根据id获取电影内容
-
 http://api.douban.com/v2/movie/search?q=aaa    搜索
-
 
 打包 $ npm run build
 
 https://api.douban.com/v2/event/list?loc=108288&start=0&count=2
 https://api.douban.com/v2/event/
-
 http://www.runoob.com/w3cnote/vue2-start-coding.html node环境

@@ -11,3 +11,6 @@
 	"vue init webpack my-vue"
 
 5、注：创建项目过程中，一直按“enter”，选择安装的部分，只有router选择安装按‘y’，其他都按‘n’
+
+
+6、打包 $ npm run build
