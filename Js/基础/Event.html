@@ -22,3 +22,20 @@
 		<div class="out"></div>
 	</body>
 </html>
+<script>
+	var out = document.querySelector(".out");
+	out.onclick = function(e){
+		//包含滚动条,鼠标与浏览器偏距
+		console.log('鼠标与浏览器偏距'+ e.pageX)
+		console.log('鼠标与浏览器偏距'+ e.pageY)
+		//浏览器边缘偏距，
+		console.log('浏览器边缘偏距'+ e.clientX)
+		console.log('浏览器边缘偏距'+ e.clientY)
+		//屏幕边缘偏距，随屏幕缩小而改变
+		console.log('屏幕边缘偏距'+ e.screenX)
+		console.log('屏幕边缘偏距'+ e.screenY)
+		//获取当前事件客户区的坐标,从定位元素开始计算
+		console.log('客户区的坐标：'+ e.offsetX)
+		console.log('客户区的坐标：'+ e.offsetY) 
+	}
+</script>

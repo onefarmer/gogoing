@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //构造函数
+    function Components(){}
+    //原型链属性
+    Components.prototype.data = {a:1,b:2}
+    var component1 = new Components();//实例1
+    var component2 = new Components();//实例2
+    //改变实例2的b值
+    component2.data.b = 10;
+    //实例1的值也被改变,放在原型上的值被改正。
+    console.log(component1.data.b)
+
+    //构造函数2
+    function Components2(){
+        this.data = this.data()
+    }
+    //原型链属性
+    Components2.prototype.data = ()=>{
+        return {
+            a : 1,b : 2
+        }
+    }
+    var componentA = new Components2();//实例1
+    var componentB = new Components2();//实例2
+    componentB.data.b = 10;
+    console.log(componentA.data.b,componentB.data.b)
+</script>
