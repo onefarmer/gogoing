@@ -50,3 +50,7 @@ function jackpot() {
  }
 }
 jackpot();
+
+10.≤Â»ÎCss
+document.writeln("<link rel=\"stylesheet\" href=\""+cdnUrl+"/css/csino-style.css\" />");
+

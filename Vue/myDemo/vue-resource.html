@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-resource</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+    <script type="text/javascript" src="../assets/js/vue-resource.js"></script>
+</head>
+<body>
+    <h1>vue-resource获取号码归属地</h1>
+    <hr>
+    <div id="app">
+        <input type="text" v-model = 'phoneNum'>
+        <button @click='checkPhone'>查询归属地</button>
+        <ul>
+            <li v-for = "(val,key) in obj">{{key}}:{{val}}</li>
+            <li>运营商：{{obj.catName}}</li>
+            <li>省：{{obj.province}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                obj:{},
+                phoneNum:0
+            },
+            methods:{
+                //http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=手机号
+                checkPhone:function(){
+                    this.$http.jsonp('http://tcc.taobao.com/cc/json/mobile_tel_segment.htm',{
+                        params:{"tel":this.phoneNum}
+                    }).then(function(res){
+                        console.log(res.data);
+                        this.obj = res.data;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
