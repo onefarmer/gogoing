@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{padding: 0;margin: 0;}
+			div{width: 50px;height: 50px;background: #008B8B;position: absolute;}
+			button{position: absolute;top: 55px;}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<button type="button">运动</button>
+	</body>
+</html>
+<script type="text/javascript">
+	var box = document.getElementById("box");
+	//getComputedStyle("元素", "伪类"); :after :before 不需要写 null
+	function animates(obj,moda,end,time){
+		var star = parseInt(getComputedStyle(obj,null)[moda]);//取变化的属性 50px
+		var dis = end;
+		var count = parseInt(time/30);//移动多少次
+		var step = Math.round(dis/count);//step 一次移动多长
+		var i = 0;
+		clearInterval(obj.timer)
+		obj.timer = setInterval(function(){
+			obj.style[moda]=step*i+"px";
+			i++;
+			if(i>count){clearInterval(obj.timer)}
+		},30)
+	}
+	document.getElementsByTagName("button")[0].onclick=function(){
+		animates(box,"width",500,1000)
+	}
+</script>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,ul{padding: 0;margin: 0;}
+			ul{list-style: none;background: #999;}
+			a{text-decoration: none;line-height: 26px;font-size: 14px;color: #333;}
+			.nav:after{content: "";height: 0;clear: both;display: block;visibility: hidden;}
+			.nav>li{float: left;height: 26px;position: relative;}
+			.nav>li>a{padding: 0 20px;}
+			.has-after:after{
+				height: 0;
+				width: 0;
+				border: solid 5px transparent;
+				border-top-color: #666;
+				content:"";
+				position: absolute;
+				right: 0;
+				top: 11px;
+				}
+			ul li .show{display: block;}
+			ul li ul{display: none;position: absolute;background: #999;}
+			ul li ul li{text-align: center}
+			ul li:hover{background: #00FF7F;}
+		</style>
+	</head>
+	<body>
+		<ul class="nav">
+			<li><a href="#">首页</a></li>
+			<li>
+				<a href="#">游戏介绍</a>
+				<ul>
+					<li><a href="#">地图</a></li>
+					<li><a href="#">英雄</a></li>
+					<li><a href="#">技能</a></li>
+					<li><a href="#">攻略</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">背景故事</a>
+				<ul>
+					<li><a href="#">开发背景</a></li>
+					<li><a href="#">设计理念</a></li>
+					<li><a href="#">人物思想</a></li>
+				</ul>				
+			</li>
+			<li>
+				<a href="#">操作技巧</a>
+				<ul>
+					<li><a href="#">锐雯光速QA</a></li>
+					<li><a href="#">嘉文E闪</a></li>
+					<li><a href="#">李青R闪</a></li>
+					<li><a href="#">伊泽瑞尔R闪</a></li>
+					<li><a href="#">古拉加斯E闪</a></li>
+					<li><a href="#">亚索EQ闪</a></li>
+				</ul>				
+			</li>
+			<li><a href="#">与我联系</a></li>
+		</ul>
+	</body>
+</html>
+<script type="text/javascript">
+	var oLi = document.getElementsByTagName("ul")[0].children;
+	for(var i=0;i<oLi.length;i++){
+		oLi[i].onmouseover=function(){
+			//判断父级是否存在子级
+			var oChild = this.children;
+			for(var j=0;j<oChild.length;j++){
+				if(oChild[j].tagName=="UL"){
+					this.className = "has-after";
+					oChild[j].style.width=this.offsetWidth+"px";
+					oChild[j].className="show";
+				}
+			}
+		}
+		oLi[i].onmouseleave=function(){
+			var oChild = this.children;
+			for(var j=0;j<oChild.length;j++){
+					this.className = "";
+					oChild[j].className="";
+			}
+		}			
+	}
+	
+
+</script>
