@@ -1,0 +1,68 @@
+animation-name: run;/*名字*/
+animation-duration: 5s;/*动画时间*/
+animation-delay:1s ;/*延迟执行时间*/
+animation-direction: alternate;/*是否反向执行*/
+animation-timing-function: ease-in-out; /*运动曲线*/
+animation-iteration-count: 1;/*执行次数-infinite无限*/
+
+/*变化属性 持续时间 延迟时间 变化速度*/
+transition-property: width;
+transition-duration: 2s;
+transition-delay: 1s;
+transition-timing-function: linear;
+width: 500px;
+
+/*border与pandding算入内容 内容缩小*/
+box-sizing: border-box
+
+/*margin外的边框*/
+outline-offset: ？px;
+
+/*resize:both;可以自由调整宽高，需要设置overflow*/
+resize:both;overflow: auto;
+
+/*边框图片*/
+border-image:url("img/0.jpg") ;
+/*边框图宽度*/
+border-image-width: 20px;
+/*分割方法*/
+border-image-slice:54 54;
+/*平铺方式 stretch repeat round */
+border-image-repeat: round;
+/*外外扩展*/
+border-image-outset:2px;
+--------------------------------------------------2D
+/*x坐标和Y坐标*/
+transform:translate(300px,0px); 
+/*旋转*/
+transform: rotate(360deg);
+/*改变大小*/
+transform: scale(10,2);
+/*翻转*/
+transform: skew(0deg,360deg); 
+--------------------------------------------------3D
+目前浏览器都不支持 perspective 属性。
+Chrome 和 Safari 支持替代的 -webkit-perspective 属性。
+定义 3D 元素距视图的距离，以像素计。该属性允许您改变 3D 元素查看 3D 元素的视图。
+当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。
+
+perspective-origin 属性定义 3D 元素所基于的 X 轴和 Y 轴。该属性允许您改变 3D 元素的底部位置。
+当为元素定义 perspective-origin 属性时，其子元素会获得透视效果，而不是元素本身。
+/*translate3d(x,y,z) translate3dX(x) translate3dY(y) translate3dZ(z)*/
+-webkit-transform: translate3d(10px,10px,10px)，
+ /*scale3d(x,y,z) scaleX(x) scaleY(y) scaleZ(z)*/
+-webkit-transform: scale3d(2,2,1)，
+/*x,y,z轴旋转 rotate2D旋转默认Z轴*/
+-webkit-transform: rotateX(60deg)，
+-webkit-transform: rotateY(60deg)
+-webkit-transform: rotateZ(60deg)
+-------------------------------------------------------跨列
+-列数，
+-webkit-column-count: 7，
+-moz-column-count: 7;
+-分割线宽度，
+-webkit-column-rule:2px solid blue;
+-moz-column-rule:2px solid blue;
+-跨列
+-webkit-column-span:all;  
+-moz-column-span:all;  

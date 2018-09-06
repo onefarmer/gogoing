@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box-4 img{  width: 250px;  }
+        .box-4>img:nth-child(1){  /*黑白或彩色*/  -webkit-filter:grayscale(1);  }
+        .box-4>img:nth-child(2){   /*褐色或非褐色*/  -webkit-filter:sepia(1);}
+        .box-4>img:nth-child(3){  /*饱和度 越大越饱和*/  -webkit-filter:saturate(5); }
+        .box-4>img:nth-child(4){ /*角度*/  -webkit-filter:hue-rotate(250deg); }
+        .box-4>img:nth-child(5){   /*高清模糊 越大越模糊*/  -webkit-filter: blur(3px);}
+        .box-4>img:nth-child(6){ /*阴影 X Y 阴影程度 颜色*/  -webkit-filter:drop-shadow(15px 15px 25px #d40367);}
+        .box-4>img:nth-child(7){      /*对比度*/  -webkit-filter:contrast(10); }
+        .box-4>img:nth-child(8){   /*透明度 0透 1不透*/  -webkit-filter:opacity(0.5); }
+        .box-4>img:nth-child(9){ /*反色 0不1反*/  -webkit-filter:invert(1); }
+        .box-4>img:nth-child(10){  /*亮度 值越大越亮*/ -webkit-filter:brightness(5)}
+    </style>
+</head>
+<body>
+
+    <div class="box-4">
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+        <img src="../images/0.jpg" alt=""/>
+    </div>
+</body>
+</html>
