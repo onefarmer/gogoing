@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-extend</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+</head>
+<body>
+    <h1>扩展实例构造器</h1>
+    <hr>
+    <div id="author"></div>
+    <author></author>
+    <script type="text/javascript">
+        var authorURL = Vue.extend({
+            template:"<p><a :href = 'authorUrl'>{{authorName}}</p>",
+            data:function(){
+                return {
+                    authorName:'alisa',
+                    authorUrl:'http://www.baidu.com'
+                }
+            }    
+        });
+        new authorURL().$mount('#author')
+        new authorURL().$mount('author')
+    </script>
+</body>
+</html>

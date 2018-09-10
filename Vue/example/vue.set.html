@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+</head>
+<body>
+    <h1>Vue-set</h1>
+    <hr>
+    <div id="app">
+        {{count}}
+        <ul>
+            <li v-for = 'item in arr'>{{item}}</li>
+        </ul>
+    </div>
+    <p><button onclick="add()">add</button></p>
+    <script type="text/javascript">
+        //三种方法操作数据,
+        function add(){
+            //Vue.set(outData,'count',2);
+            //app.count++;
+            //outData.count++;
+
+            //检索不到下下标，无法修改，JS限制性，故使用set，外部检索不到app内部
+            //app.arr[1]='ddd'
+            Vue.set(app.arr,1,'ddd')
+        }
+        //外部数据
+        var outData = {
+            count:1,
+            good:'car',
+            arr:['aaa','bbb','ccc']
+        }
+        var app = new Vue({
+            el:'#app',
+            data:outData
+        })
+    </script>
+</body>
+</html>

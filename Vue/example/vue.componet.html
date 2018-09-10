@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vue-自定义组件</title>
+    <title>Vue组件</title>
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>Vue-自定义组件</h1>
+    <h1>Vue-Component-组件</h1>
     <hr>
     <div id="app">
-        <my-name></my-name>
+        <my-box></my-box>
+        <pan-da></pan-da>
     </div>
-    <template id="mine">
+    <template id="myBox">
         <div class="container">
             <h1 @click='fn("we are family")'>{{msg}}</h1>
         </div>
     </template>
     <script type="text/javascript">
-        //驼峰命名用-链接
-        Vue.component('myName',{
-            template:"#mine",
+        //驼峰命名用-链接,全局的
+        Vue.component('myBox',{
+            template:"#myBox",
             data:()=>{
                 return{
-                    msg:'hello world'
+                    msg:'我是全局 myBox'
                 }
             },
             methods:{
@@ -35,7 +36,18 @@
         })
         var app = new Vue({
             el:'#app',
-            data:{}
+            data:{},
+            //局部
+            components:{
+                "panDa":{
+                    template:'<h2>我是局部的panda并且{{pandaSay}}</h2>',
+                    data:function(){
+                        return {
+                            pandaSay:"靠萌吃饭"
+                        }
+                    }
+                }
+            }
         })
     </script>
 </body>
