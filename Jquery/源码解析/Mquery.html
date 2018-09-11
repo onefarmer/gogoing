@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{text-align: center;width: 50px;height: 50px;margin: 1px;background: #000;line-height: 50px;color: #000}
+        div#box{background-color: pink;}
+        div.warp{background-color: #ff00ff;}
+        div.container{background-color: green;}
+    </style>
+</head>
+<body>
+    <div id="box">盒子</div>
+    <div class="warp"></div>
+    <div class="container"></div>
+</body>
+</html>
+<script src="Mquery.js"></script>
+<script>
+    // 创建div
+    var box = $("<div>");
+    document.body.appendChild(box) 
+    // class,hover
+    //this 指向触发元素，$(this)指$函数，将this指向的元素obj传入$
+    //console.log(this,$(this))    
+    $('.warp').hover(
+        function(){
+            $(this).html('文字');
+        },
+        function(){
+            $(this).html();
+        }
+    )
+    // id,Css
+    $('#box').css({
+        "color":"#ff0000",
+        "border":"solid 1px sandybrown"
+    }).click(function(){
+        alert(1)
+    })
+    // animate
+    $('.container').animate({"width":"500"},"slow",function(){
+        alert('执行完毕')
+    });
+</script>
