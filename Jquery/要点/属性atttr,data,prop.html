@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery/jquery-2.2.min.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div data-options='noahlu'>3</div>
+</body>
+</html>
+<script>
+    //attr和prop分别是单词attribute和property的缩写，
+    //attribute表示HTML文档节点属性，property表示JS对象的属性
+    //attr()主要依赖的是Element对象的getAttribute()和setAttribute()两个方法。
+    // 文本节点上的属性
+    $('div:eq(0)').attr('attr',[1,2,3])
+    // 对象上的属性，类似于obj.index
+    $('div:eq(1)').prop('say',function(){console.log(1)})
+    //Html5 Data属性
+    $('div').eq(2).data("options",'ChangeName')
+    console.log($('div').eq(2).data("options"))
+</script>
