@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a{ display:inline-block; height:30px; width:30px; padding:5px;background:url(star.png) no-repeat center -40px}
+        a.active{ background-position:center 0}       
+    </style>
+    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <a href="javascirpt:;"></a>
+    <a href="javascirpt:;"></a>
+    <a href="javascirpt:;"></a>
+    <a href="javascirpt:;"></a>
+    <a href="javascirpt:;"></a>
+    <script>
+        var num = -1;
+        function changeStar(n){
+            $('a:lt('+n+1+')').addClass('active');
+            $('a:gt('+n+')').removeClass('active')
+        }
+        $('a').mouseover(function(){	
+            changeStar( $(this).index() )
+        })
+        $('a').click(function(){
+            num = $(this).index()
+        })
+        $('a').click(function(){
+            changeStar(num);
+        })
+    </script>
+</body>
+</html>

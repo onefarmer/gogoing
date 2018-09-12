@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{margin:20px auto 10px;width:600px;font-weight: bold;font-size: 20px;}
+			#box{
+				border: solid 2px #000000;
+				width: 600px;
+				height: 300px;
+				overflow: hidden;
+				margin: 0 auto 0;
+			}
+			#add{width: 600px;margin: auto;}
+			#add button{margin: 5px;font-size: 16px;padding: 0 10px;}
+			.new{border: solid 1px #666666;line-height: 26px;font-size: 18px;float: left;margin: 3px;padding: 2px;}
+			.new button{margin-left: 2px;}
+		</style>
+	</head>
+	<body>
+		<p>你的本命英雄有哪些</p>
+		<div id="box"></div>
+		<div id="add">
+			<button data-value="锐雯">锐雯</button><button data-value="菲奥娜">菲奥娜</button>
+			<button data-value="古拉加斯">古拉加斯</button><button data-value="劫">劫</button>
+			<button data-value="雷克顿">雷克顿</button><button data-value="拉克丝">拉克丝</button>
+			<button data-value="安妮">安妮</button><button data-value="卢锡安">卢锡安</button>
+			<button data-value="薇恩">薇恩</button><button data-value="伊泽瑞尔">伊泽瑞尔</button>
+			<button data-value="兰博">兰博</button><button data-value="德莱厄斯">德莱厄斯</button>
+			<button data-value="格雷福斯">格雷福斯</button><button data-value="李青">李青</button>
+			<button data-value="布兰德">布兰德</button><button data-value="贾克斯">贾克斯</button>
+			<button data-value="奈德丽">奈德丽</button><button data-value="嘉文">嘉文</button>
+			<button data-value="赵信">赵信</button><button data-value="提莫">提莫</button>
+			<button data-value="卡西奥佩娅">卡西奥佩娅</button><button data-value="婕拉">婕拉</button>
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var box = document.getElementById("box")//空盒子
+	var tag = document.querySelectorAll("#add button")//选择项
+	for( var i = 0; i < tag.length; i++){
+		tag[i].onclick = function(){
+			var len = box.children.length;//已添加的选项的个数
+			var tagData = this.getAttribute('data-value');//点击按钮data-value属性值
+			//遍历已添加的选项
+			for( var m = 0; m < len; m++){
+				//判断是否重复
+				if( box.children[m].getAttribute('data-value') == tagData ){
+					alert('重复项')
+					return;
+				}
+			}
+			addEle(tagData)
+		}
+	}
+	//添加元素方法
+	function addEle(data){
+		var oDiv = document.createElement('div');
+		oDiv.className = 'new';//给予创建div赋class名
+		oDiv.setAttribute('data-value',data);// 创建的div设置新的属性
+		oDiv.innerHTML = data + '<button class="delate">X</button>';// 创建div添加元素
+		box.appendChild(oDiv);
+		delEle()
+	}
+	//删除元素方法
+	function delEle(){
+		var del = document.getElementsByClassName('delate');
+		for( var x = 0; x < del.length; x++ ){
+			del[x].onclick = function(){
+				this.parentElement.remove()
+			}
+		}
+	}
+</script>
