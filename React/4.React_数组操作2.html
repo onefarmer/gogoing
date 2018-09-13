@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script src="common/react.js"></script>
+    <script src="common/react-dom.js"></script>
+    <!-- <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script> -->
+    <script src="common/babel.js"></script>
+    <script type="text/babel">
+        {/* 特殊数组 */}
+        let names = [
+            <p key='1'>Hello Panda</p>,
+            <p key='2'>Hello Yoona</p>
+        ];
+        let stars = [
+            <h1>UZI</h1>,
+            <h2>LetMe</h2>,
+            <h3>XiaoHu</h3>,
+            <h4>Ming</h4>,
+            <h5>MLXG</h5>         
+        ];
+        var TheStars = React.createClass({
+            render:function() {
+                return <div>
+                    <h1>RNG Players</h1>
+                    <ul>
+                        <li>{stars[0]}</li>
+                        <li>{stars[1]}</li>
+                        <li>{stars[2]}</li>
+                        <li>{stars[3]}</li>
+                        <li>{stars[4]}</li>
+                    </ul>
+                </div>
+            }
+        })
+        ReactDOM.render(
+            <div>
+                <p>{names}</p>
+                <TheStars/>
+            </div>,
+            document.getElementById('box')
+        )
+    </script>
+</body>
+</html>
