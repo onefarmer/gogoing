@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {	margin: 0;	padding: 0; }
+        body{ height:4000px;}
+        ul{ list-style: none; }
+        a{ text-decoration: none;}
+        .nav h2 { width: 240px; text-indent:2em; font-size:14px;  cursor: pointer; border-bottom: 1px #666 solid; color:#fff; }
+        .nav { margin:100px auto;width: 240px; font-size: 12px; background: #8e9eb1; border: 1px solid #8e9eb1; }
+        .nav li { width: 240px;line-height:40px;}
+        .nav .ac { background:red }
+        .nav ul { width: 240px;overflow:hidden; display:none }
+        .nav ul li { width: 240px; background:#D8D6D6}
+        .nav ul li a { display: block; width: 200px;padding-left: 40px; color:#6b7f97; border-bottom:1px solid #ccc }
+        .nav ul li a:hover { text-decoration: underline; }
+    </style>
+    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <ul id="nav" class="nav">
+        <li>
+            <h2>RNG</h2>
+            <ul>
+                <li><a href="javascript:;">Letme</a></li>
+                <li><a href="javascript:;">XiaoHu</a></li>
+                <li><a href="javascript:;">MLXG</a></li>
+                <li><a href="javascript:;">Uzi</a></li>
+                <li><a href="javascript:;">Ming</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>RNG</h2>
+            <ul>
+                <li><a href="javascript:;">Letme</a></li>
+                <li><a href="javascript:;">XiaoHu</a></li>
+                <li><a href="javascript:;">MLXG</a></li>
+                <li><a href="javascript:;">Uzi</a></li>
+                <li><a href="javascript:;">Ming</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>RNG</h2>
+            <ul>
+                <li><a href="javascript:;">Letme</a></li>
+                <li><a href="javascript:;">XiaoHu</a></li>
+                <li><a href="javascript:;">MLXG</a></li>
+                <li><a href="javascript:;">Uzi</a></li>
+                <li><a href="javascript:;">Ming</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>RNG</h2>
+            <ul>
+                <li><a href="javascript:;">Letme</a></li>
+                <li><a href="javascript:;">XiaoHu</a></li>
+                <li><a href="javascript:;">MLXG</a></li>
+                <li><a href="javascript:;">Uzi</a></li>
+                <li><a href="javascript:;">Ming</a></li>
+            </ul>
+        </li>
+    </ul>    
+    <script>
+        $('h2').click(function(){
+            $(this).parent().siblings().removeClass('ac');
+            $('#nav li ul').stop().slideUp();
+            $(this).parent().toggleClass('ac').children('ul').stop().slideToggle();
+        })
+    </script>
+</body>
+</html>

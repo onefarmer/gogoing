@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {	margin: 0;	padding: 0; }
+        body{ height:4000px;}
+        ul{ list-style: none; }
+        a{ text-decoration: none;}
+        .nav h2 { width: 240px; text-indent:2em; font-size:14px;  cursor: pointer; border-bottom: 1px #666 solid; color:#fff; }
+        .nav { margin:100px auto;width: 240px; font-size: 12px; background: #8e9eb1; border: 1px solid #8e9eb1; }
+        .nav li { width: 240px;line-height:40px;}
+        .nav .ac { background:red }
+        .nav ul { width: 240px;overflow:hidden; height: 0;transition: all .3s linear}
+        .nav ul li { width: 240px; background:#D8D6D6}
+        .nav ul li a { display: block; width: 200px;padding-left: 40px; color:#6b7f97; border-bottom:1px solid #ccc }
+        .nav ul li a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <ul id="nav" class="nav">
+        <li>
+            <h2>RNG</h2>
+            <ul>
+                <li><a href="javascript:;">Letme</a></li>
+                <li><a href="javascript:;">XiaoHu</a></li>
+                <li><a href="javascript:;">MLXG</a></li>
+                <li><a href="javascript:;">Uzi</a></li>
+                <li><a href="javascript:;">Ming</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>RNG</h2>
+            <ul>
+                <li><a href="javascript:;">Letme</a></li>
+                <li><a href="javascript:;">XiaoHu</a></li>
+                <li><a href="javascript:;">MLXG</a></li>
+                <li><a href="javascript:;">Uzi</a></li>
+                <li><a href="javascript:;">Ming</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>RNG</h2>
+            <ul>
+                <li><a href="javascript:;">Letme</a></li>
+                <li><a href="javascript:;">XiaoHu</a></li>
+                <li><a href="javascript:;">MLXG</a></li>
+                <li><a href="javascript:;">Uzi</a></li>
+                <li><a href="javascript:;">Ming</a></li>
+            </ul>
+        </li>
+        <li>
+            <h2>RNG</h2>
+            <ul>
+                <li><a href="javascript:;">Letme</a></li>
+                <li><a href="javascript:;">XiaoHu</a></li>
+                <li><a href="javascript:;">MLXG</a></li>
+                <li><a href="javascript:;">Uzi</a></li>
+                <li><a href="javascript:;">Ming</a></li>
+            </ul>
+        </li>
+    </ul>    
+    <script type="text/javascript">
+        var oLi = document.getElementById("nav").children;//获得LI
+        for(var i=0;i<oLi.length;i++){
+            //Index
+            oLi[i].index=i;
+            //On Off
+            oLi[i].kaiguan=true;
+            oLi[i].onclick=function(){
+                //Ul高度赋0
+                for(var j=0;j<oLi.length;j++){
+                    oLi[j].getElementsByTagName("ul")[0].style.height=0;
+                }
+                if(this.kaiguan){
+                    for(var n=0;n<oLi.length;n++){
+                        oLi[n].kaiguan=true;//开关开
+                    }
+                    this.getElementsByTagName("ul")[0].style.height=163+"px";//当前隐藏板块赋高度
+                    this.kaiguan=false;//当前开关关掉
+                }
+                else{
+                    this.getElementsByTagName("ul")[0].style.display=0;//当前板块隐藏
+				    this.kaiguan=true;//当前开关开启
+                }
+            }
+        }
+    </script>
+</body>
+</html>
