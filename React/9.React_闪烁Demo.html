@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script src="common/react.js"></script>
+    <script src="common/react-dom.js"></script>
+    <script src="common/babel.js"></script>
+    <script type = 'text/babel'>
+        var Hello = React.createClass({
+            getInitialState:function(){
+                return { 
+                    opacity:1.0 
+                }
+            },
+            componentDidMount:function(){
+                setInterval(function(){
+                    // 透明数值
+                    var opacityNum = this.state.opacity;
+                    // 状态数值递减
+                    opacityNum -= 0.05;
+                    if( opacityNum < 0.1 ){
+                        opacityNum = 1.0
+                    }
+                    this.setState({
+                        // 状态上的opacity
+                        opacity:opacityNum
+                    })
+                }.bind(this),100)
+            },
+            render:function() {
+                return(
+                    /* 
+                    第一个花括号为插值解析，第二个则是对象
+                    类似 var mystyle = {opacity:1}
+                    <div style = {mystyle}></div> 
+                    其实是
+                    <div style = {{opacity:1}}></div>
+                    */
+                    <div style = {{opacity :this.state.opacity}}>
+                        <h1>Hello {this.state.name}</h1>
+                    </div>
+                )
+            }
+        })
+        ReactDOM.render(
+            <Hello/>,
+            document.getElementById('demo')
+        )
+    </script>
+</body>
+</html>

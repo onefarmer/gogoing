@@ -30,18 +30,18 @@
                 return <div>
                     <h1>RNG Players</h1>
                     <ul>
-                        <li>{stars[0]}</li>
-                        <li>{stars[1]}</li>
-                        <li>{stars[2]}</li>
-                        <li>{stars[3]}</li>
-                        <li>{stars[4]}</li>
+                        {
+                            stars.map(function(item,index){
+                                return <li>{stars[index]}</li>
+                            })
+                        }
                     </ul>
                 </div>
             }
         })
         ReactDOM.render(
             <div>
-                <p>{names}</p>
+                <div>{names}</div>
                 <TheStars/>
             </div>,
             document.getElementById('box')
