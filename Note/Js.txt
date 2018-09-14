@@ -1,0 +1,24 @@
+//typeof 字符串形式
+typeof x == 'undefined'
+
+//三目   
+var i = 0;
+i<1?i=0:i=1;
+
+var t;
+t = 1>2?false:true;
+
+//failed 失败，已失败的
+//load 负责，负荷，工足量，加载
+//resource 资源
+//server 主机，服务器
+//responded 反应，回答
+//status 状况，身份
+//Failed to load resource: the server responded with a status of 404 (Not Found)
+//服务器无法加载资源,出现404错误,有一个可能是网络不通。或者对方服务器没有反应。
+
+//Fn声明
+var say = function(){}
+//函数引用必须写在下面
+say();
+
