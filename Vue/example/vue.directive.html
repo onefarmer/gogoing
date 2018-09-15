@@ -11,27 +11,31 @@
     <h1>vue-directive 自定义指令</h1>
     <hr>
     <div id="app">
-        <div v-diycolor="color">{{num}}</div>
-        <p><button @click="add">增加</button></p>
-        <div v-diycolor2="color2">{{num2}}</div>
-        <p><button @click="add2">递增</button></p>
+        <div v-mycolor="color">{{num}}</div>
+        <p><button @click="add">ADD</button></p>
+        <div v-mystyle = "style"></div>
     </div>
     <p>
-        <button onclick="unbind()">解绑</button>
+        <button onclick="unbind()">Unbind</button>
     </p>
     <script type="text/javascript">
         function unbind(){
             //VUE自带解绑函数，解绑后VUE指令失效
             app.$destroy()
         }
-        //接受两个参数
-        Vue.directive("diycolor",function(el,binding){
-            el.style ="color:"+binding.value;
-        })
-        Vue.directive("diycolor2",{
-            //被绑定
+        //参数：指令名称(不能大写)，方法。
+        //参数(形参)：el,binding,(Dom元素，对象)
+        Vue.directive('mycolor',function(el,binding){
+            //binding.value为data中color值
+            el.style = "color:" + binding.value;
+        });
+        //第二种写法
+        Vue.directive('mystyle',{
+            //绑定，初始化一次
             bind:function(el,binding){
-                el.style = "color:"+binding.value;
+                for( key in binding.value){
+                    el.style[key] = binding.value[key]
+                };
                 console.log('1 - bind')
             },
             //绑定到节点
@@ -46,17 +50,18 @@
         var app = new Vue({
             el:'#app',
             data:{
-                num:10,
-                color:'#ff0000',
-                num2:5,
-                color2:"#08e1fd"
+                num:1,
+                color:"#ff0000",
+                style:{
+                    width:'100px',
+                    height:'100px',
+                    margin:'5px',
+                    backgroundColor:'pink'
+                }
             },
             methods:{
                 add:function(){
                     this.num++;
-                },
-                add2:function(){
-                    this.num2++;
                 }
             }
         })

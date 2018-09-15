@@ -11,32 +11,41 @@
     <h1>Vue-set</h1>
     <hr>
     <div id="app">
-        {{count}}
+        <h1>姓名：{{name}}</h1>
+        <h2>性别：{{sex}}</h2>
+        <h3>职业：{{job}}</h3>
+        <h4>年龄：{{old}}</h4>
         <ul>
-            <li v-for = 'item in arr'>{{item}}</li>
+            <li v-for = 'item in fav'>{{item}}</li>
         </ul>
     </div>
-    <p><button onclick="add()">add</button></p>
+    <p><button onclick="change()">Change</button></p>
     <script type="text/javascript">
-        //三种方法操作数据,
-        function add(){
-            //Vue.set(outData,'count',2);
-            //app.count++;
-            //outData.count++;
+        // 外部数据
+        var yoona = {
+            name:'yoona',
+            sex:'famale',
+            job:'singer',
+            fav:['dance','food','shop'],
+            old:29
+        };
+        function change(){
+            //数据，key,值
+            //Vue.set(yoona,'sex','woman')
 
-            //检索不到下下标，无法修改，JS限制性，故使用set，外部检索不到app内部
-            //app.arr[1]='ddd'
-            Vue.set(app.arr,1,'ddd')
-        }
-        //外部数据
-        var outData = {
-            count:1,
-            good:'car',
-            arr:['aaa','bbb','ccc']
+            //直接操作外部数据
+            //app.old--;
+            //yoona.old--
+
+            //检索不到下标，JS限制性，无法修改，外部检索不到app内部
+            //app.fav[0] = 'fly'
+            //参数：data,下标,值
+            Vue.set(yoona.fav,0,'fly')
+ 
         }
         var app = new Vue({
             el:'#app',
-            data:outData
+            data:yoona
         })
     </script>
 </body>

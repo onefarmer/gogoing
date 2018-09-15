@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script src="common/react.js"></script>
+    <script src="common/react-dom.js"></script>
+    <script src="http://cdn.bootcss.com/babel-core/5.8.38/browser.min.js"></script>
+    <script type = 'text/babel'>
+        var MyTitle = React.createClass({
+            
+            propTypes:{
+                //验证字符串
+                title:React.PropTypes.string.isRequired
+            },
+            
+            //默认值，如果组件上Title不写。
+            /*
+            getDefaultProps:function () {
+              return {title:'You Wanna piece Me'}  
+            },
+            */
+            render:function(){
+                return (
+                    <h2>{this.props.title}</h2>
+                )
+            }
+        })
+        var data = 123456
+        ReactDOM.render(
+            <MyTitle title = {data}/>,
+            document.getElementById('demo')
+        )
+    </script>
+</body>
+</html>

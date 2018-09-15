@@ -10,20 +10,27 @@
 <body>
     <h1>扩展实例构造器</h1>
     <hr>
-    <div id="author"></div>
-    <author></author>
+    <div id="rngNews"></div>
+    <rngcontent></rngcontent>
     <script type="text/javascript">
-        var authorURL = Vue.extend({
-            template:"<p><a :href = 'authorUrl'>{{authorName}}</p>",
+        var extendRng = Vue.extend({
+            template:
+                `<div>
+                    <h1>{{title}}</h1>
+                    <a href = 'url'>{{content}}</a>
+                </div>`,
             data:function(){
                 return {
-                    authorName:'alisa',
-                    authorUrl:'http://www.baidu.com'
+                    title:'RNG六连冠',
+                    url:'http://www.baidu.com',
+                    content:'具体事项闻讯百度'
                 }
-            }    
-        });
-        new authorURL().$mount('#author')
-        new authorURL().$mount('author')
+            }
+        })
+        //ID
+        new extendRng().$mount('#rngNews')
+        //标签
+        new extendRng().$mount('rngcontent')
     </script>
 </body>
 </html>
