@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Methods.Native</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+</head>
+<body>
+    <h1>调用实例方法Native</h1>
+    <hr>
+    <div id="app">
+        <p>{{count}}</p>
+        <button @click = 'add(2,$event)'>ADD按钮</button>
+        <!-- native组件调用构造器方法 -->
+        <my-add @click.native='add(3)'></my-add>
+    </div>
+    <template id="tem">
+        <p><button>ADD2组件按钮</button></p>
+    </template>  
+    <button onclick="app.add(4)">ADD3</button>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                count:1
+            },
+            components:{
+                "myAdd":{
+                    template:'#tem'
+                }
+            },
+            methods:{
+                add:function(num,event){
+                    if(num!=''){
+                        this.count += num;
+                        console.log(event)
+                    }
+                    else{
+                        this.count ++
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
