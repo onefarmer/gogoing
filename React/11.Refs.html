@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Ref</title>
 </head>
 <body>
     <div id="demo"></div>
@@ -13,22 +13,22 @@
     <script src="common/babel.js"></script>
     <script type = 'text/babel'>
         var MyComponent = React.createClass({
-            handleClick:function(){
-                  this.refs.myText.focus();
+            handleClick:function () {
+                this.refs.theText.focus()
             },
             render:function () {
                 return(
                     <div>
                         {/* ref 可以理解为虚拟DOM的ID */}
-                        <input type="text" ref = "myText"/>
-                        <input onClick = {this.handleClick} value="Focus the text input" type="button"/>    
+                        <input type="text" ref ='theText'/>
+                        <input type="button" value="获得焦点" onClick ={this.handleClick}/>
                     </div>
                 )
             }
         })
         ReactDOM.render(
             <MyComponent/>,
-            document.getElementById("demo")
+            document.getElementById('demo')
         )
     </script>
 </body>

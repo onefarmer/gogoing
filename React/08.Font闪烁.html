@@ -15,7 +15,8 @@
         var Hello = React.createClass({
             getInitialState:function(){
                 return { 
-                    opacity:1.0 
+                    opacity:1.0,
+                    name:"Yoona"
                 }
             },
             componentDidMount:function(){
@@ -49,7 +50,7 @@
             }
         })
         ReactDOM.render(
-            <Hello/>,
+            <Hello name="World"/>,
             document.getElementById('demo')
         )
     </script>
