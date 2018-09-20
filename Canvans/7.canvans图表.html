@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{padding: 10px}
+        #cav{box-shadow: 0 0 5px #ff0000}
+    </style>
+</head>
+<body>
+    <!-- 宽高写在内联上 -->
+    <canvas id="cav" width="600" height="400">
+        <span>浏览器低版本不兼容</span>
+    </canvas>
+    <script>
+        var cav = document.getElementById('cav');
+        //2d
+        var pen = cav.getContext('2d');
+        //总数
+        var total = 5;
+        var pro = 0;
+        var x = cav.width/2;
+	    var y = cav.height/2;
+        function paint(){
+            //方法清空给定矩形内的指定像素,x,y,width,height
+            pen.clearRect(0,0,2*x,2*y)
+            pro++;
+            if(pro>=5)
+            {
+                clearInterval(timer)
+            }        
+            pen.beginPath();    
+            pen.strokeStyle = '#ff0000';
+            pen.lineWidth = 20;
+            //圆
+            pen.arc(x,y,100,0,Math.PI*2);
+            pen.stroke();
+
+            var start = Math.PI*1.5*pro/total;
+            var p = 0.4*Math.PI*2*pro/total;
+            var end = start + p;
+
+            pen.beginPath();
+            pen.lineWidth = 20;
+            pen.strokeStyle = 'purple';
+            pen.arc(x,y,100,start,end)
+            pen.stroke();
+
+            pen.beginPath();
+            //toFixed(2);保留两位小数
+            pen.font = 'normal normal 30px arial';
+            pen.lineWidth = 2;
+            pen.textAlign = 'center';
+            pen.strokeText((pro/total*40).toFixed(2)+'%',x,y);
+            pen.stroke();
+        }
+        var timer = setInterval(paint,200)
+
+    </script>
+</body>
+</html>

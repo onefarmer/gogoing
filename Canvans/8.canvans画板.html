@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cav"></canvas>
+    <script>
+    	var canvas = document.getElementById('cav');
+	    var cav = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+	    canvas.height = window.innerHeight;
+        var everX;//存储X坐标
+	    var everY;//存储Y坐标
+        document.onmousedown = function(e){
+            everX = e.offsetX;
+		    everY = e.offsetY;
+            //鼠标左键
+            if(e.button == 0)
+            {
+                document.onmousemove = function(e)
+                {
+                    paint(e);
+                }	
+		    }
+            //鼠标右键橡皮擦
+            else if(e.button == 2)
+            {
+                document.onmousemove = function(e)
+                {
+                    //清除画布,鼠标坐标左25，上25，长50，高50的橡皮擦
+				    cav.clearRect(e.offsetX-25,e.offsetY-25,50,50)					
+                }
+                document.oncontextmenu = function()
+                {
+                    return false;//取消鼠标右键默认事件
+                }
+            }
+            // 鼠标松开
+            document.onmouseup = function()
+            {
+			    document.onmousemove = null;
+		    }                              
+        }
+        function paint(e){
+            cav.beginPath();
+            cav.strokeStyle = createColor();
+            cav.lineWidth = 5;			
+            //开始坐标
+            cav.moveTo(everX,everY);
+            //到达坐标
+            cav.lineTo(e.offsetX,e.offsetY);
+            //重新赋值坐标
+            everX = e.offsetX;
+            everY = e.offsetY;
+            cav.stroke();			
+	    }
+        //颜色随机
+	    function createColor(){
+            var r = parseInt(Math.random()*255);
+            var g = parseInt(Math.random()*255);
+            var b = parseInt(Math.random()*255);
+            var rgb = 'rgb('+r+','+g+','+b+')';
+            return rgb;
+	    }
+    </script>
+</body>
+</html>

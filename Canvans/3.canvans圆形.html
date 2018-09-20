@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #cav{width: 800px;height: 500px;border: 1px solid #ff0000;}
+    </style>
+</head>
+<body>
+    <canvas id="cav"></canvas>
+    <script>
+        var cav = document.getElementById('cav');
+        var pen = cav.getContext('2d');
+        // 颜色数组
+        var colors = ['pink','blue','orange','red']
+        // 线型圆
+        for(var i=0;i<colors.length;i++){
+            pen.beginPath();
+            pen.lineWidth = '10';
+            pen.strokeStyle = colors[i];
+            //圆形函数arc(x原点位置,y原点位置,半径,开始角度,结束角度,顺时针或逆时针);
+            pen.arc(55,55,50,Math.PI/2*i,Math.PI/2*(i+1),false);
+            pen.stroke()
+        }
+        // 填充圆
+        for(var j=0;j<colors.length;j++){
+        	pen.beginPath();
+        	pen.fillStyle = colors[j];
+            // false 效果更佳
+        	pen.arc(200,50,50,Math.PI/2*j,Math.PI/2*(j+1),true);   	
+        	pen.fill();
+        } 
+    </script>
+</body>
+</html>

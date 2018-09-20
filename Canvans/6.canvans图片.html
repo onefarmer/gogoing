@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        body{padding: 10px;text-align: center;}		
+        #cav{box-shadow: 0 0 10px #C81623;}
+    </style>
+</head>
+<body>
+    <canvas id="cav" width="640" height="468">
+        <span>浏览器低版本不兼容</span>
+    </canvas>
+    <script type="text/javascript">
+        var cav = document.getElementById('cav');//获得canvas对象
+	    var pen = cav.getContext('2d');//2d方法
+        // 图片对象
+        var oImg = new Image();
+        oImg.src = '../images/0.jpg';
+        oImg.onload = function(){
+            //drawImage：
+            //定位图像宽高图片本身大小：img,x,y
+            //在画布上定位图像，并规定图像的宽度和高度：img,x,y,width,height
+            //剪切图像，并在画布上定位被剪切的部分：img,sx,sy,swidth,sheight,x,y,width,height
+            //http://www.w3school.com.cn/html5/canvas_drawimage.asp 具体参数详解
+            pen.drawImage(this,0,0,640,468)
+            //data中存储的是[r,g,b,a,r,g,b,a]--以此循环。
+            var cavData = pen.getImageData(0,0,cav.width,cav.height); 
+            console.log(cavData)
+			for(var i=0;i<cavData.data.length;i++){
+                //自由设置颜色
+                // i*4 第0,4,8, i*4+1 第1,5,9 以此类推
+                /*
+                cavData.data[i*4] = 155;//r
+                cavData.data[i*4+1] = 155;//g
+                cavData.data[i*4+2] = 155; //b  
+                */
+                //设置灰色    
+                var r = cavData.data[i*4];
+                var g = cavData.data[i*4+1];
+                var b = cavData.data[i*4+2];   
+                //设置反色
+                cavData.data[i*4] = 255 - r;
+                cavData.data[i*4+1] = 255 - g;
+                cavData.data[i*4+2] = 255 - b;
+                
+                /*
+                var colors = r*0.3 + g*0.4 + b*0.3;
+                cavData.data[i*4] = colors;
+                cavData.data[i*4+1] = colors;
+                cavData.data[i*4+2] = colors;   
+                */
+                
+                // i*4+3 透明度
+                cavData.data[i*4+3] = 100;     
+                 
+            }
+            // 设置颜色,对象,x,y
+            pen.putImageData(cavData,0,0)
+        }
+    </script>
+</body>
+</html>
