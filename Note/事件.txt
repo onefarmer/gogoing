@@ -21,6 +21,9 @@ oninput ， value发生变化
 window.onload，//页面内空完成传送到浏览器时触发
 window.onresize，//浏览器窗口大小改变
 window.onscroll，//滑轮事件
+window.open("demo.html","_blank","width=500,height=500,left=200,top=200");  // 弹窗事件
+window.opener.document// 窗口打开者
+window.close(); // 关闭窗口	
 （4）--------------------------键盘
 onkeyup，键盘松开
 onkeydown，键盘按下

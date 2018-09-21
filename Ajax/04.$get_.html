@@ -22,30 +22,27 @@
     <script src="../Jquery/jquery/jquery-1.11.3.min.js"></script>
 </head>
 <body>
+    
     <div class="heros"></div>
     <script>
-        $.ajax({
-            type:"get",
-            url:'data/line.txt',
-            // 同步异步
-            async:true,
-            dataType:"json",
-            success:function(data){
-                var data = data;
-                var html ="";
-                $.each(data,function(index,val){
+        $.get('data/line.txt',function(data){
+            var data = data;
+            var html ="";
+            $.each(data,function(index,val){
                     html+='<div class="heroPlace">'+
                     '<h3>'+val.place+'</h3>'+
                     '<ul class="topHero">';
-                    $.each(val.types,function(index,val2){
-                        console.log(val2)
-                        html+='<li><h4>'+val2.types[index].type+'</h4>';
+                    $.each(val.types,function(index2,val2){
+                        html+='<li><h4>'+val2.type+'</h4>';
+                        $.each(val2.hero,function(index3,val3){
+                            html+='<dl><dt>'+val3.name+'</dt><dd>'+val3.speak+'</dd></dl>'
+                        })
+                        html+='</li>';
                     })
-                    html+='</li>';
+                    html+='</div>';
                 })
-                $(".heros").append(html)
-            }
-        })
+            $(".heros").append(html)
+        },'json')
     </script>
 </body>
 </html>
