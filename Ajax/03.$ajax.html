@@ -37,13 +37,6 @@
                     html+='<div class="heroPlace">'+
                     '<h3>'+val.place+'</h3>'+
                     '<ul class="topHero">';
-<<<<<<< HEAD
-                    $.each(val.types,function(index,val2){
-                        console.log(val2)
-                        html+='<li><h4>'+val2.types[index].type+'</h4>';
-                    })
-                    html+='</li>';
-=======
                     $.each(val.types,function(index2,val2){
                         html+='<li><h4>'+val2.type+'</h4>';
                         $.each(val2.hero,function(index3,val3){
@@ -52,9 +45,9 @@
                         html+='</li>';
                     })
                     html+='</div>';
->>>>>>> cookie
                 })
                 $(".heros").append(html)
+                
             }
         })
     </script>
