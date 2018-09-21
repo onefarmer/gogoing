@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>F12 Cookie</h1>
+    <hr/>
+    <script>
+        // 储存信息
+        function setCook(name,value,time){
+            document.cookie = name+"="+value+";expires="+new Date(time).toUTCString();
+        }
+        var cookA = new setCook('Faker','mid','2020-10-10')
+        var cookB = new setCook('Uzi','Adc','2030-10-10')
+        //setCook('Faker','mid','2020-10-10')
+
+        // 获取cook value
+        var data = document.cookie.split(";");
+    </script>
+</body>
+</html>
