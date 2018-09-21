@@ -16,6 +16,7 @@ onmouseenter，鼠标穿过
 onblur，失去焦点
 onfocus，获得焦点
 onchange，内容改变
+oninput ， value发生变化
 （3）------------------------页面相关
 window.onload，//页面内空完成传送到浏览器时触发
 window.onresize，//浏览器窗口大小改变
