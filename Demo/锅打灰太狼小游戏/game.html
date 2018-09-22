@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{ margin:0; padding:0; font-family:"微软雅黑";}
+        #container{    margin: 10px; background:url(img/game_bg.jpg) 0 0 no-repeat; height:480px; width:320px; position:relative;}
+        #scoring{ position:absolute; font-weight:bold; font-size:16px; color:white; left:65px; top:13px;}
+        #countDown{ position:absolute; background:url(img/progress.png) 0 0 no-repeat; width:180px; height:16px; left: 63px;top: 66px;}
+		#wolfs img{ position:absolute;}
+		#menu{ position:absolute; width:320px; text-align:center; left:0; top:200px;}
+		#start,#handle,#gameOver{ line-height:50px; font-size:30px; font-weight:bold; color:#F60; text-shadow:0 0 5px #FFFF00; display:block; text-decoration:none;}
+		#gameOver{ position:absolute; width:320px; text-align:center; top:200px; left:0; display:none;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!--这是分数-->
+        <div id="scoring">0</div>
+        <!--倒计时-->
+        <div id="countDown"></div>
+        <!--灰太狼们-->
+        <div id="wolfs"></div>
+        <div id="menu">
+            <a href="#" id="start">开始</a>
+            <a href="#" id="handle">游戏操作说明</a>
+        </div>
+        <div id="gameOver">game over!</div>
+    </div>
+    <script>
+        //灰太狼位置
+        var arrPos = [{l:"98px",t:"115px"},{l:"17px",t:"160px"},{l:"15px",t:"220px"},{l:"30px",t:"293px"},{l:"122px",t:"273px"},{l:"207px",t:"295px"},{l:"200px",t:"211px"},{l:"187px",t:"141px"},{l:"100px",t:"185px"}]
+        //开始按钮
+        var start = document.getElementById('start');
+        //开始菜单
+        var menu = document.getElementById('menu');
+        //血条
+        var countDown = document.getElementById('countDown');
+        //容器-狼
+        var wolfs = document.getElementById('wolfs');
+        var countDownTimer;//倒计时定时器
+        var createWolfTimer;//产生狼的定时器
+        var score = 0;//分数
+        var scoring = document.getElementById('scoring');//分数显示区
+        var gameOver = document.getElementById('gameOver');//游戏结束
+
+        // 点击开始游戏
+        start.onclick = function(){
+            // 2)开始菜单消失
+            menu.style.display = 'none';
+            // 倒计时
+            countDownFn();
+            // 创建狼
+            createWolfTimer = setInterval(function(){
+                createWolf();
+            },300)
+        }
+        // 创建狼
+        function createWolf(){
+            // 创建狼图
+            var wolf = document.createElement('img')
+            // 图片类型，src => h/x 1-9, Img图片 => 加分狼h0-h9 扣分狼x0-x9
+            wolf.type = Math.random()>0.7?'x':'h';
+            wolf.index = 0;
+            wolf.src = 'img/'+wolf.type+wolf.index+'.png';
+            // 狼位置，wolf属性记录
+            wolf.pos = rand(0,9)
+            console.log(wolf.pos)
+            // 属性，判断是否被打
+            wolf.beat = true;       
+            // 排重，一坑不允多狼
+            if( isRepeated(wolf) ){
+                // 无限创建狼与已创建的狼对比，
+                return;
+            }
+            // 定位
+            wolf.style.left = arrPos[wolf.pos].l;
+		    wolf.style.top = arrPos[wolf.pos].t;
+            // 狼创建完毕，开始运动
+            // up（0~5） -> up结束时，开始down（5~0）
+            upFn(wolf);
+            clickFn(wolf);
+            // 追加到狼的父级上
+            wolfs.appendChild(wolf);
+        }
+        // 锤击
+        function clickFn(obj) {
+            // 每生成一个狼，就给它绑定一个点击事件
+            obj.onclick = function () {
+                // 不能让wolf被连续击打，这样会一直加分
+                if (!obj.beat){ return }
+                // 清除定时器，结束其他动画
+                clearInterval(obj.upTimer);
+                clearInterval(obj.downTimer);
+                clearInterval(obj.clickTimer);
+                // 计算分数
+                scoreFn(obj);
+                obj.index = 5;
+                obj.clickTimer = setInterval(function () {
+                    // index从6开始 6开始被打的图片
+                    obj.index++;
+                    if (obj.index>9){
+                        clearInterval(obj.clickTimer);
+                        wolfs.removeChild(obj);
+                        return;
+                    }
+                    obj.src = 'img/'+obj.type+obj.index+'.png';
+                },100)
+                obj.beat = !obj.beat;
+            }
+        }
+        // up 图片上升 狼出来
+        function upFn(obj) {
+            // 因为页面上有很多狼，定时器无法处理，所以将定时器当做狼的一个属性，
+            // 添加在狼身上。这样能找到狼这个对象的地方，就能找到这个定时器，并把它及时清除
+            obj.upTimer = setInterval(function () {
+                obj.index++;
+                // 图片0-5为生成狼的图片，当大于5停止定时器
+                if (obj.index>5){
+                    clearInterval(obj.upTimer);
+                    // 执行下降函数
+                    downFn(obj);
+                    return;
+                }
+                obj.src = 'img/'+obj.type+obj.index+'.png';
+            },100);
+        }
+        // down 狼下降函数
+        function downFn(obj){
+            // 狼图片递减定时器
+            obj.downTimer = setInterval(function () {
+                obj.index--;
+                if ( obj.index<0 ){
+                    clearInterval(obj.downTimer);
+                    // 移除
+                    wolfs.removeChild(obj);
+                    return;
+                }
+                obj.src = 'img/'+obj.type+obj.index+'.png';
+            },100)
+        }
+        // 分数计算
+        function scoreFn(obj) {
+            // 根据wolf的type不同，来判断应该加分还是减分
+            if (obj.type == 'h')
+            { score += 10;}
+            else
+            {score -= 10;}
+            // 游戏界面分数改变
+            scoring.innerHTML = score;
+        }
+        // 排重
+        function isRepeated(obj){
+            // 每生成一个新的wolf.pos,就要让其与已经存在的所有狼的位置进行比较
+            // 第一个创建的狼添入盒子，第二个狼创建后与其比较
+            var children = wolfs.children;
+            for ( var i=0; i<children.length; i++ ){
+                if( children[i].pos.l == obj.pos.l ){
+                    // 相等返回一个值，不等返回一个值
+                    return true;
+                }
+            }
+            return false;
+        }
+        // 生成指定范围内随机数 0 - 9
+        function rand(min,max) {
+            return parseInt( min+(max-min)*Math.random() );
+        }
+        // 倒计时时间条（血条）
+        function countDownFn(){
+            countDownTimer = setInterval(function(){
+                // 血量长度
+                var w = countDown.offsetWidth ;
+                w = w - 1;
+                if( w<0){
+                    // 停止计时
+                    clearInterval(countDownTimer);
+                    // 停止游戏，
+                    clearInterval(createWolfTimer);
+                    // gameover 弹窗
+                    gameOver.style.display = 'block';
+                    return;
+                }
+                // 血条实时长度
+                countDown.style.width = w+'px';
+            },100)
+        }
+    </script>
+</body>
+</html>
