@@ -22,3 +22,8 @@ var say = function(){}
 //函数引用必须写在下面
 say();
 
+if(el.releaseCapture) el.releaseCapture();//取消获捕
+//if(el.setCapture)	el.setCapture();//设置捕获
+
+//	return结束整个函数,break结束整个循环体,continue结束当前循环.
+

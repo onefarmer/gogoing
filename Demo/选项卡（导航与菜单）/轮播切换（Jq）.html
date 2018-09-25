@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{ margin:0; padding:0}
+        ul{ list-style:none}
+        a{ text-decoration:none}
+        .hide{ display:none;}
+        .wrap{ width:500px; margin:50px}
+        .tab{ margin-bottom:30px;}
+        .tab .tabList{ height:40px;}
+        .tab .tabList li{ float:left;}
+        .tab .tabList li a{ display:block;height:40px; line-height:40px; padding:0 20px}
+        .tab .tabList .ac a{ background:#ccc; color:#fff}
+        .tab .tabItem{min-height:200px; border:1px solid #ccc;padding:20px}
+    </style>
+    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div id="tab1" class="tab">
+            <ul class="tabList">
+                <li class="ac"><a href="javascript:;">itemA</a></li>
+                <li><a href="javascript:;">itemB</a></li>
+                <li><a href="javascript:;">itemC</a></li>
+                <li><a href="javascript:;">itemD</a></li>
+            </ul>
+            <div class="tabCont">
+                <div class="tabItem">外籍女子火车霸座 拒绝出示车票 向拍摄人群泼水。</div>
+                <div class="tabItem hide">京东股价大跌,京东股价大跌7.47%接近两年低点  中华网 </div>
+                <div class="tabItem hide">新京报:取消商品房预售制 不宜操之过急.</div>
+                <div class="tabItem hide">央视中秋晚会精彩纷呈 这些山东元素你都看了吗。</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function(){
+            // 对象，是否自动轮播，loop
+            function tab(obj,isRun){
+                var num = 0,timer;
+                // 当前显示，其余隐藏
+                function change(n){
+                    // 内容
+                    $(obj+ ' .tabItem:eq('+n+')').removeClass('hide').siblings().addClass('hide');
+                    // 导航
+                    $(obj+' .tabList li:eq('+n+')').addClass('ac').siblings().removeClass('ac');
+                }
+                // 索引
+                $(obj + ' .tabList li').click(function(){
+                    num = $(this).index();
+                    // 传入索引
+                    change(num)
+                })
+                // 判断是否自动轮播
+                if(isRun){
+                    // 轮播函数
+                    function autoRun(){
+                        timer = setInterval(function(){
+                            // 传入索引
+                            change(num);
+                            num++;
+                            // 判断索引是否超出 .tabList前面一定要有空格
+                            if( num >= $(obj+' .tabList li').length ){
+                                num = 0;
+                            }
+                        },1000)
+                    }
+                    autoRun();
+                    // 移入停止
+                    $(obj).mouseover(function(){
+                        clearInterval(timer)
+                    })
+                    // 移出
+                    $(obj).mouseout(function(){
+                        autoRun()
+                    })
+                }
+            }
+            // 执行
+            tab('#tab1',true);
+        })
+    </script>
+</body>
+</html>

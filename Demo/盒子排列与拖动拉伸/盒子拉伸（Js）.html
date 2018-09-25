@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0}
+        .box{width:200px;height:200px; position:absolute;top:100px;left:100px;}
+        /*四边*/
+        .box .t{width:100%;height:10px; position:absolute;top:0;left:0; background:#666;z-index:1;cursor: row-resize;}
+        .box .r{width:10px;height:100%; position:absolute;top:0;right:0; background:#666; cursor: col-resize; z-index:1;}
+        .box .b{width:100%;height:10px; position:absolute;bottom:0;left:0; background:#666;z-index:1;cursor:row-resize;}
+        .box .l{width:10px;height:100%; position:absolute;top:0;left:0; background:#666;z-index:1;cursor:col-resize;}
+        /*四角*/
+        .box .tl{width:20px;height:20px;position:absolute;top:-5px;left:-5px; background:#CCC;z-index:2;cursor:nwse-resize}
+        .box .tr{width:20px;height:20px; position:absolute;top:-5px;right:-5px;background:#CCC;z-index:2;cursor:nesw-resize}
+        .box .br{width:20px;height:20px; position:absolute;bottom:-5px;right:-5px; background:#CCC;z-index:2; cursor:nwse-resize;cursor:nwse-resize}
+        .box .bl{width:20px;height:20px; position:absolute;bottom:-5px;left:-5px; background:#CCC;z-index:2;cursor:nesw-resize}
+        /*图片*/
+        img{ width:100%; height:100%;}    
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span class="r"></span>
+        <span class="l"></span>
+        <span class="t"></span>
+        <span class="b"></span>
+        <span class="br"></span>
+        <span class="bl"></span>
+        <span class="tr"></span>
+        <span class="tl"></span>
+        <img src="../../images/yoona.jpg">
+    </div>
+    <script>
+        function drag(box,title){
+            //当我传入1个参数box，拖拽box
+            //当我传入2个参数，拖拽就在title
+            var handle;
+            title?handle = title: handle = box;
+            // 按住鼠标事件
+            handle.onmousedown = function(ev){
+                var oEv=ev || window.event;
+                // left方向
+                var disX=oEv.clientX-box.offsetLeft;
+                // top方向
+                var disY=oEv.clientY-box.offsetTop;
+                // document移动事件
+                document.onmousemove=function(ev){
+                    var oEv=ev || window.event;
+                    // 移动距离 = 鼠标距离减去按下去的坐标
+                    var l = oEv.clientX-disX;
+                    var t = oEv.clientY-disY;
+                    //判断屏幕范围
+                    if(l<0)l=0;
+                    if(t<0)t=0;
+                    // 屏幕宽高-盒子宽高为最大移动范围
+                    if(l>document.documentElement.clientWidth-box.offsetWidth)
+                    l=document.documentElement.clientWidth-box.offsetWidth;
+                    if(t>document.documentElement.clientHeight-box.offsetHeight)
+                    t=document.documentElement.clientHeight-box.offsetHeight;
+                    // 赋值
+                    box.style.left=l+'px';
+                    box.style.top=t+'px';
+                    document.onmouseup=function(){
+                        document.onmousemove=null;
+                        //if(box.releaseCapture)	box.releaseCapture();//取消获捕
+                    }
+                    return false;
+                    //if(box.setCapture)	box.setCapture();//设置捕获
+                }
+            }
+        }
+        window.onload = function(){
+            var oDiv=document.getElementsByTagName('div')[0];
+            // 拖动函数
+            drag(oDiv);
+            // 拉伸处
+            var aSpan=oDiv.getElementsByTagName('span');
+            // 传入对象
+            for(var i=0;i<aSpan.length;i++){
+                dragFn(aSpan[i]);
+            }
+            function dragFn(obj){
+                obj.onmousedown = function(ev){
+                    var oEv=ev||event;
+                    // 冒泡阻止
+                    oEv.cancelBubble = true;
+                    // 鼠标按下时的宽高，鼠标坐标，盒子坐标
+                    var oldWidth=oDiv.offsetWidth;
+                    var oldHeight=oDiv.offsetHeight;
+                    var oldX=oEv.clientX;
+                    var oldY=oEv.clientY;
+                    var oldLeft=oDiv.offsetLeft;
+                    var oldTop=oDiv.offsetTop;
+                    // 拉伸
+                    document.onmousemove=function(ev){
+                        var oEv=ev||event;
+                        // 右线
+                        if(obj.className.indexOf('r')!=-1) {
+                            oDiv.style.width=oldWidth+oEv.clientX-oldX+'px';
+                        }
+                        // 下
+                        if(obj.className.indexOf('b')!=-1){
+                            oDiv.style.height=oldHeight+oEv.clientY-oldY+'px';
+                        }
+                        // 左
+                        if(obj.className.indexOf('l')!=-1){
+                            oDiv.style.width=oldWidth-(oEv.clientX-oldX)+'px';	
+                            oDiv.style.left=oldLeft+(oEv.clientX-oldX)+'px';
+                        };
+                        // 上
+                        if(obj.className.indexOf('t')!=-1){
+                            oDiv.style.height=oldHeight-(oEv.clientY-oldY)+'px';	
+                            oDiv.style.top=oldTop+(oEv.clientY-oldY)+'px';
+                        };
+                    }
+                    document.onmouseup=function(){
+                        document.onmousemove=document.onmouseup=null;
+                    }
+                    // 阻止默认
+                    return false;
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

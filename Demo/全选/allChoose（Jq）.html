@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../../JQuery/Jquery/jquery-1.11.3.min.js"></script>
+	</head>
+	<body>
+		<input type="checkbox" id="all"/>
+		<div id="box">
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+			<input type="checkbox" />
+		</div>
+	</body>
+</html>
+<script type="text/javascript">
+	var n=0
+	$("#all").click(function(){
+		//一
+		var prop = $(this).prop("checked")//一个参数取值
+		$("#box input").prop("checked",prop)//两个参数赋值
+		prop==true?n=$("#box input").length:n=0;
+		//二
+		//$(this).prop("checked")==true?$("#box input").prop("checked",true):$("#box input").prop("checked",false);
+		//三
+		/*if($(this).prop("checked")){
+			$("#box input").prop("checked",true);
+			n=$("#box input").length;
+		}
+		else{
+			$("#box input").prop("checked",false);
+			n=0;			
+		}*/
+	})
+	$("#box input").click(function(){
+		$(this).prop("checked")==true?n++:n--;
+		n==$("#box input").length?$("#all").prop("checked",true):$("#all").prop("checked",false)
+	})
+</script>
