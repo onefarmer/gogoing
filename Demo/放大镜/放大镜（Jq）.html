@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		*{margin:0;padding: 0;}
+		.hide{display: none;}
+		.sm{width:300px;height: 242px;position: relative;top: 100px;left: 100px;}
+		.sm .make{width: 100px;height: 100px;opacity: .3;background-color: red;position: absolute;top: 0;display: none;cursor: move;}
+		.sm img{width: 100%;height: 100%;}
+		.bg{width: 300px;height: 242px;position: absolute;left: 450px;top: 100px;overflow: hidden;}
+		.bg img{position: absolute;width: 300%;height: 300%;}
+	</style>
+	<script src="../../Jquery/jquery/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="sm">
+		<img src="../../images/yoona.jpg"/>
+		<span class="make hide"></span>
+	</div>
+	<div class="bg hide">
+		<img src="../../images/yoona.jpg"/>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	$('.sm').mousemove(function(e){
+		//放大镜显示
+		$(this).find('span').show();
+		$('.bg').show();
+		//放大镜坐标
+		var l = e.pageX-$('.sm').offset().left-$(this).find('span').innerWidth()/2;
+		var t = e.pageY-$('.sm').offset().top-$(this).find('span').innerHeight()/2;
+		//限制范围
+		var maxl = $('.sm').innerWidth()-$('.sm').find('span').innerWidth();	
+		var maxt = $('.sm').innerHeight()-$('.sm').find('span').innerHeight();			
+		if(l<0){l=0}
+		if(l>maxl){l=maxl}
+		if(t<0){t=0}
+		if(t>maxt){t=maxt}
+		$(this).find('span').css({"left":l,"top":t})
+		//大图移动
+		$('.bg img').css({"left":-l*3,"top":-t*3})
+		//移出事件
+		$('.sm').mouseleave(function(){
+			$(this).find('span').hide();
+			$('.bg').hide();
+		})		
+	})
+</script>

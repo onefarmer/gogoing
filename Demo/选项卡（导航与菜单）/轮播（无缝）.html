@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{margin: 0}
+        .box{
+            position: relative;
+            width: 600px;
+            height: 800px;
+            overflow: hidden;
+            margin: 50px 0 50px 50px;
+
+          	}
+        ul{
+        	list-style: none;
+            margin: auto;padding: 0;
+            position: absolute;
+            width: 600px;
+            height: 3000px;
+        }
+        ul li img{width: 600px;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="../../images/0.jpg" alt=""/></li>
+            <li><img src="../../images/1.jpg" alt=""/></li>
+            <li><img src="../../images/2.jpg" alt=""/></li>
+            <li><img src="../../images/3.jpg" alt=""/></li>
+            <li><img src="../../images/4.jpg" alt=""/></li>
+            <li><img src="../../images/5.jpg" alt=""/></li>
+        </ul>
+    </div>   
+    <script>
+        var move = document.querySelector(".box ul")
+        var i;
+        window.onload = function(){
+            i = setInterval(function(){
+                move.style.top = move.offsetTop-5+"px";
+                //当移动的盒子离容器的距离小于图片的高度
+                if(move.offsetTop<0-move.children[0].offsetHeight){
+                    move.appendChild(move.firstElementChild)
+                    move.style.top=0;
+                }
+            },30)
+        }
+    </script>
+</body>
+</html>
