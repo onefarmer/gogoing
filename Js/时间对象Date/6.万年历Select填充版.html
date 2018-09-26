@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin:0;padding:0}
+        #calendar{width:210px;margin:100px auto; overflow:hidden;border:1px solid #000; padding:20px; position:relative}
+        #calendar .week{height:30px; line-height:20px;border-bottom:1px solid #000; margin-bottom:10px}
+        #calendar .week li{ float:left;width:30px;height:30px; text-align:center; list-style:none;}
+        #calendar .dateList{ overflow:hidden; clear:both}
+        #calendar .dateList li{float:left;width:30px;height:30px; text-align:center; line-height:30px;list-style:none;}
+        #calendar .dateList .ccc{ color:#ccc;}
+        #calendar .dateList .red{ background:#F90; color:#fff;}
+        #calendar .dateList .sun{ color:#f00;}
+    </style>
+    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div id="calendar">
+        <div>
+            <select>		
+            </select>
+            年
+            <select>
+                <option value="0">1</option>
+                <option value="1">2</option>
+                <option value="2">3</option>
+                <option value="3">4</option>
+                <option value="4">5</option>
+                <option value="5">6</option>
+                <option value="6">7</option>
+                <option value="7">8</option>
+                <option value="8">9</option>
+                <option value="9">10</option>
+                <option value="10">11</option>
+                <option value="11">12</option>
+            </select>
+            月	
+        </div>	
+        <ul class="week">
+            <li>日</li>
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+            <li>六</li>   	
+        </ul>
+        <ul class="dateList">
+        </ul>
+    </div>   
+    <script>
+        for(var x=1980;x<2020;x++){
+            //遍历年
+            $('select').eq(0).append("<option value="+x+">"+x+"</option>")
+        }
+        //每月日期数
+        var monthDays=[31,28,31,30,31,30,31,31,30,31,30,31];
+        var oDate=new Date();//GMT
+        var year=oDate.getFullYear();//年
+        var month=oDate.getMonth();//月
+        var today=oDate.getDate();//今日
+        var nowTime =oDate.getTime(); //1970-至今时间    
+        //添加日历函数 年，月，天数，今日号数
+        function run(y,m,days,today){
+            // 闰年
+            if( (y%4==0 && y%100!=0 || y%400==0) && m==1 ){days=29;};
+            //下拉列表传过来设置时间
+            oDate.setFullYear(y,m,today);
+            var adjustTime = oDate.getTime(); //获得当前1970年时间
+            $('.dateList').empty();	//删除所有子级
+            // 添加当月的日历号数
+            for(var i=1; i<=days; i++){
+                $('.dateList').append("<li>"+i+"</li>")
+            };
+            // 设置第一天
+            oDate.setDate(1);
+            // 第一天周几
+            var firstDay = oDate.getDay();	
+            // 占几行,上舍入
+            var col = Math.ceil( (firstDay+days)/7 );
+            // 总数
+            var total = col*7
+            // 添加1号前
+            for(var j = monthDays[m-1]; j > monthDays[m-1]-firstDay; j--){
+                $('.dateList').prepend("<li>"+j+"</li>")
+            }
+            // 最后的
+            for(var u = 0;u < total-(days+firstDay);u++){
+                $('.dateList').append("<li>"+(u+1)+"</li>");
+            }
+            // 判断当月
+            if(adjustTime==nowTime){
+                for(var n=0;n<today+firstDay;n++){
+                    //当天以前灰色
+                    $('.dateList li').eq(n).addClass('ccc')
+                }
+                for(var k=days+firstDay;k>today+firstDay;k--){
+                    //当天以后周末红色
+                    if(k%7==0||k%7==6){
+                        $('.dateList li').eq(k).addClass('sun')
+                    }
+                }
+                // 当天
+                $('.dateList li').eq(today+firstDay-1).addClass('red')
+            }
+            // 如果日期小于今天
+            else if(adjustTime<nowTime){
+                $('.dateList li').each(function(i){
+                    //以前的日期全灰
+                    $(this).addClass('ccc')
+                })
+            }
+            //如果选择日期大于今天
+            else{
+                $('.dateList li').each(function(i){
+                    // 周末
+                    if(i%7==0||i%7==6){
+                        $(this).addClass('sun')
+                    }
+                });		
+		    }		
+        }
+        // 初始化
+        run(year,month,monthDays[month],today);
+        // 将select显示值设置系统时间
+        $('select').eq(0).val(year);
+        $('select').eq(1).val(month);
+        //年选项
+        $("select").eq(0).change(function(){
+            var val = $(this).val();//年值
+            var monthVal = $('select').eq(1).val();//月值
+            var days = monthDays[monthVal]//多少天
+            run(val,monthVal,days,today)
+        })
+        //月选项
+        $("select").eq(1).change(function(){
+            var val = $(this).val();//月值
+            var yearVal = $('select').eq(0).val();//年值
+            var days = monthDays[val]//多少天
+            run(yearVal,val,days,today)
+        })
+    </script>
+</body>
+</html>
