@@ -25,6 +25,52 @@ say();
 if(el.releaseCapture) el.releaseCapture();//取消获捕
 //if(el.setCapture)	el.setCapture();//设置捕获
 
-//	return结束整个函数,break结束整个循环体,continue结束当前循环.
+//return结束整个函数,break结束整个循环体,continue结束当前循环.
+
 // Css无法点击
 a{pointer-events: none;}
+
+// 移动端Rem
+document.documentElement.style.fontSize=document.documentElement.clientWidth/12.42+"px";
+function fontSize(){
+ var _html = document.getElementsByTagName("html")[0];
+//保证移动页面宽度最大为750px
+ var w = w>750?750:document.documentElement.clientWidth;
+_html.style.fontSize = w/6.4 +"px";	
+}
+fontSize();
+window.onresize=fontSize;
+
+-是否是IE
+if(browser.versions.trident){ alert(“is IE”); } 
+-是否webKit内核 
+if(browser.versions.webKit){ alert(“is webKit”); } 
+-是否为mac系统
+var isMac = function() {return /macintosh|mac os x/i.test(navigator.userAgent);}();
+-是否为windows系统
+var isWindows = function() {return /windows|win32/i.test(navigator.userAgent);}();
+-手机端
+var u = navigator.userAgent;
+var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+alert('是否是Android：'+isAndroid);
+alert('是否是iOS：'+isiOS);
+
+//插入Css
+document.writeln("<link rel=\"stylesheet\" href=\""+cdnUrl+"/css/csino-style.css\" />");
+
+es6
+npm install -g babel-cli
+npm install --save-dev babel-preset-es2015 babel-cli
+.babelrc
+{
+    "presets":[
+        "es2015"
+    ],
+    "plugins":[]
+}
+babel src/index.js -o dist/index.js
+修改package.json
+  "scripts": {
+    "bulid": "babel src/index.js -o dist/index.js"
+  },

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 1、es6输出方式 ` ${} `
+    const es6Name = 'obito';
+    console.log(`es6输出方式：${es6Name}`)
+    /*
+    var es5Name = 'obito';
+    console.log('es5输出方式：' + es5Name);
+    */
+
+    // 2、反斜杠拼接字符串
+    const msg2 = `<div>
+        <span>hello world</span>
+    </div>`;
+    console.log(msg);
+    /*
+        var msg2 = "<div>\n<span>hello world</span>\n</div>";
+    */
+
+    // 3、
+        let address = '北京海淀区';
+        let myName = 'lala';
+        let thing = `${myName}在${address}上班...`;
+        console.log(thing)
+    // 4、
+        const myName2 = 'cc';
+        const gender = 'male';
+        const hobby = 'basketball';
+        const somethings = `姓名：${myName2}，性别：${gender}，爱好：${hobby}`;
+        console.log(somethings)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        body{background-color: #000}
+        .box{width: 980px;height: 500px;}
+        .center{top: 0;bottom: 0;left: 0;right: 0;position: absolute;margin: auto;}
+        .ab{position:absolute;background: #FFF;transition: transform .8s linear}	
+        .pic{transition: transform .8s linear}
+    </style>   
+    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script> 
+</head>
+<body>
+    <div class="box center"></div>
+    <script>
+        function createImg(){
+            var boxWidth = $('.box').width();//总宽
+            var boxHeight = $('.box').height();//总高
+            var col = 5;//列
+            var row= 5;//行
+            for(var i=0;i<col*row;i++){ 
+                // 创建容器，添加 ab class，赋值宽 = 总宽/列 高总高/行，添入容器box中
+                var oBox = $("<div>").addClass('ab').width(boxWidth/col).height(boxHeight/row).appendTo($('.box'));
+                // 同上，添入上面创建的盒子中
+                var picBox = $("<div>").addClass('pic').width(boxWidth/col).height(boxHeight/row).appendTo(oBox);
+                // 定位left i%列
+                var l = i%col;
+                // 定位top i/行 第一排高度均为0
+                var t = parseInt(i/row);	
+                // 样式添加
+                oBox.css( {"left":l*(boxWidth/col),"top":t*(boxHeight/row)} )
+            }
+        }
+        createImg();
+        function playImg(num,bg){
+            // 25张图 col*row
+            for( var i=0; i<25; i++ ){
+                // 创建新的格子并添加到页面
+                var deg = Math.random()*60 - 30;//-30 到 30之间
+                // 左漂浮
+                var l = i%5
+                // 右漂浮
+                var t = parseInt(i/5) 
+                // 移动距离 -100 -50 0 50 100
+                var x = 50*l-100;
+                var y = 50*t-100;
+                //改变格子的定位和背景位置
+                if(bg){	
+                    // pic 每张图的内层盒子
+                    $('.pic').eq(i).css({
+                        "background-image":'url(../../images/'+num+'.jpg)',
+                        // 容器980 / 5列 = 196 容器高度500 / 5行 = 100
+                        "backgroundPositionX":-l*196,
+                        "backgroundPositionY":-t*100,
+                        "backgroundSize":'auto',
+                        "transform":'scale(1)'
+                    })
+                    // ab 外层盒子， 3D移动到原来的位置
+                    $('.ab').eq(i).css({"transform":'translate('+0+'px,'+0+'px) rotate('+0+'deg)'})	
+                }
+                else{
+					$('.pic').eq(i).css({
+                        "background-image":'url(../../images/'+i+'.jpg)',
+                        // 图片覆盖
+                        "backgroundSize":'cover',
+                        // 内盒子缩小，大盒子背景色作为边框
+                        "transform":'scale(0.95)'	
+					})   
+                    $('.ab').eq(i).css({"transform":'translate('+x+'px,'+y+'px) rotate('+deg+'deg)'})	                 
+                }
+            }
+        }
+        playImg(null,false);
+        // 开关
+        var on_off = true;
+        // 点击事件
+        $('.box').on('click','.ab',function(){
+            if(on_off){
+                // index 传入决定某张图片
+                playImg($(this).index(),on_off);
+                on_off = false;
+            }
+            else{
+                playImg(null,on_off)
+                on_off = true;
+            }		
+        })
+    </script>
+</body>
+</html>

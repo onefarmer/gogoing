@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 1 解构数组
+    let [a,b,c] = [1,2,3]
+    console.log(a,b,c)
+    /*  
+        var a = 1,
+        b = 2,
+        c = 3;  
+    */
+
+    // 2 同一楼一致，结构一样
+    let [x,[y,z],w] = ['x',['y','z'],'w']
+    console.log(x,y,z,w)
+    /*
+        var x = 'x',
+        y = 'y',
+        z = 'z',
+        w = 'w';    
+    */
+
+    // 3 默认值
+    let [ foo='Alisa' ] = []
+    console.log(foo)
+    /*
+        var _ref = [],
+        _ref$ = _ref[0],
+        foo = _ref$ === undefined ? 'Alisa' : _ref$;       
+    */
+
+    // 4 undefined -> 默认值，null -> null
+    let [name1,name2='yoona'] = ['允儿',undefined]
+    console.log(name1,name2)
+    /*
+        var name1 = '允儿,
+        _undefined = undefined,
+        name2 = _undefined === undefined ? yoona : _undefined
+    */
+
+    // 5 对象结构
+    let {adc,sub} = {adc:'UZI',sub:'Ming'}
+    console.log(`对象结构：${adc}-->${sub}`)
+    /*
+        var adc$sub = { adc: 'UZI', sub: 'Ming' },
+        adc = _adc$sub.adc,
+        sub = _adc$sub.sub;
+    */
+
+    // 6 注意：需要圆括号来解构
+    let mid;
+    ({mid} = {mid:'XiaoHu'})
+    console.log(`结构注意：${mid}`)
+    /*
+        var mid = void 0;
+        var _mid = { mid: 'XiaoHu' };
+        mid = _mid.mid;
+    */
+
+    // 7 字符串结构
+    let [s1,s2,s3,s4,s5] = 'YOONA';
+    console.log(s1,s2,s3,s4,s5)
+    /*
+        var _YOONA = 'YOONA',
+        _YOONA2 = _slicedToArray(_YOONA, 5),
+        s1 = _YOONA2[0],
+        s2 = _YOONA2[1],
+        s3 = _YOONA2[2],
+        s4 = _YOONA2[3],
+        s5 = _YOONA2[4]; 
+    */
+</script>
+</body>
+</html>
