@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="jackpot-num"></div>
+    <script>
+    var i3 = 28653646.25 + parseInt(Math.random() * 1000, 10);
+        var max3 = 39840280.89;
+        var id3;
+        function jackpot() {
+            if (i3 < max3) {
+                i3 += 25.5;
+                id3 = setTimeout("jackpot()", 1000);
+                document.getElementById("jackpot-num").innerHTML = Number(i3).toLocaleString();
+            } 
+            else {
+                clearTimeout(id3);
+            }
+        }
+        jackpot();
+    </script>
+</body>
+</html>
