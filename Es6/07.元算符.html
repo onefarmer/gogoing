@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 1、... 我们允许它传入的参数是不确定的
+    function fn(...arg){
+        console.log(arg[0])
+        console.log(arg[1])
+        console.log(arg[2])
+        console.log(arg[3])
+    }
+    fn(1,2,3)
+    /*
+        function fn() {
+            console.log(arguments.length <= 0 ? undefined : arguments[0]);
+            console.log(arguments.length <= 1 ? undefined : arguments[1]);
+            console.log(arguments.length <= 2 ? undefined : arguments[2]);
+            console.log(arguments.length <= 3 ? undefined : arguments[3]);
+        }
+    */
+
+    // 2、数组 arr2添加值arr1值产生变化
+    let arr1 = ['wo','ai','ni']
+    let arr2 = arr1;
+    arr2.push('no');
+    console.log(`arr1发生变化：${arr1}`)
+    
+    // 使值不发生变化
+    let arr3 = ['wo','ai','ni']
+    let arr4 = [...arr3];
+    arr4.push('No');
+    console.log(arr3+'\n'+arr4)
+    /*
+        var arr3 = ['wo', 'ai', 'ni'];
+        var arr4 = [].concat(arr3);
+        arr4.push('No');
+    */
+
+    // rest 剩余
+    function restFn(first,...arg){
+        // for of 循环
+        for( let val of arg){
+            console.log(val)
+        }
+        console.log(arg.length)
+    }
+    restFn(0,1,2,3,4,5,6,7,8)
+</script>
+</body>
+</html>

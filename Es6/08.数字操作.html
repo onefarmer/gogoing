@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 1、Number数字判断
+    let a = 11/5
+    console.log( Number.isFinite(a) )
+    console.log( Number.isFinite('Alisa') )
+    console.log( Number.isFinite(NaN) )
+    console.log( Number.isFinite(undefined) )
+    console.log( Number.isFinite('10') )
+
+    // 2、判断整数
+    let b = 911.1
+    console.log( Number.isInteger(b) )
+
+    // 3、2的53次方，-1更安全 最大安全整数
+    console.log( Math.pow(2,53)-1 )
+    console.log( Number.MAX_SAFE_INTEGER) // es6 最大
+    console.log( Number.MIN_SAFE_INTEGER) // es5 最小
+
+    // 安全数
+    let num = Math.pow(2,53) + 1;
+    console.log( Number.isSafeInteger(num) )
+    
+
+</script>
+</body>
+</html>

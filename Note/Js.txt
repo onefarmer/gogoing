@@ -61,6 +61,7 @@ document.writeln("<link rel=\"stylesheet\" href=\""+cdnUrl+"/css/csino-style.css
 <<<<<<< HEAD
 
 es6
+npm init -y
 npm install -g babel-cli
 npm install --save-dev babel-preset-es2015 babel-cli
 .babelrc
@@ -76,4 +77,4 @@ babel src/index.js -o dist/index.js
     "bulid": "babel src/index.js -o dist/index.js"
   },
 =======
->>>>>>> e5f075c8aafecc246e9c2128e7f9fca5c312c4c5
+ npm run build 
