@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //1、 Json 数组
+    let json = {
+        '0':'Yoona',
+        '1':'Gavin',
+        '2':'Alisa',
+        length:3
+    }
+    let arr = Array.from(json)
+    console.log(arr)
+
+    //2、字符串操作Es5
+    let string = '[1,2,3,4,5]';
+    let stringJson = eval(string);
+    console.log(stringJson)
+
+    //2、 字符串转换数组Es6
+    let str = '1,2,3,4,5';
+    let arr1 = Array.of(str)
+    let arr2 = Array.of(1,2,3,4,5)
+    console.log(arr1) // ['1,2,3,4,5']
+    console.log(arr2) // [1,2,3,4,5]
+
+    //3、 实例方法，查找 find(val,index,arr)
+    let names = ['Ming','MLXG','Uzi','xiaoHu','letme']
+    console.log(
+        names.find(function(val,index,names){
+            return val == 'uzi'
+        })
+    )
+    let numbers = [1,3,5,7,9,2,4,6,8]
+    console.log(
+        numbers.find(function(val,index,arr){
+            return val > 8;
+    }))
+</script>
+</body>
+</html>

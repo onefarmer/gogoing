@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{padding: 0;margin: 0;}
+			div{margin: 10px;}
+		</style>
+	</head>
+	<body>
+		<div ng-app="myApp" ng-controller = 'myCtrl'>
+			<h1>{{str}}</h1>
+			<form ng-submit = 'add()'>
+				<input type="text" ng-model = 'msg'/>
+				<button type="submit">添加</button>				
+			</form>
+			<ul>
+				<li ng-repeat  = 'item in arr track by $index'>
+					<!--ng-model绑定的其实是val值 checkbox只有两个值 true false-->
+					<input type="checkbox" ng-model = 'item.done'/>
+					<span>{{ $index+' '+item.thing}}</span>
+				</li>
+			</ul>	
+			<button type="button" ng-click = 'del()'>删除</button>
+		</div>
+
+	</body>
+</html>
+<script type="text/javascript">
+	var app = angular.module('myApp',[]).controller('myCtrl',function($scope){
+		$scope.str = '备忘录';
+		$scope.msg = '';
+		$scope.arr = [
+			{thing:'吃雪茄',done:false},
+			{thing:'喝82年拉菲',done:false},
+			{thing:'睡外围',done:false},
+			{thing:'赌澳门',done:false}	
+		]
+		$scope.add = function(){
+			if($scope.msg == ''){ return }
+			$scope.arr.push(
+				{thing:$scope.msg,done:false}
+				)
+			$scope.msg = '';
+		};
+		$scope.del = function(){	
+			$scope.everArr = $scope.arr;
+			$scope.arr = [];
+			for(var i = 0; i < $scope.everArr.length;i++){
+				if(!$scope.everArr[i].done){
+					$scope.arr.push($scope.everArr[i])
+				}
+			}
+		};
+	})
+	
+</script>

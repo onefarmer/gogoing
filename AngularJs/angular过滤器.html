@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+	<p>{{ msg1 | uppercase}}</p>
+	<p>{{ msg1 | lowercase}}</p>
+	<p>{{ time | date:'YYYY-MM-dd hh:mm:ss'}}</p>
+	<p>{{ num | number:2}}</p>
+	<p>{{ money | currency:'RMB ￥' }}</p>
+	<p>{{ 'i-love-you' | myFilter }}</p>
+</body>
+</html>
+<script type="text/javascript">
+	var app = angular.module('myApp',[])
+	app.controller('myCtrl', function($scope){
+		$scope.msg1 = 'fAKer';
+		$scope.time = new Date().getTime();
+		$scope.num = 3.1415923;
+		$scope.money = 10;
+		//$scope
+	})
+	//自定义过滤
+	app.filter('myFilter',function(){
+		return function(str){
+			// 1、分割单词
+			// 2、单词首字母大写（不包含第一个单词）
+			// 3、重新拼接回去
+			var arr = str.split('-');
+			for(var i=0;i<arr.length;i++){
+				var c = arr[i].substr(0,1).toUpperCase();
+				arr[i] = c + arr[i].substr(1,arr[i].length-1)
+			}
+			// join: 拼接数组的方法
+			// 参数：连接符，可选参数，不传入默认以逗号链接			
+			return newStr = arr.join('')
+		}
+	})
+</script>

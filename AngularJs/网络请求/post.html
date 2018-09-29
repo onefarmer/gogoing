@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='angular.js'></script>
+	<style>
+		ul {padding-left: 0;}
+		li {list-style-type: none;}
+
+	</style>
+</head>
+<body ng-app='myApp' ng-controller='myCtrl'>
+	
+	<button ng-click='search()'>btn</button>
+
+	
+</body>
+</html>
+<script>
+	var app = angular.module('myApp', []);
+
+	app.config(function($httpProvider){
+          $httpProvider.defaults.transformRequest=function(obj){
+              var str=[];
+              for(var p in obj){
+                  str.push(encodeURIComponent(p)+"="+encodeURIComponent(obj[p]));
+              }
+              return str.join("&");
+          };
+         $httpProvider.defaults.headers.post={
+              'Content-Type':'application/x-www-form-urlencoded'
+          }
+          
+      });
+
+	app.controller('myCtrl', function ($scope, $http) {
+		
+		// post:
+		// $http({method:'POST',url:'',data:{a:1,b:2...}}).then(function suc(res){处理请求成功}, function err(res){处理请求失败});
+		// 
+		$scope.search = function () {
+			// body...
+			$http({
+				method: 'POST',
+				url:'post.php',
+				data: {a:3, b:2}
+			}).then(function succsessCallback(res){
+				console.log(res.data);
+			});
+		}
+
+		// post简写语法：
+		// $http.post('url',{a:1,b:2...}).success(function(res){}).error(function(res){});
+		
+	});
+
+</script>

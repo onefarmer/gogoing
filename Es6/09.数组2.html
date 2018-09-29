@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //1、替换 fill(替换内容，替换元素下标，到什么位置)
+    let arr = ['我','你','他','它']
+    // 替换你，你的下标为1，替换到第二个位置
+    arr.fill('您',1,2); 
+    console.log(arr)
+
+    //2、数组遍历，for of循环
+    let arr1 = ['爸爸','妈妈','爷爷','奶奶']
+    // 输出值
+    for( let item of arr1){
+        console.log(item)
+    }
+    // 输出下标
+    for( let item of arr1.keys() ){
+        console.log(item)
+    }
+    // 输出下标+值
+    for( let item of arr1.entries() ){
+        console.log(item)
+    }
+    // 单独输出下标和值
+    for( let [index,val] of arr1.entries() ){
+        console.log(`${index}：${val}`)
+    }
+
+    //3、单独输出方法，条目化
+    let arr2 = ['儿子','孙子','犊子','狗子','铁子']
+    let list = arr2.entries();
+    console.log(list.next().value)
+    console.log('*******************')
+    console.log(list.next().value)
+    console.log('*******************')
+    console.log(list.next().value)
+    console.log('*******************')
+    console.log(list.next().value)
+    console.log('*******************')
+    console.log(list.next().value)
+    console.log('*******************')
+</script>
+</body>
+</html>

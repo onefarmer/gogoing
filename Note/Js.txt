@@ -78,3 +78,5 @@ babel src/index.js -o dist/index.js
   },
 =======
  npm run build 
+全局更新
+npm install npm -g
