@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let arr = ['菲奥娜','薇恩','易大师']
+    // 1、forEach
+    arr.forEach( (val,index) => console.log(index,val) )
+    /*
+        arr.forEach(function(item,index){
+            // item 数组内容
+            // index 下标
+            //console.log(item,index)
+        })    
+    */
+
+    // 2、filter
+    arr.filter( x => console.log(x) )
+
+    // 3、some
+    arr.some( x => console.log(x) )
+
+    // 4、map(实质替换)
+    console.log( arr.map( x => 'web') )
+    // es5
+    /*
+        arr.map(function(val,index,arr){
+            console.log(val,index,arr)
+        })
+    */
+</script>
+</body>
+</html>

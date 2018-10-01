@@ -66,3 +66,15 @@ perspective-origin  Ù–‘∂®“Â 3D ‘™ÀÿÀ˘ª˘”⁄µƒ X ÷·∫Õ Y ÷·°£∏√ Ù–‘‘ –Ìƒ˙∏ƒ±‰ 3D ‘™À
 -øÁ¡–
 -webkit-column-span:all;  
 -moz-column-span:all;  
+
+.box-4 img{  width: 250px;  }
+.box-4>img:nth-child(1){  /*∫⁄∞◊ªÚ≤ …´*/  -webkit-filter:grayscale(1);  }
+.box-4>img:nth-child(2){   /*∫÷…´ªÚ∑«∫÷…´*/  -webkit-filter:sepia(1);}
+.box-4>img:nth-child(3){  /*±•∫Õ∂» ‘Ω¥Û‘Ω±•∫Õ*/  -webkit-filter:saturate(5); }
+.box-4>img:nth-child(4){ /*Ω«∂»*/  -webkit-filter:hue-rotate(250deg); }
+.box-4>img:nth-child(5){   /*∏ﬂ«Âƒ£∫˝ ‘Ω¥Û‘Ωƒ£∫˝*/  -webkit-filter: blur(3px);}
+.box-4>img:nth-child(6){ /*“ı”∞ X Y “ı”∞≥Ã∂» —’…´*/  -webkit-filter:drop-shadow(15px 15px 25px #d40367);}
+.box-4>img:nth-child(7){      /*∂‘±»∂»*/  -webkit-filter:contrast(10); }
+.box-4>img:nth-child(8){   /*Õ∏√˜∂» 0Õ∏ 1≤ªÕ∏*/  -webkit-filter:opacity(0.5); }
+.box-4>img:nth-child(9){ /*∑¥…´ 0≤ª1∑¥*/  -webkit-filter:invert(1); }
+.box-4>img:nth-child(10){  /*¡¡∂» ÷µ‘Ω¥Û‘Ω¡¡*/ -webkit-filter:brightness(5)}

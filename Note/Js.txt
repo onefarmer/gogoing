@@ -60,23 +60,4 @@ alert('是否是iOS：'+isiOS);
 document.writeln("<link rel=\"stylesheet\" href=\""+cdnUrl+"/css/csino-style.css\" />");
 <<<<<<< HEAD
 
-es6
-npm init -y
-npm install -g babel-cli
-npm install --save-dev babel-preset-es2015 babel-cli
-.babelrc
-{
-    "presets":[
-        "es2015"
-    ],
-    "plugins":[]
-}
-babel src/index.js -o dist/index.js
-修改package.json
-  "scripts": {
-    "bulid": "babel src/index.js -o dist/index.js"
-  },
-=======
- npm run build 
-全局更新
-npm install npm -g
+

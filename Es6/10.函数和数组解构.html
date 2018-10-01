@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 函数解构
+    let json = {
+        name1:'Yoona',
+        name2:'林允儿'
+    }
+    function sayName({name1,name2 = '允儿'}){
+        console.log(name1,name2)
+        /*
+            var name1 = _ref.name1,
+            _ref$name = _ref.name2,
+            name2 = _ref$name === undefined ? '允儿' : _ref$name;
+        */
+    }
+    sayName(json) 
+
+    // 数组解构
+    let arr = ['锐雯','劼','薇恩']
+    function arrFn(a,b,c){
+        console.log(a,b,c)
+    }
+    arrFn(...arr)
+    /*
+        arrFn.apply(undefined, arr);
+    */
+    // 判断空位
+    let arr2 = ['alisa',,,]
+    console.log(0 in arr2)
+    console.log(1 in arr2)
+    console.log(2 in arr2)
+
+    // 判断是否存在值
+    let obj ={
+        a:'Alisa',
+        b:'Blisa'
+    }
+    console.log(
+        // 引号，不然为变量
+        'a' in obj
+    )
+</script>
+</body>
+</html>

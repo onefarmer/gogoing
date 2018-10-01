@@ -16,11 +16,13 @@ https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/debug.html
 6.°Ù¶ÈµØÍ¼
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=zKa6p3dYXWBjwEiRerUCGpPGvPBtwdXb"></script>
 
-7. SegmentFault
+7. SegmentFault  redux
 https://segmentfault.com/
+https://segmentfault.com/a/1190000012976767#aricleHeader14
 
-8.InterviewMap
+8.InterviewMap call apply
 https://yuchengkai.cn/
+https://yuchengkai.cn/docs/zh/frontend/#%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B
 
 
 
