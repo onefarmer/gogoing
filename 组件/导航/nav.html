@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/nav.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-collapse" id="menulist">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a href="javascript:;">首页</a></li>
+                    <li class="nav-item" rel="sub-nav1"><a href="javascript:;">导航一</a></li>
+                    <li class="nav-item" rel="sub-nav2"><a href="javascript:;">导航二</a></li>
+                    <li class="nav-item" rel="sub-nav3"><a href="javascript:;">导航三</a></li>
+                    <li class="nav-item" rel="sub-nav4"><a href="javascript:;">导航四</a></li>
+                    <li class="nav-item"><a href="javascript:;">导航五</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar-sub">
+        <div class="sub-content" id="sub-nav1" rel="sub-nav1"></div>
+        <div class="sub-content" id="sub-nav2" rel="sub-nav2"></div>
+        <div class="sub-content" id="sub-nav3" rel="sub-nav3"></div>    
+        <div class="sub-content" id="sub-nav4" rel="sub-nav4"></div>          
+    </nav>
+</header>
+<script src="../../Jquery/jquery/jquery-3.2.1.min.js"></script>
+<script>
+    //通栏下拉导航
+    var mega = {};
+    var $activeElement;
+    $('[rel]').hover(function() {
+        // active[rel]，展开的元素
+        $activeElement = $activeElement != undefined ?$activeElement : $('.active[rel]');
+        // 元素的rel属性值
+        var _rel = $(this).attr('rel');
+        clearTimeout(mega[_rel + '_timer']);
+        // 对象添加方法
+        mega[_rel + '_timer'] = setTimeout(function() {
+            // 遍历涵盖rel属性的元素
+            $('[rel]').each(function() {
+                //如果等于此rel值的添加active Class,其他删除active Class
+                $(this)[_rel == $(this).attr('rel') ? 'addClass' : 'removeClass']('active');
+            });
+            // slideDown() 方法通过使用滑动效果，显示隐藏的被选元素。对应二级导航展开
+            $('#' + _rel).stop(true, true).slideDown("300");
+
+        }, 150);
+    }, function() {
+        var _rel = $(this).attr('rel');
+        clearTimeout(mega[_rel + '_timer']);
+        mega[_rel + '_timer'] = setTimeout(function() {
+            $('[rel]').removeClass('active');
+            $activeElement.addClass('active');
+            $('#' + _rel).stop(true, true).slideUp(300);
+        }, 150);
+    });
+</script>
+</body>
+</html>

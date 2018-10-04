@@ -12,3 +12,11 @@ https://www.cnblogs.com/starof/p/4968769.html
 5.ztree
 
 6.ali个性图标字体
+
+<#--浮窗js-->
+float.js
+<#--广告轮播插件-->
+idangerous.swiper.min.js
+<#--消息推送插件-->
+Comet.js
+PopUp.js
