@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 1、去重属性的数组
+    let setArr = new Set(['yoo','yaa','ycc','yxx']);
+    // 输出
+    console.log(setArr);
+    // 添加重复项，无效果
+    setArr.add('yoo');
+    // 添加非重复项
+    setArr.add('yqq');
+    // 输出
+    console.log(setArr);
+    // 删除
+    setArr.delete('yqq');
+    // 输出
+    console.log(setArr);
+    // 判断存在
+    console.log(setArr.has('yoo'))
+    // 删除
+    setArr.delete('ycc')
+    // 输出
+    console.log(setArr);
+    // 清空
+    setArr.clear()
+    // 输出
+    console.log(setArr);
+
+    // 2、遍历
+    let setArr2 = new Set(['zaa','zxx','zcc'])
+
+    for( let i of setArr2){
+        console.log(i)
+    }
+
+    setArr2.forEach( val => console.log(val) )
+
+    console.log(setArr2.size)
+</script>
+</body>
+</html>

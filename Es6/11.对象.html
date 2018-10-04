@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 1、直接赋值
+    let name = 'Yoona';
+    let age = 28;
+    var obj = {name,age}
+
+    // 2、key值构建
+    let key = 'skill';
+    let obj2 = {
+        [key]:'yooNa'
+    }
+
+    // 3、比较值 is(严格相等) ===同值相等
+    let objA = {name:'Yoona'};
+    let objB = {name:'Yoona'};
+    console.log( objA.name === objB.name );
+    console.log( Object.is(objA.name,objB.name) )
+
+    console.log(-0===+0)
+    console.log(NaN===NaN)
+    console.log(Object.is(-0,+0))
+    console.log(Object.is(NaN,NaN))
+
+    // 4、合并对象
+    let name2 = {name:'Yoona'};
+    let age2 = {age :18};
+    let height2 = {height:'170cm'}
+    let all = Object.assign(name2,age2,height2)
+    // 不能用${}
+    console.log(all)
+
+    // 1补缺2，2覆盖1
+    let player1 = {
+        name:'faker',
+        age:20,
+        win:10,
+        like:'dance'
+    }
+    let player2 = {
+        name:'uzi',
+        age:20,
+        win:6
+    }
+    let player = Object.assign(player1,player2)
+    console.log(player)
+</script>
+</body>
+</html>
