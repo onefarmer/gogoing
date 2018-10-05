@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 1、多方法
+    class Player{
+        name(val){
+            console.log(val)
+            // 注意 return 其他方法(skill)才能调用
+            return val;
+        }
+        skill(val){
+            console.log(`${this.name('UZI')}：是一名${val}`)
+        }
+        constructor(a,b){
+            this.a = a;
+            this.b = b
+        }
+        add(){
+            return this.a + this.b;
+        }
+    }
+    let uzi = new Player(10,20);
+    uzi.name('狂小狗')
+    uzi.skill('Adc')
+    // 类的传参
+    console.log(uzi.add(2))
+
+    // 2、继承
+    class LolPlayer extends Player{}
+    let faker = new LolPlayer();
+    faker.name('我是李哥')
+</script>
+</body>
+</html>

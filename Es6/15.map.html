@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let json = { name:'YooNa',age:18 }
+    console.log(json)
+    let map = new Map();
+    // 一种特殊的键值对 json key值，me value值
+    map.set(json,'me');
+    console.log(map)
+    // json成val iAm成key值
+    map.set('iAm',json)
+    
+    //增删取
+    //get
+    console.log(map.get(json))
+    console.log(map.get('iAm'))
+    //delete
+    //删除key值为json的
+    map.delete(json)
+    console.log(map)
+    console.log(map.size)
+    //has true false
+    //查找key为iAm的
+    console.log(map.has('iAm'))
+
+</script>
+</body>
+</html>
