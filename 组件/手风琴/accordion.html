@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/accordion.css">
+    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script>
+    <script src="./assets/accordion.js"></script>
+</head>
+<body>
+<section class="live-list">
+    <div class="container">
+        <div class="accordion-wrap">
+            <ul class="list-unstyled live-accordion">
+                <li>
+                    <div class="mask" style="display: none; opacity: 1;">
+                        <div class="logoImg"></div>
+                        <h3 class="title">一</h3>
+                    </div>
+                    <div class="logo" style="display: block; opacity: 1;">
+                        <div class="logoImg"></div>
+                    </div>
+                    <div class="link"><a href="javascript:;"></a></div>
+                    <div class="cover row3" style="display: block;">
+                        <div class="hot-list">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>                            
+                        </div>
+
+                    </div>
+                </li>
+                <li>
+                    <div class="mask" style="display: none; opacity: 1;">
+                        <div class="logoImg"></div>
+                        <h3 class="title">二</h3>
+                    </div>
+                    <div class="logo" style="display: block; opacity: 1;">
+                        <div class="logoImg"></div>
+                    </div>
+                    <div class="link"><a href="javascript:;"></a></div>
+                    <div class="cover row3" style="display: block;">
+                        <div class="hot-list">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>                            
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="mask" style="display: none; opacity: 1;">
+                        <div class="logoImg"></div>
+                        <h3 class="title">文字3</h3>
+                    </div>
+                    <div class="logo" style="display: block; opacity: 1;">
+                        <div class="logoImg"></div>
+                    </div>
+                    <div class="link"><a href="javascript:;"></a></div>
+                    <div class="cover row3" style="display: block;">
+                        <div class="hot-list">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>                            
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="mask" style="display: none; opacity: 1;">
+                        <div class="logoImg"></div>
+                        <h3 class="title">文字4</h3>
+                    </div>
+                    <div class="logo" style="display: block; opacity: 1;">
+                        <div class="logoImg"></div>
+                    </div>
+                    <div class="link"><a href="javascript:;"></a></div>
+                    <div class="cover row3" style="display: block;">
+                        <div class="hot-list">
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>
+                            <div class="box"></div>                            
+                        </div>
+                    </div>
+                </li>               
+            </ul>
+        </div>
+    </div>
+</section>
+<script>
+    function liveAccordion(){
+    // 真人-手风琴
+    $(".live-accordion").accordion({
+        maxWidth: "400",
+        expandSpeed: "10",
+        slideSpeed: "10",
+        showIndex: "1"
+    });
+    // 真人-手风琴滑入动画
+    $(".live-accordion > li").hover(function() {
+        var $this = $(this);
+        $('.mask', $this).stop().fadeOut(300);
+        $('.cover', $this).show();
+        $('.logo', $this).stop().fadeIn(300)
+    }, function() {
+        var $this = $(this);
+        $('.mask', $this).stop().fadeIn(300);
+        $('.cover', $this).hide();
+        $('.logo', $this).stop().fadeOut(300)
+    });
+}    
+liveAccordion()
+</script>
+</body>
+</html>

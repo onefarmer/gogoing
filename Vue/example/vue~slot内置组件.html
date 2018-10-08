@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+</head>
+<body>
+    <h1>slot接受值</h1>
+    <hr>
+    <div id="app">
+        <yoona>
+            <!-- 在HTML的组件中用slot属性传递值 -->
+            <span slot = 'nameData'>{{yoonaPerson.cname}}</span>
+            <span slot = 'favData'>{{yoonaPerson.fav}}</span>
+            <span slot = 'skillData'>{{yoonaPerson.skill}}</span>
+        </yoona>
+    </div>
+    <template id="yooNa">
+        <!-- 在组件模板中用标签接收值。 -->
+        <div>
+            <p>名字：<slot name = 'nameData'></slot></p>
+            <p>爱好：<slot name = 'favData'></slot></p>
+            <p>技能：<slot name = 'skillData'></slot></p>
+        </div>
+    </template>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                yoonaPerson:{
+                    cname:'允儿',
+                    fav:'Dance',
+                    skill:'beautiful'
+                }
+            },
+            components:{
+                "yoona":{
+                    template:'#yooNa'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

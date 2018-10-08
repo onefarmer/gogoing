@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello Wrold</title>
+    <script type="text/javascript" src="../assets/js/vue.min.js"></script>
+</head>
+<body>
+    <h1>helloWorld</h1>
+    <hr>
+    <div id="app">
+        {{num}}
+        <p><button @click = 'add'>递增</button></p>
+        <p><button @click = "off">删除递减方法</button></p>
+    </div>
+    <p><button onclick='reduce()'>递减</button></p>
+    <p><button onclick='addOne()'>点击一次</button></p>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods:{
+                add:function(){
+                    this.num++
+                },
+                off:function(){
+                    this.$off('reduceNum')
+                }
+            }
+        })
+        // 绑定一个reduceNum方法
+        app.$on('reduceNum',function(){
+            this.num--;
+        })
+        // 一次性方法
+        app.$once('reduceOne',function(){
+            this.num += 10;
+        })
+        function reduce(){
+            // 调用方法
+            app.$emit('reduceNum')
+        }
+        function addOne(){
+            app.$emit('reduceOne')
+        }
+    </script>
+</body>
+</html>
