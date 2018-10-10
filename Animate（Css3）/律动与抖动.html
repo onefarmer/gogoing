@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+            display: inline-block;
+            background: linear-gradient(left, #ff3737, #68dc53,#d05fb7);
+            background: -webkit-linear-gradient(left, #ff3737, #68dc53,#d05fb7);
+            background: -o-linear-gradient(right, #ff3737, #68dc53,#d05fb7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: scratchy 0.253s linear forwards infinite;
+            -webkit-animation: scratchy 0.5s linear forwards infinite;
+            -moz-animation: scratchy 0.5s linear forwards infinite;
+            -ms-animation: scratchy 0.5s linear forwards infinite;
+            -o-animation: scratchy 0.5s linear forwards infinite;
+        }
+        @keyframes scratchy{
+            0% { background-position: 0 0;}
+            25% { background-position: 0 0;}
+            26% { background-position: 20px -20px;}
+            50% { background-position: 20px -20px;}
+            51% { background-position: 40px -40px;}
+            75% { background-position: 40px -40px;}
+            76% { background-position: 60px -60px;}
+            99% { background-position: 60px -60px;}
+            100% { background-position: 0 0;}
+        }
+        @keyframes bounce{
+            0%,20%,50%,80%,100%{-webkit-transform:translateY(0)}
+            40%{-webkit-transform:translateY(-30px)}
+            60%{-webkit-transform:translateY(-15px)}
+        }
+        p:hover{-webkit-animation: bounce 1s 0s ease both;}
+    </style>
+</head>
+<body>
+    <p>我是一段文字</p>
+</body>
+</html>
