@@ -34,4 +34,4 @@ a{text-decoration: none}
 
 /* 2级 */
 .navbar-sub{width: 100%;box-shadow: 0 2px 5px 0 rgba(0,0,0,.5);z-index: 99;position: absolute;}
-.navbar-sub>.sub-content{height: 150px;border-bottom: 1px solid #000;overflow: hidden;background:rgba(0, 0, 0, 0.6);display: none}
+.navbar-sub>.sub-content{height: 150px;border-bottom: 1px solid #ff0000;overflow: hidden;background:rgba(0, 0, 0, 0.6);display: none}
