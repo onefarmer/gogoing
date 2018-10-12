@@ -24,7 +24,9 @@
     //克隆
     function cloneUI(){
         var oUl = document.querySelector("ul");
-        //克隆节点：cloneNode( 布尔值 ) true：复制本节点以及所有子节点false：只复制节点本身
+        // 克隆节点：cloneNode( 布尔值 ) 
+        // true：复制本节点以及所有子节点
+        // false：只复制节点本身
         var newUl = oUl.cloneNode(true)
         document.body.appendChild(newUl)
     }
@@ -37,7 +39,6 @@
         var newOl = ol.cloneNode(true)
         //替换
         document.body.replaceChild(newOl,ol)
-        console.log(newOl.children)
         for(var i=0;i<data.length;i++){
             newOl.children[i].innerText = data[i]
         }

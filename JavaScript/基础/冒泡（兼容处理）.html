@@ -17,9 +17,11 @@
 </body>
 </html>
 <script>
+    // 父级
     document.getElementById('out').onclick = function(){
         alert('out')
     }
+    // 子
     document.getElementById('in').onclick = function(e){
         var ev = e || event;
         if(window.event){
