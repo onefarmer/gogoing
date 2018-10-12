@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .item{
+            width: 100px;
+            height: 36px;
+            position: relative;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            -ms-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: .2s;
+            margin: 0 8px;
+            line-height: 35px;
+            text-align: center;
+            float: left;
+        }
+        .item:hover{ 
+            -webkit-transform: perspective(1000px) rotateX(90deg);
+            cursor: pointer;
+            transform: perspective(1000px) rotateX(90deg);
+            cursor: pointer;
+            -ms-transform: rotateX(0deg);
+            cursor: pointer; 
+        }
+        .item:hover a{ color: #373737; background: #ffe938;}
+        .item a{
+            display: inline-block;
+            width: 120px;
+            height: 36px;
+            text-align: center;
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-sizing: border-box;
+            line-height: 36px;
+            font-size: 14px;
+        }
+        .item a:nth-child(1){
+            -webkit-transform: translateZ(17px);
+            -moz-transform: translateZ(17px);
+            -ms-transform: translateZ(17px);
+            -o-transform: translateZ(17px);
+        }
+        .item a:nth-child(2){
+            -webkit-transform: rotateX(-90deg) translateZ(17px);
+            -moz-transform: rotateX(-90deg) translateZ(17px);
+            -ms-transform: rotateX(-90deg) translateZ(17px);
+            -o-transform: rotateX(-90deg) translateZ(17px);
+        }
+    </style>
+</head>
+<body>
+    <div class="item">
+        <a href="javascript:;">首页</a>
+        <a href="jaavscript:;">首页</a>
+    </div>
+</body>
+</html>

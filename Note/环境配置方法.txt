@@ -33,6 +33,6 @@ babel src/index.js -o dist/index.js
     "bulid": "babel src/index.js -o dist/index.js"
   },
 =======
- npm run build 
+npm run build 
 全局更新
 npm install npm -g
