@@ -16,6 +16,7 @@
         return num;
     }
     console.log( action(0) )
+
     // 1、es6 默认定值
     function action2( num = 200){
         console.log(num)
@@ -23,6 +24,7 @@
     action2(0) //0
     action2() //200
     action2(300) //300
+
     /*
         function action2() {
             var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 200;
@@ -37,7 +39,7 @@
         }.bind(this)))
     */
 
-    // 3、返回一个表达式的情况下,省略fn(){},return
+    // 3、一个表达式情况下
     var people = name => 'hello  ' + name;
     console.log( people('alisa') )
     /*

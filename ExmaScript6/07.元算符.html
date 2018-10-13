@@ -25,17 +25,16 @@
         }
     */
 
-    // 2、数组 arr2添加值arr1值产生变化
-    let arr1 = ['wo','ai','ni']
+    // 2、数组arr1辅助于arr2，改变arr2，arr1发生改变
+    let arr1 = ['wo','ai','ni'];
     let arr2 = arr1;
-    arr2.push('no');
-    console.log(`arr1发生变化：${arr1}`)
-    
-    // 使值不发生变化
+    arr2.push('push值');
+    console.log(`改变arr2致使arr1值发生变化：${arr1}`);
+    // 解决办法
     let arr3 = ['wo','ai','ni']
     let arr4 = [...arr3];
-    arr4.push('No');
-    console.log(arr3+'\n'+arr4)
+    arr4.push('push值');
+    console.log( arr3+'\n'+arr4 )
     /*
         var arr3 = ['wo', 'ai', 'ni'];
         var arr4 = [].concat(arr3);

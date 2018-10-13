@@ -47,17 +47,17 @@
 
     // 5 对象结构
     let {adc,sub} = {adc:'UZI',sub:'Ming'}
-    console.log(`对象结构：${adc}-->${sub}`)
+    console.log(`对象结构：${adc}和${sub}`)
     /*
         var adc$sub = { adc: 'UZI', sub: 'Ming' },
         adc = _adc$sub.adc,
         sub = _adc$sub.sub;
     */
 
-    // 6 注意：需要圆括号来解构
+    // 6 注意：如此声明，用圆括号来解构
     let mid;
     ({mid} = {mid:'XiaoHu'})
-    console.log(`结构注意：${mid}`)
+    console.log(`注意：${mid}`)
     /*
         var mid = void 0;
         var _mid = { mid: 'XiaoHu' };

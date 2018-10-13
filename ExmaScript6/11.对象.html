@@ -8,37 +8,40 @@
 </head>
 <body>
 <script>
-    // 1、直接赋值
-    let name = 'Yoona';
-    let age = 28;
-    var obj = {name,age}
+    // 1、
+
+    /*
+        let name = 'Yoona';
+        let age = 28;
+        var obj = {name,age}
+    */
 
     // 2、key值构建
-    let key = 'skill';
-    let obj2 = {
-        [key]:'yooNa'
-    }
 
-    // 3、比较值 is(严格相等) ===同值相等
+    let key = 'name';
+    let obj2 = { [key]:'yooNa' }
+
+
+    // 3、比较值 is(严格相等) === 同值相等
+    
     let objA = {name:'Yoona'};
     let objB = {name:'Yoona'};
-    console.log( objA.name === objB.name );
-    console.log( Object.is(objA.name,objB.name) )
+    console.log( objA.name === objB.name ); // true
+    console.log( Object.is(objA.name,objB.name) ) // true
 
-    console.log(-0===+0)
-    console.log(NaN===NaN)
-    console.log(Object.is(-0,+0))
-    console.log(Object.is(NaN,NaN))
+    console.log(-0===+0) // true
+    console.log(NaN===NaN) // false
+    console.log(Object.is(-0,+0)) // false
+    console.log(Object.is(NaN,NaN)) // true
 
-    // 4、合并对象
-    let name2 = {name:'Yoona'};
-    let age2 = {age :18};
-    let height2 = {height:'170cm'}
-    let all = Object.assign(name2,age2,height2)
-    // 不能用${}
+    // 4、合并
+    let job = {job:'adc'};
+    let skill = {skill:'kill'};
+    let ageNow = {age:20};
+    let all = Object.assign(job,skill,ageNow)
     console.log(all)
 
-    // 1补缺2，2覆盖1
+    // 5、补缺：1补缺2，2覆盖1
     let player1 = {
         name:'faker',
         age:20,
