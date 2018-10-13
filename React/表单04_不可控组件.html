@@ -7,23 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="wrap"></div>
+    <div id="form"></div>
     <script src="common/react.js"></script>
     <script src="common/react-dom.js"></script>
     <script src="common/babel.js"></script>
-    <script type = 'text/babel'>
-        var HelloBox = React.createClass({
-            render:function(){
+    <script type="text/babel">
+    // 当然我们也可以给input加入默认值，但是不是value了，而是defaultValue。
+        var MyForm = React.createClass({
+            handleChange:function(){
+                var inputVal = ReactDOM.findDOMNode(this.refs.yoona).value;
+                console.log(inputVal)
+            },
+            render:function() {
                 return(
                     <div>
-                        {'hello ' + this.props.attrName}
+                        <input type='text' onChange ={this.handleChange} ref='yoona' defaultValue='YOONA'/>    
                     </div>
                 )
             }
         })
         ReactDOM.render(
-            <HelloBox attrName = 'YooNa'/>,
-            document.getElementById('wrap')
+            <MyForm/>,document.getElementById('form')
         )
     </script>
 </body>

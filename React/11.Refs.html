@@ -14,13 +14,13 @@
     <script type = 'text/babel'>
         var MyComponent = React.createClass({
             handleClick:function () {
-                this.refs.theText.focus()
+                this.refs.yoona.focus()
             },
             render:function () {
                 return(
                     <div>
                         {/* ref 可以理解为虚拟DOM的ID */}
-                        <input type="text" ref ='theText'/>
+                        <input type="text" ref ='yoona'/>
                         <input type="button" value="获得焦点" onClick ={this.handleClick}/>
                     </div>
                 )

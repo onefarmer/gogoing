@@ -13,26 +13,26 @@
     <script src="common/babel.js"></script>
     <script type = 'text/babel'>
         var AddCount = React.createClass({
-            getInitialState:function() {
+            getInitialState:function(){
                 console.log('1...getInitialSate');
                 return {count:1}
             },
-            componentWillMount:function() {
+            componentWillMount:function(){
                 console.log('2...componentWillMount');
             },
             componentDidMount:function(){
                 console.log('3...componentDidMount');
             },
-            componentWillUpdate:function () {
+            componentWillUpdate:function (){
                 console.log('4...componentWillUpdate');
             },
             componentDidUpdate:function(){
                 console.log('4...componentDidUpdate');
             },
-            handleClick:function(event) {
-                this.setState({count:this.state.count+1})
+            handleClick:function(event){
+                this.setState({ count:this.state.count+1 })
             },
-            render:function() {
+            render:function(){
                 return(
                     <p>
                         <span>{this.state.count}</span><br/>

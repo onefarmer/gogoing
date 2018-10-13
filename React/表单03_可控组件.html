@@ -7,23 +7,29 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="wrap"></div>
+    <div id="form"></div>
     <script src="common/react.js"></script>
     <script src="common/react-dom.js"></script>
     <script src="common/babel.js"></script>
-    <script type = 'text/babel'>
-        var HelloBox = React.createClass({
+    <script type="text/babel">
+        var MyForm = React.createClass({
+            getInitialState:function(){
+                return { value:'Yoona'}
+            },
+            handleChange:function(event){
+                this.setState({value:event.target.value});
+                console.log(this.state.value)
+            },
             render:function(){
-                return(
+                return (
                     <div>
-                        {'hello ' + this.props.attrName}
+                        <input type='text' value = {this.state.value} onChange = {this.handleChange}/>    
                     </div>
                 )
             }
         })
         ReactDOM.render(
-            <HelloBox attrName = 'YooNa'/>,
-            document.getElementById('wrap')
+            <MyForm/>,document.getElementById('form')
         )
     </script>
 </body>

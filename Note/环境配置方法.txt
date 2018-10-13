@@ -1,20 +1,14 @@
 Vue
 1、安装node.js;
 	安装完成后，输入“node -v”查看是否安装成功
-
 2、安装vue-cli
 	“npm install -g vue-cli”,可使用“npm vue”查看是否安装成功
-
 3、安装webpack
 	"npm install webpack -g"
-
 4、创建项目
 	"vue init webpack my-vue"
-
 5、注：创建项目过程中，一直按“enter”，选择安装的部分，只有router选择安装按‘y’，其他都按‘n’
-
-
-6、打包 $ npm run build
+6、打包 npm run build
 -----------------------------------------------
 Es6 Bable
 npm init -y
@@ -36,3 +30,21 @@ babel src/index.js -o dist/index.js
 npm run build 
 全局更新
 npm install npm -g
+
+-----------------------------------------------------
+Vue cli
+npm -v 查看版本 需要安装node npm
+npm install vue-cli -g 全局安装
+vue -V 查看 cue-cli版本
+vue init webpack vuecliText 安装webpack vuecliText项目名
+1-起名
+2-项目介绍
+3-作者
+4-vue-router 是否安装
+5-是否用Eslint no
+6-单元测试 no
+7-e2e 模拟用户测试 no
+npm install 依赖项
+npm run dev启动
+npm run build 打包
+

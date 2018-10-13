@@ -27,24 +27,27 @@
         ];
         var TheStars = React.createClass({
             render:function() {
-                return <div>
-                    <h1>RNG Players</h1>
-                    <ul>
-                        {
-                            stars.map(function(item,index){
-                                //item,stars[index]
-                                return <li>{item}</li>
-                            })
-                        }
-                    </ul>
-                </div>
+                return(
+                    <div>
+                        <h1>RNG Players</h1>
+                        <ul>
+                            {
+                                stars.map( (item,index) =>{
+                                    //item,stars[index]
+                                    return <li>{item}</li>
+                                })
+                            }
+                        </ul>
+                    </div>                    
+                ) 
+
             }
         })
         ReactDOM.render(
             <div>
-                <div>{names}</div>
-                <TheStars/>
-            </div>,
+                {names}
+                <TheStars/> 
+            </div>,    
             document.getElementById('box')
         )
     </script>

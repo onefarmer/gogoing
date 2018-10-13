@@ -12,17 +12,15 @@
     <script src="common/react-dom.js"></script>
     <script src="common/babel.js"></script>
     <script type="text/babel">
-        let names = ['允儿','允珠','Yoona'];
+        let names = ['王二','张三','李四'];
         var MyComponent = React.createClass({
             render:function() {
-                //如果return后无括号，第一排要有标签
+                // return后换行需要()
                 return <div>
                     {
-                        names.map(function(val){
-                            return <div key={val}>
-                                hello,{val}！
-                            </div>
-                        })
+                        names.map( (val)=>{
+                            return <div key={val}>hello,{val}!</div>
+                        } )
                     }
                 </div>
             }

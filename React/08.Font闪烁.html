@@ -37,11 +37,7 @@
             render:function() {
                 return(
                     /* 
-                    第一个花括号为插值解析，第二个则是对象
-                    类似 var mystyle = {opacity:1}
-                    <div style = {mystyle}></div> 
-                    其实是
-                    <div style = {{opacity:1}}></div>
+                        {}插值,{}style对象
                     */
                     <div style = {{opacity :this.state.opacity}}>
                         <h1>Hello {this.state.name}</h1>

@@ -14,6 +14,7 @@
     <script type = 'text/babel'>
         var fruits = ['apple','orange','pear']
         var MyButton = React.createClass({
+            // 初始化
             getInitialState:function(){
                 return { show:true}
             },
@@ -27,9 +28,11 @@
                     <div>
                         <button onClick = {this.handleClick}>{text}</button>
                         <ul style = {isHide}>
-                            {fruits.map(item =>{
-                                return <li key={item}>{item}</li>
-                            })}
+                            {
+                                fruits.map( item => {
+                                    return <li key={item} >{item}</li>
+                                })
+                            }
                         </ul>
                     </div>
                 )

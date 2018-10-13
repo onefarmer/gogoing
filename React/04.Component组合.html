@@ -12,25 +12,28 @@
     <script src="common/react-dom.js"></script>
     <script src="common/babel.js"></script>
     <script type="text/babel">
-        let myStyle = {color:'#ff0000'}
+        let colorStyle = {color:'#ff0000'}
         var ChildrenItem = React.createClass({
             render:function() {
                 return(
-                    <span style = {myStyle}>Fighting</span>
+                    // style = {{ color:'#ff0000 }}
+                    <span style = {colorStyle}>Fighting</span>
                 )
             }
         })
         var BoxItem = React.createClass({
             render:function(){
-                return <p>
-                    {this.props.name}
-                    <ChildrenItem/>
-                </p>
+                return(
+                    <p>
+                        {this.props.name}
+                        <ChildrenItem/>
+                    </p>
+                ) 
             }
         })
         ReactDOM.render(
             <div>
-                <BoxItem name="中国队" />
+                <BoxItem name="RNG皇族 never give up " />
             </div>,
             document.getElementById('box')
         )
