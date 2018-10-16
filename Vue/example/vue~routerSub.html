@@ -14,12 +14,11 @@
     </style>
 </head>
 <body>
-    <h1>二级路由</h1>
     <hr>
     <div id="app">
         <ul>
             <li><router-link to ='/a'>A站</router-link></li>
-            <li><router-link to ='/b'>B站</router-link></li>
+            <li><router-link to ='/b/action'>B站</router-link></li>
         </ul>
         <div class="content">
             <router-view></router-view>
@@ -44,7 +43,7 @@
             el:'#app',
             data:{},
             beforeCreate:function(){
-                this.$router.push('/b/action')
+                this.$router.push('/a')
             },
             router:new VueRouter({
                 routes:[
