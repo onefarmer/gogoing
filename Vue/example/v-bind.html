@@ -8,7 +8,6 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>v-bind</h1>
     <hr>
     <div id="app">
         <p>
@@ -31,22 +30,24 @@
     </div>
     <style>
         .classA{color: #ff0000}
-        .classB{font-size: 20px}
+        .classB{color: orange}
+        .classC{color: green}
     </style>
     <script type="text/javascript">
         var app = new Vue({
             el:'#app',
             data:{
-                imgSrc:"http://jspang.com/wp-content/uploads/2017/12/2018.jpg",
+                imgSrc:"https://www.google.com.ph/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
                 webUrl:"http://www.baidu.com",
-                className:'classA',
+                className:'classC',
                 isOk:false,
                 classA:"classA",
                 classB:"classB",
                 red:'#ff0000',
                 font:'150%',
-                styleObj:{
-                    color:'green',
+                styleObj:
+                {
+                    color:'pink',
                     fontSize:'200%'
                 }
             }

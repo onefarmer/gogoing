@@ -8,18 +8,17 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>调用实例方法Native</h1>
     <hr>
     <div id="app">
         <p>{{count}}</p>
-        <button @click = 'add(2,$event)'>ADD按钮</button>
+        <button @click = 'add(1,$event)'>ADD内部按钮</button>
         <!-- native组件调用构造器方法 -->
-        <my-add @click.native='add(3)'></my-add>
+        <my-add @click.native='add(2)'></my-add>
     </div>
     <template id="tem">
         <p><button>ADD2组件按钮</button></p>
     </template>  
-    <button onclick="app.add(4)">ADD3</button>
+    <button onclick="app.add(3)">ADD3外部按钮</button>
     <script type="text/javascript">
         var app = new Vue({
             el:'#app',
@@ -35,7 +34,6 @@
                 add:function(num,event){
                     if(num!=''){
                         this.count += num;
-                        console.log(event)
                     }
                     else{
                         this.count ++

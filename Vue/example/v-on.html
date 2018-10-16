@@ -8,7 +8,6 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>v-on</h1>
     <hr>
     <div id="app">
         本场比赛得分：{{fraction}}
@@ -17,7 +16,7 @@
             <button @click="del">减分</button>
             <br>
             <!-- 或者可以用keyup.13 -->
-            <input type="text" v-on:keyup.enter="onEnter" v-model = "fraction2">
+            <input type="text" @keyup.enter="onEnter" v-model = "fraction2">
         </p>
     </div>
     <script type="text/javascript">

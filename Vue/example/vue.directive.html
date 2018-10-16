@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Vue-directive</title>
+    <title>Vue-directive自定义指令</title>
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>vue-directive 自定义指令</h1>
     <hr>
     <div id="app">
         <div v-mycolor="color">{{num}}</div>
@@ -23,10 +22,11 @@
             //VUE自带解绑函数，解绑后VUE指令失效
             app.$destroy()
         }
-        //参数：指令名称(不能大写)，方法。
-        //参数(形参)：el,binding,(Dom元素，对象)
+        // 参数：指令名称(不能大写)，方法。
+        // 参数(形参)：el,binding,(Dom元素，对象)
         Vue.directive('mycolor',function(el,binding){
-            //binding.value为data中color值
+            //  binding.value 为data中color值
+            console.log( binding )
             el.style = "color:" + binding.value;
         });
         //第二种写法

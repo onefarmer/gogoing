@@ -8,20 +8,17 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>Mixins-混入</h1>
     <hr>
     <div id="app">
         <p>num：{{num}}</p>
         <p><button @click = "add">Add</button></p>
     </div>
-    <script type="text/javascript">
-        
+    <script type="text/javascript">     
         var addLog = {
             updated:function(){
                 console.log('数据发生变化，变化成' + this.num + '.')
             }
         }
-        
         Vue.mixin({
             updated:function(){
                 console.log('数据发生变化，变化成' + this.num + '.')
@@ -40,7 +37,7 @@
             updated:function(){
                 console.log('我是原生的Up')
             },
-            //混入
+            // 混入
             mixins:[addLog]
         })
     </script>

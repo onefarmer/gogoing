@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Hello Wrold</title>
+    <title>Vue.props</title>
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>helloWorld</h1>
     <hr>
     <div id="app">
         <!-- 绑定DATA -->
@@ -30,7 +29,7 @@
             components:{
                 "panda":{
                     template:'#panda',
-                    // -的写法用驼峰
+                    // -写法用驼峰
                     props:['here']
                 }
             }

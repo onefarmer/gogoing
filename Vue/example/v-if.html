@@ -8,15 +8,15 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>v-if&v-show&v-else</h1>
     <hr>
     <div id="app">
-        <div v-if="isLogin">您好，欢迎登录</div>
-        <div v-else>您还没有登陆，请登录</div>
-        <div v-show="isHave">加载本块内容</div>
+        <div v-if="isLogin">您好，欢迎登录!</div>
+        <div v-else>您还没有登陆，请登录!</div>
+        <div v-show="isHave">v-show 控制是否加载本模块</div>
     </div>
     <script type="text/javascript">
-    // v-if v-else 控制display，更流畅 v-show 是否加载,减少服务器压力
+        // v-if v-else 控制display，更流畅 
+        // v-show 是否加载,减少服务器压力
         var app = new Vue({
             el:'#app',
             data:{

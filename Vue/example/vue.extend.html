@@ -8,7 +8,6 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>扩展实例构造器</h1>
     <hr>
     <div id="rngNews"></div>
     <rngcontent></rngcontent>
@@ -16,8 +15,8 @@
         var extendRng = Vue.extend({
             template:
                 `<div>
-                    <h1>{{title}}</h1>
-                    <a href = 'url'>{{content}}</a>
+                    <h1> {{title}} </h1>
+                    <a :href = 'url'> {{content}} </a>
                 </div>`,
             data:function(){
                 return {

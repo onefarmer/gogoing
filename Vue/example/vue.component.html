@@ -8,7 +8,6 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>Vue-Component-组件</h1>
     <hr>
     <div id="app">
         <my-box></my-box>
@@ -20,12 +19,12 @@
         </div>
     </template>
     <script type="text/javascript">
-        //驼峰命名用-链接,全局的
+        // 驼峰命名用-链接,全局的
         Vue.component('myBox',{
             template:"#myBox",
             data:()=>{
-                return{
-                    msg:'我是全局 myBox'
+                return {
+                    msg:'我是全局'
                 }
             },
             methods:{
@@ -36,14 +35,14 @@
         })
         var app = new Vue({
             el:'#app',
-            data:{},
-            //局部
+            data:{ },
+            // 局部
             components:{
                 "panDa":{
-                    template:'<h2>我是局部的panda并且{{pandaSay}}</h2>',
+                    template:'<h2>我是局部:{{pandaSay}}</h2>',
                     data:function(){
                         return {
-                            pandaSay:"靠萌吃饭"
+                            pandaSay:"呜呜呜~"
                         }
                     }
                 }

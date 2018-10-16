@@ -8,16 +8,16 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>Vue-set</h1>
     <hr>
     <div id="app">
         <h1>姓名：{{name}}</h1>
         <h2>性别：{{sex}}</h2>
         <h3>职业：{{job}}</h3>
         <h4>年龄：{{old}}</h4>
-        <ul>
+        <h5>爱好:</h5>
+        <ol>
             <li v-for = 'item in fav'>{{item}}</li>
-        </ul>
+        </ol>
     </div>
     <p><button onclick="change()">Change</button></p>
     <script type="text/javascript">
@@ -30,16 +30,16 @@
             old:29
         };
         function change(){
-            //数据，key,值
-            //Vue.set(yoona,'sex','woman')
+            // 数据，key,值
+            // Vue.set(yoona,'sex','woman')
 
-            //直接操作外部数据
-            //app.old--;
-            //yoona.old--
+            // 直接操作外部数据
+            // app.old--;
+            // yoona.old--
 
-            //检索不到下标，JS限制性，无法修改，外部检索不到app内部
-            //app.fav[0] = 'fly'
-            //参数：data,下标,值
+            // 检索不到下标，JS限制性，无法修改，外部检索不到app内部
+            // app.fav[0] = 'fly'
+            // 参数：data,下标,值
             Vue.set(yoona.fav,0,'fly')
  
         }

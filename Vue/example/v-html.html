@@ -8,12 +8,11 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>v-text,v-html</h1>
     <hr>
     <div id="app">
         <span v-text="message"></span><br>
         <span v-text="message +'需要添加的文字'"></span><br>
-        <span v-html="dodo"></span>
+        <span v-html="question"></span>
     </div>
     <script type="text/javascript">
         var app = new Vue({
@@ -21,7 +20,7 @@
             // 尽量少用dodo类似写法,引起xss攻击,特别是表单提交。
             data:{
                 message:'hellow my best Friend',
-                dodo:'<h2>where is my money</h2>'
+                question:'<h2>where is my money</h2>'
             }
         })
     </script>

@@ -8,7 +8,6 @@
     <script type="text/javascript" src="../assets/js/vue.min.js"></script>
 </head>
 <body>
-    <h1>数据监控-Watch</h1>
     <hr>
     <div id="app">
         <p>今日温度：{{temperature}}°</p>
@@ -16,12 +15,12 @@
         <p><button @click='add(3)'>上升</button><button @click='redu(3)'>下降</button></p>
     </div>
     <script type="text/javascript">
-        var clothes = ['短袖','外套','羽绒服']
         var app = new Vue({
             el:'#app',
             data:{
                 temperature:0,
-                cloth:''
+                cloth:'',
+                clothes:['短袖','外套','羽绒服']
             },
             methods:{
                 add:function(num){
@@ -30,25 +29,24 @@
                 redu:function(num){
                     this.temperature -= num
                 }
-            },
+            },    
             watch:{
-                /*
                 temperature:function(newVal,oldVal){
                     if(newVal>25){
-                        this.cloth = clothes[0]
+                        this.cloth = this.clothes[0]
                     }
                     else if(newVal<25 && newVal > 10){
-                            this.cloth = clothes[1]
+                            this.cloth = this.clothes[1]
                     }
                     else{
-                        this.cloth = clothes[2]
+                        this.cloth = this.clothes[2]
                     }
                 }
-                */
             }
         })
         // 构造器外写法
-        app.$watch('temperature',function(newVal,oldVal){
+        /*
+        app.$watch('temperature',function(newVal,oldVal){   
             if(newVal>25){
                 this.cloth = clothes[0]
             }
@@ -59,6 +57,7 @@
                 this.cloth = clothes[2]
             }          
         })
+        */
     </script>
 </body>
 </html>
