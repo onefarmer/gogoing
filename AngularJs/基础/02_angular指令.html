@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./../angular/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app = "app">
+        <!-- 数据绑定 -->
+        <div ng-init = " firstName = 'John'">
+            <p>尝试输入:</p>
+            <p>姓名:<input type="text" ng-model = "firstName"/></p>
+            <p>输入的为: {{firstName}}</p>
+        </div>
+        <div ng-init = "quantity=1;price=5">
+            <h2>价格计算</h2>
+            数量： <input type="number" ng-model="quantity">
+            价格： <input type="number" ng-model="price">
+            <p><b>总价: </b>{{ quantity * price }}</p>
+        </div>
+        <!-- ng-repeat 指令会重复一个 HTML 元素： -->
+        <div ng-init = " names = ['Jani','Hege','Kai']">
+            <p>循环数组</p>
+            <ul>
+                <li ng-repeat = "val in names">{{val}}</li>
+            </ul>
+        </div>
+        <!-- ng-repeat 指令用在一个对象数组上： -->
+        <div ng-init = " persons = [
+        {name:'Jani',country:'Norway'},
+        {name:'Hege',country:'Sweden'},
+        {name:'Kai',country:'Denmark'}
+        ]">
+            <p>循环对象:</p>
+            <ul>
+                <li ng-repeat = 'item in persons'>{{ item.name + ' ' + item.country}}</li>
+            </ul>
+        </div>
+        <!-- 自定义指令 -->
+        <run-directive></run-directive>
+        <div run-directive></div>
+    </div>
+    <script>
+        var app = angular.module('app',[]);
+        // 自定义指令
+        app.directive('runDirective',function(){
+            // 通过添加 restrict 属性,并设置值为 "A", 来设置指令只能通过属性的方式来调用:
+            // E 作为元素名使用 A 作为属性使用 C 作为类名使用 M 作为注释使用
+            return {
+                restrict:"EA",
+                template:"<h1>自定义指令!</h1>"
+            }
+        })
+    </script>
+</body>
+</html>
