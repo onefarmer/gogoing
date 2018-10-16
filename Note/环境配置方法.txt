@@ -48,3 +48,5 @@ npm install 依赖项
 npm run dev启动
 npm run build 打包
 
+Vue router
+npm insetall vue-router dev
