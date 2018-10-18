@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./../angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        *{padding: 0;margin: 0;}
+        form{margin: 10px;}
+        form .finished{margin: 10px;background: #EEEEEE;display: inline-block;padding: 0 5px;cursor: pointer;}
+        form li{line-height: 50px;height: 50px;border-bottom: solid 1px #ccc;width: 500px;position: relative;}
+        form i{font-style: normal;position: absolute;right: 0;cursor: pointer;color: #0000CC;}
+        form .time{float: right;padding-right: 20px;}
+        form .last p{line-height: 24px;float: left;margin: 5px;}
+        form .last p em{color: #000;display: inline-block;background: #CCCC77;border-radius: 50%;text-align: center;font-style: normal;padding: 10px;margin: 0 5px;}
+    </style>
+</head>
+<body ng-app = 'myApp' ng-controller = 'myCtrl'>
+    <form>
+        <h1>{{title}}</h1>
+        <input ng-model = 'msg' type="text" placeholder="添加新任务" /><br/><br/>
+        <button ng-click="add()">添加</button><br/><br/>
+        <input type="checkbox"  ng-click="chooseAll()"/><span>标记所有为已解决</span><br/>
+        <span class="finished" ng-click="finishShow('no')">未完成</span>
+        <span class="finished" ng-click="finishShow('yes')">已完成</span>
+        <span class="finished" ng-click="finishShow()">全部</span>
+        <ul>
+            <li ng-repeat = 'item in things' ng-show="item.showbol">
+                <input type="checkbox" ng-model = 'item.bol' ng-click="choose($index)"/>
+                <span>{{item.content}}</span>
+                <span class="time">{{item.time}}</span>
+                <span class="time">{{item.date}}</span>
+                <i ng-click="del($index)">X</i>
+            </li>
+        </ul>
+        <div class="last">
+            <p>未完成：<em>{{nofinish}}</em></p>
+            <p>已完成：<em>{{finish}}</em></p>
+            <p>总数：<em>{{things.length}}</em></p>
+        </div>
+    </form>
+</body>
+</html>
+<script>
+    var app = angular.module('myApp',[]).controller('myCtrl',function($scope){
+        $scope.title = '我的任务列表';
+        $scope.msg = '';
+        $scope.things = [
+            // bol 是否勾选 showbol 是否显示
+			{content:'负分滚粗',date:'2017-1-01',time:'12:00:00',bol:false,showbol:true},
+			{content:'一分拿滚',date:'2017-2-02',time:'13:00:00',bol:false,showbol:true},
+			{content:'二分绕道',date:'2017-3-03',time:'14:00:00',bol:false,showbol:true},
+			{content:'三分接稳',date:'2017-4-04',time:'15:00:00',bol:false,showbol:true}
+		];
+        // 未完成总数
+        $scope.nofinish = $scope.things.length;
+        // 已完成
+        $scope.finish = $scope.things.length - $scope.nofinish ;
+        // 事项选择
+        $scope.choose = function(i){
+            // 清0
+			$scope.nofinish = 0;
+			$scope.finish = 0;
+            // 遍历数据
+            $scope.things.forEach(function(item){
+                if(item.bol){
+					$scope.finish += 1;
+				}
+            })
+            $scope.nofinish = $scope.things.length - $scope.finish;
+        }
+        // 添加任务
+        $scope.add = function(){
+            // 判断输入值为空
+            if( $scope.msg == ''){ return }
+            // 添加时间
+            $scope.date = new Date().toLocaleString().substr(0,10);
+            $scope.time = new Date().toLocaleString().substring(11,19);
+            $scope.things.push(
+                {
+                    content:$scope.msg,
+                    date:$scope.date,
+                    time:$scope.time,
+                    bol:false,
+                    showbol:true
+                }
+            )
+            // 输入框清空
+            $scope.msg =  '';
+            // 重新判断未完成,完成数
+            $scope.choose()
+            console.log($scope.time,$scope.date)
+        }
+        // 删除时间
+        $scope.del = function(i){
+			$scope.things.splice(i,1);
+			$scope.choose()
+		};
+        // 展示已完成
+        $scope.finishShow = function(val){
+            $scope.things.forEach(function(item){
+                // 所有元素显示
+                item.showbol = true;
+                // 如果传的是NO 未完成
+                if( val == 'no' ){
+                    // 如果是已经勾选为完成的事项
+                    if(item.bol){
+                        // 隐藏
+                        item.showbol = false;
+                    }
+                }
+                // 如果是YES 选择的已完成
+                else if( val == 'yes'){
+                    // 如果没有被勾选
+                    if(!item.bol){
+                        // 没有被勾选的隐藏
+                        item.showbol = false;
+                    }
+                }
+            })
+        }
+        // 全部显示
+        $scope.chooseAll = function(){
+            $scope.things.forEach(function(item){
+                item.bol = true
+            })
+		}
+    })
+</script>

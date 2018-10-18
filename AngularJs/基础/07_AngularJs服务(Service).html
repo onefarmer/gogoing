@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./../angular/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app = 'app' ng-controller = 'myCtrl'>
+        <p>{{myUrl}}</p>
+        <p>{{myWelcome}}</p>
+        <p>{{myHeader}}</p>
+        <p>{{theTime}}</p>
+        <hr>  
+        <p>{{str}}</p>       
+        <p>{{ str2 | myFormat }}</p>   
+    </div>
+    <script>
+        var app = angular.module('app',[])
+        app.controller('myCtrl',function($scope,$location,$http,$timeout,$interval,$hexafy){
+            // window.location
+            $scope.myUrl = $location.absUrl();
+            // ajax get
+            $http.get("../Data/data.txt").then(function(response){
+                $scope.myWelcome = response.data
+            })
+            // setTimeout
+            $timeout(function(){
+                $scope.myHeader = "How are you today"
+            },2000)
+            // setInterval 函数。
+            $interval( function(){
+                $scope.theTime = new Date().toLocaleTimeString()
+            },1000)
+            // 自定义
+            $scope.str = $hexafy.myFunc(255)
+            // 自定义 + 过滤器
+            $scope.str2 = $hexafy.myFunc(147258)
+        })
+        // 自定义服务
+        app.service('$hexafy',function(){
+            // 转化16六进制
+            this.myFunc = x => {
+                return x.toString(16)
+            }
+        })
+        // 自定义服务 + 过滤器
+        app.filter('myFormat',['$hexafy',function(hexafy){
+            return function(x){
+                // 倒序
+                // hexafy传入的$hexafy对象
+                x = x.split("").reverse().join("")
+                return hexafy.myFunc(x)
+            }
+        }])
+
+    </script>
+</body>
+</html>

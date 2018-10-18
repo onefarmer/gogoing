@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script type="text/javascript" src="angular/angular.min.js"></script>
+	<script type="text/javascript" src="./../angular/angular.min.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="myCtrl">
 	<p>{{ msg1 | uppercase}}</p>
@@ -12,15 +12,42 @@
 	<p>{{ num | number:2}}</p>
 	<p>{{ money | currency:'RMB ￥' }}</p>
 	<p>{{ 'i-love-you' | myFilter }}</p>
+	<hr>
+	<!-- //查找含有有s的行  -->
+	<p> {{ person | filter:'s'}} </p>
+	<!-- //查找name为iphone的行  -->
+	<p> {{ person | filter:{'name':'iphone'} }} </p>
+	<!-- limitTo字符串，对像的截取 -->
+	<p>{{ "i love tank" | limitTo:6 }}</p>
+	<p>{{ "i love tank" | limitTo:-4 }}</p>
+	<p>{{ person | limitTo:1}}</p>
+	<h3>orderBy对像排序</h3>
+	<!-- 降序  -->
+	<p>{{ person | orderBy:'id':true }}</p>
+	<!-- 升序  -->
+	<p>{{ person | orderBy:'id' }}</p>
 </body>
 </html>
 <script type="text/javascript">
+	/*
+		{{ {foo: "bar", baz: 23} | json }}  //结果：{ "foo": "bar", "baz": 23 }
+		{{ 1304375948024 | date }}             //结果：May 3, 2011 
+		{{ 1304375948024 | date:"MM/dd/yyyy @ h:mma" }}   //结果：05/03/2011 @ 6:39AM 
+		{{ 1304375948024 | date:"yyyy-MM-dd hh:mm:ss" }}  //结果：2011-05-03 06:39:08 
+		{{ 1.234567 | number:1 }} //结果：1.2 
+		{{ 1234567 | number }}   //结果：1,234,567 
+	*/
 	var app = angular.module('myApp',[])
 	app.controller('myCtrl', function($scope){
 		$scope.msg1 = 'fAKer';
 		$scope.time = new Date().getTime();
 		$scope.num = 3.1415923;
 		$scope.money = 10;
+		$scope.person = [
+			{"age": 20,"id": 10,"name": "iphone"}, 
+			{"age": 12,"id": 11,"name": "sunm xing"}, 
+			{"age": 44,"id": 12,"name": "test abc"}
+		]
 		//$scope
 	})
 	//自定义过滤
