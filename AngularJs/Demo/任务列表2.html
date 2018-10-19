@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container {width: 400px; padding: 20px; background: #eee; margin: 0 auto; border-radius: 5px;}
+        .container ul {padding-left: 0;}
+        .container li {list-style-type: none;}
+        .container a{cursor: pointer;color: #ff0000}
+        .container .done-true {color: #999; text-decoration: line-through;}
+    </style>
+    <script src="./../angular/angular.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body ng-app='myApp' ng-controller='myCtrl'>	
+	<div class="container">
+        <h2>任务列表</h2>
+        <span>任务总数：{{ todos.length }}</span>
+        <span>未完成数：{{ remaining() }}</span>
+        <br>
+        <span>[<a ng-click='archive()'>删除完成</a>]</span>
+		<ul>
+			<li ng-repeat='item in todos'>
+				<input type="checkbox" ng-model='item.done' ng-click = 'closeDo($index)'>
+				<span ng-show='item.showing' ng-click='changeFlag($index)' class='done-{{item.done}}' title='{{ item.warning }}' ng-mouseover='warning($index)'>{{ item.text }}</span>
+				<input type="text" ng-model='item.text' ng-show='!item.showing' ng-blur='changeFlag($index)'>
+			</li>
+		</ul>
+		<form ng-submit='addTodo()'>
+			<input type="text" ng-model='todoText'>
+			<button>添加</button>
+		</form>
+    </div>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl',function($scope){
+            // data
+            $scope.todos = [
+                {'text':'coding', 'done':false, 'showing':true, 'warning':''},
+                {'text':'切图', 'done':false, 'showing':true, 'warning':''},
+                {'text':'搬砖', 'done':false, 'showing':true, 'warning':''},
+		    ];
+            // 表单提交事件
+            $scope.addTodo = function(){
+                $scope.todos.push(
+                    {
+                        'text':$scope.todoText, 
+                        'done':false, 
+                        'showing':true, 
+                        'warning':''
+                    }
+                )
+            }
+            // 计算未完成的任务
+            $scope.remaining = function(){
+                var count = 0;
+                $scope.todos.forEach(function(item){
+                    // 判断是否完成
+                    count += item.done?0:1;
+                })
+                return count;
+            }
+            // 删除完成
+            $scope.archive = function(){
+                /*
+                    filter(
+                        function(ele){
+                            ele:每次遍历数组后得到的元素
+                        }
+                    )
+                */
+                $scope.todos = $scope.todos.filter(function(item){
+                    // 如果未完成返回
+                    return !item.done
+                })
+            }
+            // 点击元素内容修改，获得焦点
+            $scope.changeFlag = function(index){
+                // 如果未完成。
+                if(!$scope.todos[index].done){
+                    $scope.todos.forEach(function(item,i){
+                        if( i != index){
+                            // 点击元素以外的输入框隐藏
+                            item.showing = true;
+                        }
+                    })
+                    // 取反
+                    $scope.todos[index].showing = !$scope.todos[index].showing;
+                }
+            }
+            // 防止先点击输入框，再点击checkbox,直接关闭输入框
+            $scope.closeDo = function(index){
+                console.log( $scope.todos[index].showing)
+                if(!$scope.todos[index].showing){
+                    $scope.todos[index].showing = !$scope.todos[index].showing
+                }
+            }
+            // 修改值
+            $scope.warning = function(index){
+                // 如果已完成
+                if($scope.todos[index].done){
+                    $scope.todos[index].warning = '已经完成的任务不能修改';
+                }
+                else{
+                    $scope.todos[index].warning = '';
+                }
+            }
+        })
+    </script>
+</body>
+</html>
