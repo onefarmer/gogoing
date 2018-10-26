@@ -12,18 +12,21 @@
     <script src="common/react-dom.js"></script>
     <script src="common/babel.js"></script>
     <script type = 'text/babel'>
+        // 数据
         var fruits = ['apple','orange','pear']
+
         var MyButton = React.createClass({
             // 初始化
             getInitialState:function(){
-                return { show:true}
+                return { show:true }
             },
             handleClick:function(){
-                this.setState({show:!this.state.show})
+                this.setState({ show:!this.state.show })
             },
             render:function(){
-                var text = this.state.show?'显示':'隐藏';
-                var isHide = this.state.show?{display:'none'}:{display:'block'};
+                // 初始化show判断
+                let text = this.state.show?'显示':'隐藏';
+                let isHide = this.state.show?{display:'none'}:{display:'block'};
                 return (
                     <div>
                         <button onClick = {this.handleClick}>{text}</button>

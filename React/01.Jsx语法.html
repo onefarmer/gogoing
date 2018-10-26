@@ -10,16 +10,22 @@
     <div id="reactContainer"></div>
     <script src="common/react.js"></script>
     <script src="common/react-dom.js"></script>
-    <script>
-        // 没有引入bable转化机制,属于Js语法
+    <script src="common/babel.js"></script>
+    <script type="text/babel">
         var HelloComponent = React.createClass({
             render:function(){
-                return React.createElement('h1',null,'hello world')
+                // props 接收组件 name值
+                return <h1>hello {this.props.name?this.props.name:'world'}</h1>
             }
         })
         ReactDOM.render(
-            React.createElement(HelloComponent),
-            document.getElementById('reactContainer')
+            // React.createElement(HelloComponent),
+            <HelloComponent name='Padan'/>,
+            document.getElementById('reactContainer'),
+            // callback
+            function(){
+                console.log('渲染完成')
+            }        
         )
     </script>
 </body>
