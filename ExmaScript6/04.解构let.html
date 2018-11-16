@@ -10,16 +10,16 @@
 <script>
     // 1 解构数组
     let [a,b,c] = [1,2,3]
-    console.log(a,b,c)
+    console.log('一维数组解构：' + a,b,c)
     /*  
         var a = 1,
         b = 2,
         c = 3;  
     */
 
-    // 2 同一楼一致，结构一样
+    // 2 二维数组解构，同1
     let [x,[y,z],w] = ['x',['y','z'],'w']
-    console.log(x,y,z,w)
+    console.log( '二维数组解构：' + x,y,z,w)
     /*
         var x = 'x',
         y = 'y',
@@ -29,7 +29,7 @@
 
     // 3 默认值
     let [ foo='Alisa' ] = []
-    console.log(foo)
+    console.log('默认值：' + foo)
     /*
         var _ref = [],
         _ref$ = _ref[0],
@@ -47,7 +47,7 @@
 
     // 5 对象结构
     let {adc,sub} = {adc:'UZI',sub:'Ming'}
-    console.log(`对象结构：${adc}和${sub}`)
+    console.log(`对象结构：${adc}----${sub}`)
     /*
         var adc$sub = { adc: 'UZI', sub: 'Ming' },
         adc = _adc$sub.adc,
@@ -65,8 +65,8 @@
     */
 
     // 7 字符串结构
-    let [s1,s2,s3,s4,s5] = 'YOONA';
-    console.log(s1,s2,s3,s4,s5)
+    let [s1,s2,s3,s4,s5,s6] = 'YOONA';
+    console.log(s1,s2,s3,s4,s5,s6)
     /*
         var _YOONA = 'YOONA',
         _YOONA2 = _slicedToArray(_YOONA, 5),
@@ -75,6 +75,7 @@
         s3 = _YOONA2[2],
         s4 = _YOONA2[3],
         s5 = _YOONA2[4]; 
+        s5 = _YOONA2[5];undefined 
     */
 </script>
 </body>

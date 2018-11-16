@@ -8,8 +8,8 @@
 </head>
 <body>
 <script>
-    // 1、... 我们允许它传入的参数是不确定的
-    function fn(...arg){
+    // 1、... 允许传入的参数是不确定的
+    function fn(...arg) {
         console.log(arg[0])
         console.log(arg[1])
         console.log(arg[2])
@@ -30,6 +30,7 @@
     let arr2 = arr1;
     arr2.push('push值');
     console.log(`改变arr2致使arr1值发生变化：${arr1}`);
+    
     // 解决办法
     let arr3 = ['wo','ai','ni']
     let arr4 = [...arr3];
@@ -41,9 +42,8 @@
         arr4.push('No');
     */
 
-    // rest 剩余
-    function restFn(first,...arg){
-        // for of 循环
+    // 剩余
+    function restFn(first,two,...arg){
         for( let val of arg){
             console.log(val)
         }
