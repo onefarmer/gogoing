@@ -8,18 +8,13 @@
 </head>
 <body>
 <script>
-    // 解决Es5 地狱回调函数
-    let state = true;
+    // 解决Es5，地狱回调函数
+    // resolve 解决，reject 拒绝。
 
-    // 参数 -- resolve 解决， 拒绝 reject
+    let state = true;
     function start(resolve,reject){
         if(state){
-            resolve(
-                function num(b){
-                    var a = 0;
-                    return a+b
-                }
-            )
+            resolve('开始')
         }else{
             reject('未准备')
         }
@@ -42,7 +37,7 @@
     // 实例
     new Promise(start).then(
         function(val){
-            console.log(val(10));
+            console.log(val)
             return new Promise(middle)
         }
     ).then(

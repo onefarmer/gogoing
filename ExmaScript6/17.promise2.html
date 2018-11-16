@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let state = false;
+    let promise = new Promise( (resolve,reject)=> {
+        if(state){
+            resolve( (a=true)=> console.log(a) )
+        }
+        else{
+            reject( (b=false)=> console.log(b) )
+        }
+    })
+    // 执行resolve,reject。
+    promise.then(
+        (val) => { console.log( `this is success callback` + val('its true') )},
+        // 错误时建议不要使用then回调
+        (val) => { console.log( `this is err callback` + val() )}  
+    )
+    // 使用catch替代reject处理错误信息
+    promise.then(
+        (val) => { console.log( `this is success callback` + val('its true') )},
+    ).catch(
+        (err) => { console.log( `this is err callback` + err() )} 
+    )
+</script>
+</body>
+</html>
