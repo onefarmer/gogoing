@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 封装 这个状态管理器只能管理 count，不通用
+    const createStore = function(initState){
+        let state = initState;
+        let listeners = [];
+        /*订阅*/
+        function subscribe(listener){
+            listeners.push(listener)
+        }
+        function changeState(newState){
+            console.log(state)
+            state = newState;
+            console.log(state)
+            /*通知*/
+            for( let i=0; i<listeners.length;i++){
+                const listener = listeners[i];
+                listener()
+            }
+        }
+        function getState(){
+            //console.log(state)
+            return state;
+        }
+        return {
+            subscribe,
+            changeState,
+            getState
+        }
+    }
+    // 使用这个状态管理器管理多个状态 counter 和 info 
+    let initState = {
+        counter:{
+            count:0
+        },
+        info:{
+            name:'',
+            description:''
+        }
+    }
+    let store = createStore(initState);
+    // 传入方法
+    store.subscribe( ()=> {
+        // 获取状态
+        let state = store.getState();
+        console.log( `${state.info.name}` );
+    })
+
+    store.changeState({
+        // 解构的旧值
+        ...store.getState(),
+        info:{
+            name:"前端一部",
+            description:"前端开拓者！"
+        }
+    })
+</script>
+</body>
+</html>
