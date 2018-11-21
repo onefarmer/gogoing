@@ -12,17 +12,19 @@
     <script src="common/react-dom.js"></script>
     <script src="common/babel.js"></script>
     <script type="text/babel">
+        let names = ['王二','张三','李四'];
         var MessageBox = React.createClass({
             render:function () {
                 var submessage = [];
-                for( var i = 0; i < 5 ; i++){
+                // 遍历
+                for( var i = 0; i < 3 ; i++){
                     submessage.push(
                         <Submessage key = {'subMessage' + i}/>
                     )
                 }
                 return (
                     <div>
-                        <h1>父组件</h1>
+                        <h1>父</h1>
                         {submessage}                  
                     </div>
                 )
@@ -32,7 +34,7 @@
             render:function(){
                 return(
                     <div>
-                        <h3>子组件</h3>
+                        <h3>子</h3>
                         <Footer/>                    
                     </div>
                 )
@@ -41,7 +43,13 @@
         var Footer  = React.createClass({
             render:function(){
                 return (
-                    <small>底部组件</small>
+                    <div>
+                        {
+                            names.map((element) => {
+                                return <small ket = {element}>{element}</small>
+                            })
+                        }   
+                    </div>
                 )
             }
         })

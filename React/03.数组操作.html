@@ -7,9 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-
-
-    
     <div id="box"></div>
     <script src="common/react.js"></script>
     <script src="common/react-dom.js"></script>
@@ -37,7 +34,7 @@
                             {
                                 stars.map( (item,index) =>{
                                     //item,stars[index]
-                                    return <li>{item}</li>
+                                    return <li key={index}>{item}</li>
                                 })
                             }
                         </ul>
