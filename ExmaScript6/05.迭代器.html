@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function chef(foods){
+            // index
+            let i = 0;
+            return {
+                // 方法
+                next(){
+                    // 迭代
+                    let done = ( i >= foods.length );
+                    // 如果done为true,val为undefined
+                    let value = !done ? foods[i++] : undefined;
+                    // 返回对象
+                    return{
+                        value:value,
+                        done:done
+                    }
+                }
+            }
+        }        
+        let wanghao = chef(['苹果','煎蛋'])
+        console.log(wanghao.next())
+        console.log(wanghao.next())
+        console.log(wanghao.next())
+    </script>
+</body>
+</html>

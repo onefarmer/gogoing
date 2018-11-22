@@ -55,6 +55,46 @@
     }
     let player = Object.assign(player1,player2)
     console.log(player)
+
+    // 添加带空格的值
+    let foods = {};
+    food['hot drink'] = '蛋糕';
+    console.log(foods)
+
+    let dinner = {
+        getDrink(){
+            return '啤酒'
+        }
+    }
+    let breakFast = {
+        getDrink(){
+            return '稀饭'
+        }
+    }
+    let sunday = Object.create(breakFast);
+    console.log(sunday.getDrink());
+    console.log(Object.getPrototypeOf(sunday) === breakFast);
+
+    Object.setPrototypeOf(sunday,dinner);
+    console.log(sunday.getDrink())
+
+    let ss = {
+        __proto__:breakFast
+    }
+    console.log(ss.getDrink())
+    console.log(Object.getPrototypeOf(sunday) === breakFast);
+    ss.__proto__ = dinner;
+    console.log(ss.getDrink())
+    console.log(Object.getPrototypeOf(ss)=== dinner)
+
+    // 覆盖掉原本的方法
+    let friday = {
+        __proto__:breakFast,
+        getDrink(){
+            return super.getDrink() + '呀呀呀'
+        }
+    }
+    console.log(friday.getDrink())
 </script>
 </body>
 </html>

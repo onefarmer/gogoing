@@ -8,7 +8,7 @@
 </head>
 <body>
     
-    <div id="reactContainer"></div>
+    <div id="app"></div>
     <script src="common/react.js"></script>
     <script src="common/react-dom.js"></script>
     <script src="common/babel.js"></script>
@@ -73,7 +73,7 @@
 		});
 
 
-		var messageBox = React.render( <MessageBox/>, 
+		ReactDOM.render( <MessageBox/>, 
 			document.getElementById('app')
 		)
 

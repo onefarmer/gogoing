@@ -53,6 +53,12 @@
         adc = _adc$sub.adc,
         sub = _adc$sub.sub;
     */
+    
+    function breakfast(){
+        return {dessert:'蛋糕',drink:'咖啡',fruit:'苹果'}
+    }
+    let { dessert:aa,drink:bb,fruit:cc } = breakfast()
+    console.log('对象'+aa,bb,cc)
 
     // 6 注意：如此声明，用圆括号来解构
     let mid;

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1、
+        function* chef(){
+            yield '苹果';
+            yield '栗子'
+        }
+        let wg = chef();
+        console.log( wg.next() )
+        console.log( wg.next() )
+        console.log( wg.next() )
+
+        // 2、
+        function* beef(beefs){
+           for( var i = 0; i < beefs.length; i++){
+               yield beefs[i]
+           }
+        }
+        let bf = beff(['牛根','牛排']);
+        console.log( bf.next() )
+        console.log( bf.next() )
+        console.log( bf.next() )
+    </script>
+</body>
+</html>

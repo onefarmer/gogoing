@@ -32,6 +32,22 @@
     let myName = 'lala';
     let thing = `${myName}在${address}上班...`;
     console.log(thing)
+    
+
+    //4
+    let dessert = '蛋糕',
+        drink = '咖啡';
+    let breakfast = kitchen`今天的早餐是${dessert}和${drink}`;
+    function kitchen(str,...val){
+        let result = '';
+        for(let i = 0; i < val.length;i++){
+            result += str[i];
+            result += val[i];
+        }
+        result += str[str.length - 1];
+        return result;
+    }
+    console.log(breakfast)
 </script>
 </body>
 </html>
