@@ -19,51 +19,55 @@
 					selectValue: 'A',
 					radioValue:'B',
 					checkValues:[],
-					textareaValue:'some text here,,,,,'				
+					textareaValue:'some text here,,,,,'
 				}
 			},
-			handleSubmit:function(e){
-				e.preventDefault();
-				var formData = {
-					input: this.refs.goodInput.value,
-					select: this.refs.goodSelect.value,
-					textarea: this.refs.goodTextarea.value,
-					radio: this.state.radioValue,
-					check: this.state.checkValues,
-				}
-
-				console.log('the form result is:')
-				console.log(formData);
-
-				this.refs.goodRadio.saySomething();
-
-			},
-			handleRadio:function(e){
+			handleRadio:function(e) {
 				this.setState({
-					radioValue: e.target.value,
+					radioValue: e.target.value
 				})
 			},
-			handleCheck:function(e){
+			handleCheck:function(e) {
+				// 初始状态
 				var checkValues = this.state.checkValues.slice();
+				// 点击新值
 				var newVal = e.target.value;
+				// 匹配点击新值是否存在
 				var index = checkValues.indexOf(newVal);
 				if( index == -1 ){
+					// 不存在，添加
 					checkValues.push( newVal )
 				}else{
+					// 存在，删除
 					checkValues.splice(index,1);
 				}
-
+				// 更新状态
 				this.setState({
 					checkValues: checkValues,
 				})
 			},
-			render: function(){
-				return (
+			handleSubmit:function(e) {
+				e.preventDefault();
+				var formData = {
+					// 输入框
+					input: this.refs.goodInput.value,
+					// 选择框
+					select: this.refs.goodSelect.value,
+					// 留言
+					textarea: this.refs.goodTextarea.value,
+					// 单，多选
+					radio: this.state.radioValue,
+					check: this.state.checkValues,
+				}			
+				this.refs.goodRadio.saySomething();
+			},
+			render:function(){
+				return(
 					<form onSubmit={this.handleSubmit}>
-						<input ref="goodInput" type="text" defaultValue={this.state.inputValue }/>
+						<input type="text" ref="goodInput" defaultValue = {this.state.inputValue}/>
 						<br/>
 						选项：
-						<select defaultValue={ this.state.selectValue } ref="goodSelect">
+						<select defaultValue = { this.state.selectValue} ref = "goodSelect">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -71,54 +75,50 @@
 							<option value="E">E</option>
 						</select>
 						<br/>
-						<p>radio button!</p>
-						<RadioButtons ref="goodRadio" handleRadio={this.handleRadio} />
+						<RadioButtons ref="goodRadio" handleRadio={this.handleRadio}/>
 						<br/>
-						
-						<Checkboxes handleCheck={this.handleCheck} />
+						<Checkboxes handleCheck={this.handleCheck}/>
 						<br/>
 						<textarea defaultValue={this.state.textareaValue} ref="goodTextarea"></textarea>
+						<br/>
 						<button type="submit">提交</button>
-
 					</form>
 				)
 			}
-		});
-		
+		})
 		var RadioButtons = React.createClass({
 			saySomething:function(){
 				alert("yo what's up man!");
 			},
 			render:function(){
-				return (
+				return(
 					<span>
 						A
-						<input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="A"/>
+						<input name="goodRadio" onChange={this.props.handleRadio} type="radio" value="A"/>
 						B
-						<input onChange={this.props.handleRadio} name="goodRadio" type="radio" defaultChecked value="B"/>
+						<input name="goodRadio" onChange={this.props.handleRadio} type="radio" defaultChecked value="B"/>
 						C
-						<input onChange={this.props.handleRadio} name="goodRadio" type="radio" value="C"/>
-					</span>
-				)
-			}
-		});
-
-		var Checkboxes = React.createClass({
-			render: function(){
-				return (
-					<span>
-						A
-						<input onChange={this.props.handleCheck}  name="goodCheckbox" type="checkbox" value="A"/>
-						B
-						<input onChange={this.props.handleCheck} name="goodCheckbox" type="checkbox" value="B" />
-						C
-						<input onChange={this.props.handleCheck} name="goodCheckbox" type="checkbox" value="C" />
+						<input name="goodRadio" onChange={this.props.handleRadio} type="radio" value="C"/>
 					</span>
 				)
 			}
 		})
+		var Checkboxes = React.createClass({
+			render:function(){
+				return(
+					<span>
+						A
+						<input name="goodCheckbox" onChange={this.props.handleCheck} type="checkbox" value="A"/>
+						B
+						<input name="goodCheckbox" onChange={this.props.handleCheck} type="checkbox" value="B" />
+						C
+						<input name="goodCheckbox" onChange={this.props.handleCheck} type="checkbox" value="C" />
+					</span>					
+				)
 
-        ReactDOM.render(
+			}			
+		})
+		ReactDOM.render(
             <FormApp/>,
             document.getElementById('app')
         )
