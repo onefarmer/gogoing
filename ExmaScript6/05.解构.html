@@ -26,6 +26,12 @@
         z = 'z',
         w = 'w';    
     */
+    let heros = ['锐雯','劼','薇恩']
+    function herosSay(a,b,c){
+        console.log('解构形参' + a,b,c)
+    }
+    herosSay(...heros)
+    // arrFn.apply(undefined, arr); Es5
 
     // 3 默认值
     let [ foo='Alisa' ] = []
@@ -57,8 +63,10 @@
     function breakfast(){
         return {dessert:'蛋糕',drink:'咖啡',fruit:'苹果'}
     }
-    let { dessert:aa,drink:bb,fruit:cc } = breakfast()
+    let objX = { dessert:aa,drink:bb,fruit:cc } = breakfast();
+    //aa,bb,cc 对应key的值
     console.log('对象'+aa,bb,cc)
+    console.log(objX)
 
     // 6 注意：如此声明，用圆括号来解构
     let mid;

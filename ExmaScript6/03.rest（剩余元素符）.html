@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>  
+        // ... 允许传入的参数是不确定的
+        function fn(...arg) {
+            console.log(arg[0])
+            console.log(arg[1])
+            console.log(arg[2])
+            console.log(arg[3])
+        }
+        fn(1,2,3)
+        /*
+            function fn() {
+                console.log(arguments.length <= 0 ? undefined : arguments[0]);
+                console.log(arguments.length <= 1 ? undefined : arguments[1]);
+                console.log(arguments.length <= 2 ? undefined : arguments[2]);
+                console.log(arguments.length <= 3 ? undefined : arguments[3]);
+            }
+        */
+
+        // 剩余
+        let fruits = ['苹果','梨儿']
+        let foods = ['蛋糕',...fruits]
+        console.log(fruits) // ["苹果", "梨儿"]
+        console.log(...fruits) // 解构后的没用数组形式 --> 苹果 梨儿
+        console.log(foods) // ["蛋糕", "苹果", "梨儿"]
+        console.log('分割线：----------------------------------------------')
+
+        // 形参剩余
+        function restFn(first,second,...arg){
+            for( let val of arg){
+                console.log(val)
+            }
+            console.log('剩余长度' + arg.length)
+        }
+        restFn(0,1,2,3,4,5,6,7,8)
+        console.log('分割线：----------------------------------------------')
+        
+        // 变量剩余
+        let dessert = '甜点',
+            drink = '咖啡';
+        let breakfast = kitchen`今天的早餐是${dessert}和${drink}`;
+
+        // 输入完整形式
+        console.log(breakfast) 
+        // kitchen拆分字符串和剩余插值
+        function kitchen(str,...val){
+            // 拆分变量，
+            console.log(str)
+            // 剩余
+            console.log(...val,val)
+            // 合并完整
+            let result = '';
+            for(let i = 0; i < val.length;i++){
+                result += str[i];
+                result += val[i];
+            }
+            result += str[str.length - 1];
+            // 完整输出
+            console.log(result)
+            return result;
+        }
+    </script>
+</body>
+</html>

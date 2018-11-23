@@ -10,28 +10,7 @@
 </body>
 </html>
 <script>
-    // 1、es5 如果num传入0 则为false,num=200
-    function action(num){
-        num = num || 200;
-        return num;
-    }
-    console.log( action(0) )
-
-    // 1、es6 默认定值
-    function action2( num = 200){
-        console.log(num)
-    }
-    action2(0) //0
-    action2() //200
-    action2(300) //300
-
-    /*
-        function action2() {
-            var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 200;
-        }
-    */
-
-    // 2、箭头函数
+    // 、箭头函数
     console.log( [1,2,3].map( x => x + 1) )
     /*
         console.log( [1,2,3].map( function(x){
@@ -39,7 +18,7 @@
         }.bind(this)))
     */
 
-    // 3、一个表达式情况下
+    // 、一个表达式情况下
     var people = name => 'hello  ' + name;
     console.log( people('alisa') )
     /*

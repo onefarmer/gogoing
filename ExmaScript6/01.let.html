@@ -11,16 +11,16 @@
     // var关键字声明变量，无论声明在何处，都会被视为声明在函数的最顶部
     // let只在函数括号内的块级作用域 , 其他地方找不到 。
 
-    // 1、for循环中会污染i的全局，输出10次10
+    // for循环中会污染i的全局，输出10次10
     var facus = [];
     for(var i=0;i<10;i++){
         facus.push( function(){ console.log('Es5中的i值：' + i) })
     }
     facus.forEach( function(item,index){ item() })
 
-    // 2、Es5输出 0-9
+    // Es5输出 0-9
     var facus2 = [];
-    for( var t=0;t<10;t++){
+    for(var t=0;t<10;t++){
         facus2.push(
             (function(val){
                 return function(){
@@ -31,9 +31,9 @@
     }
     facus2.forEach(function(item,index){ item() })
     
-    // 3、Es6 0-9
+    // Es6 0-9
     var facus3 = [];
-    for( let m=0;m<10;m++ ){
+    for(let m=0;m<10;m++){
         facus3.push(function(){
             console.log('es6：' + m)
         })

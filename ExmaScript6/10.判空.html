@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 判断空位
+    let girls = ['alisa',,,]
+    console.log(0 in girls)
+    console.log(1 in girls)
+    console.log(2 in girls)
+
+    // 判断是否存在值
+    let player ={
+       top:'Shy',
+       mid:'rookie'
+    }
+    console.log(
+        // 引号，不然为变量
+        'top' in player
+    )
+</script>
+</body>
+</html>
