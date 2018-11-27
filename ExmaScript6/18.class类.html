@@ -8,37 +8,48 @@
 </head>
 <body>
 <script>
-    // 1、多方法
-    class Player{
-        name(val){
-            // 注意 return 其他方法(skill)才能调用
-            return val;
+    // 类
+    class Chef{
+        // 实例初始化
+        constructor(food){
+            this.food = food;
+            this.dish = [];
         }
-        skill(val,myname){
-            // 调用name
-            console.log(`${this.name(myname)}：是一名${val}`)
+        // 获取
+        get menu(){
+            return this.dish;
         }
-        // 构造函数传参
-        constructor(a,b){
-            this.a = a;
-            this.b = b
+        // 设置
+        set menu(dish){
+            this.dish.push(dish)
         }
-        add(){
-            return this.a + this.b;
+        intro(){
+            return `${this.food},${this.dish}`
+        }
+        static cook(food){
+            console.log(food)
         }
     }
     // 实例
-    let uzi = new Player(10,20);
-    // 传参->constructor
-    console.log( uzi.name('狂小狗') )
-    uzi.skill('射手','狂小狗')
-    // 类的传参
-    console.log(uzi.add())
+    let cooker = new Chef();
+    console.log(cooker.menu = '食圣')
+    console.log(cooker.menu = '食神')
+    console.log(cooker.menu)
 
-    // 2、继承
-    class LolPlayer extends Player{}
-    let faker = new LolPlayer();
-    faker.skill('大魔王','李哥')
+    Chef.cook('Apple')
+
+    // 继承
+    class Person extends Chef {
+        constructor(food,dish){
+            super(food,dish);
+        }
+    }
+
+    let ps = new Person('西瓜')
+    ps.menu = '冬瓜'
+    ps.menu = '西瓜'
+    ps.menu = '南瓜'
+    console.log( ps.intro())
 </script>
 </body>
 </html>

@@ -8,41 +8,29 @@
 </head>
 <body>
 <script>
-    // 1、去重属性的数组
-    let setArr = new Set(['yoo','yaa','ycc','yxx']);
-    // 输出
-    console.log(setArr);
-    // 添加重复项，无效果
-    setArr.add('yoo');
-    // 添加非重复项
-    setArr.add('yqq');
-    // 输出
-    console.log(setArr);
-    // 删除
-    setArr.delete('yqq');
-    // 输出
-    console.log(setArr);
-    // 判断存在
-    console.log(setArr.has('yoo'))
-    // 删除
-    setArr.delete('ycc')
-    // 输出
-    console.log(setArr);
-    // 清空
-    setArr.clear()
-    // 输出
-    console.log(setArr);
+    // 非重复数组
+    let setArr = new Set(['Jay','John','Gavin','Lone']);
 
-    // 2、遍历
-    let setArr2 = new Set(['zaa','zxx','zcc'])
-
-    for( let i of setArr2){
-        console.log(i)
+    // 遍历
+    for( let item of setArr){
+        console.log('数组：' + item)
     }
+    console.log('长度：' + setArr.size)
+    setArr.forEach( val => console.log('forEach-->' + val) )
+    console.log(setArr);
 
-    setArr2.forEach( val => console.log(val) )
+    setArr.add('Jay'); // 添加重复项
+    setArr.add('Parse'); // 添加非重复项
+    console.log(setArr);
 
-    console.log(setArr2.size)
+    
+    setArr.delete('Jay'); // 删除
+    console.log(setArr);
+
+    console.log(setArr.has('Gavin')) // 判断存在
+    
+    setArr.clear() // 清空
+    console.log(setArr);
 </script>
 </body>
 </html>
