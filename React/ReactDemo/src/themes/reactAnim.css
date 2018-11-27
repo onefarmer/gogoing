@@ -1,0 +1,20 @@
+.reactAnim-enter{
+    margin-left:-200px;
+    /* 持续时间 */
+    transition-duration:500ms;
+    /* transform:rotate(0deg) */
+}
+.reactAnim-enter-active {
+    margin-left: 0px;
+    /* transform:rotate(360deg) */
+}
+
+.reactAnim-leave{
+    transition-duration:300ms;
+    opacity: 1;
+    margin-left: 0px;
+}
+.reactAnim-leave-active{
+    margin-left: 300px;
+    opacity: 0;
+}

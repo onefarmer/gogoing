@@ -15,11 +15,15 @@ export default class Home extends Component{
                 <ul>
                     {
                         this.state.list.map( (item) => {
-                            return <li>
+                            return <li key={item}>
+                                {/* $传参 10000 10086 10010*/}
                                 <Link to={`/detail/${item}`}>{item}</Link>
                             </li>;
                         })
                     }
+                    <li><Link to="/detail">无参数链接</Link></li>
+                    <li><Link to="/detail/abc">非数字测试链接</Link></li>
+                    <li><Link to="/detail/101">三位数链接测试</Link></li>
                 </ul>
 
             </div>
