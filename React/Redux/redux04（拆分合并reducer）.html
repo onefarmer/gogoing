@@ -10,9 +10,12 @@
 <script>
     // 封装 这个状态管理器只能管理 count，不通用
     const createStore = function(reducer,initState){
+        // 初始数据 initState
         let state = initState;
+        // combination合并 reducer
+        // 数据监听
         let listeners = [];
-        /*订阅*/
+        /* 订阅 */
         function subscribe(listener){
             listeners.push(listener)
         }
@@ -24,12 +27,12 @@
                 listener();
             }
         }
+        // 数据返回
         function getState(){
-            //console.log(state)
             return state;
         }
          /* 注意！！！只修改了这里，用一个不匹配任何计划的 type，来获取初始值 */
-        dispatch({ type: Symbol() })
+        //dispatch({ type: Symbol() })
         return {
             subscribe,
             dispatch,
@@ -77,17 +80,17 @@
         const reducerKeys = Object.keys(reducers)
         /*返回合并后的新的reducer函数*/
         return function combination(state = {}, action) {         
-        /*生成的新的state*/
+        /* 生成的新的state */
             const nextState = {}
 
-            /*遍历执行所有的reducers，整合成为一个新的state*/
+            /* 遍历执行所有的reducers，整合成为一个新的state */
             for (let i = 0; i < reducerKeys.length; i++) {
                 const key = reducerKeys[i]
                 // counterReducer infoReducer方法 
                 const reducer = reducers[key]         
-                /*之前的 key 的 state*/
+                /* 之前的 key 的 state */
                 const previousStateForKey = state[key];
-                /*执行 分 reducer，获得新的state*/
+                /* 执行 分 reducer，获得新的state */
                 const nextStateForKey = reducer(previousStateForKey, action)
                 nextState[key] = nextStateForKey
             }
@@ -106,25 +109,32 @@
         },
         info: {
             name: '前端九部',
-            description: '我们都是前端爱好者！'
+            description: 'A项目已经开始构建'
         }
     }
     // 仓库
     let store = createStore(reducer, initState);
-    // 输出
+    // 输出，回调函数
     store.subscribe(() => {
+        // 获取数据
         let state = store.getState();
-        console.log(state.counter.count, state.info.name, state.info.description);
+        console.log('修改后：'+state.counter.count, state.info.name, state.info.description);
     });
     /* 自增 */
-    // store.dispatch({
-    //     type: 'INCREMENT'
-    // });
+
+    /*
+    store.dispatch({
+        type: 'INCREMENT'
+    });
+    */
+
     /* 修改状态 */
+    
     store.dispatch({
         type: 'SET_NAME',
-        name: '前端九部2号（修改后）'
+        name: '前端九部更改前端核心一部'
     });    
+    
     
 
 </script>
