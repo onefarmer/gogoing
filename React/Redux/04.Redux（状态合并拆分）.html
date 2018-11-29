@@ -8,19 +8,22 @@
 </head>
 <body>
 <script>
-    // 封装 这个状态管理器只能管理 count，不通用
+    // 封装
     const createStore = function(reducer,initState){
         // 初始数据 initState
         let state = initState;
-        // combination合并 reducer
-        // 数据监听
+        // 订阅者
         let listeners = [];
         /* 订阅 */
         function subscribe(listener){
             listeners.push(listener)
         }
+        // changeState => dispatch
         function dispatch(action) {
-            /*请按照我的计划修改 state*/
+            // action dispatch --> 给的状态改变值
+            console.log(action)
+            /* 按照我的计划修改 state*/
+            // reducer 返回合并后的 combineReducers函数
             state = reducer(state, action);
             for (let i = 0; i < listeners.length; i++) {
                 const listener = listeners[i];
@@ -31,17 +34,51 @@
         function getState(){
             return state;
         }
-         /* 注意！！！只修改了这里，用一个不匹配任何计划的 type，来获取初始值 */
-        //dispatch({ type: Symbol() })
+        /* 注意！！！只修改了这里，用一个不匹配任何计划的 type，来获取初始值 */
+        dispatch({ type: Symbol() })
         return {
             subscribe,
             dispatch,
             getState
         }
+    }    
+    // 初始状态
+    let initState = {
+        counter: {
+            count: 0
+        },
+        info: {
+            name: '前端九部',
+            description: 'A项目已经开始构建'
+        }
     }
+    // 合并----------------------------------------------------------
+    const reducer = combineReducers({
+        counter: counterReducer,
+        info: infoReducer
+    });
+    // 仓库
+    let store = createStore(reducer, initState);
+    // 状态读取
+    store.subscribe(() => {
+        let state = store.getState();
+        console.log('订阅者=============================================================')
+        console.log('修改后：'+state.counter.count, state.info.name, state.info.description);
+    });
+
+    // 状态修改
+    store.dispatch({
+        type: 'SET_NAME',
+        name: '前端九部更改前端核心一部'
+    });    
+
     /*counterReducer, 一个子reducer*/
     /*注意：counterReducer 接收的 state 是 state.counter*/
     function counterReducer(state, action) {
+    /*注意：如果 state 没有初始值，那就给他初始值！！*/  
+        if (!state) {
+            state = initState;
+        }
         switch (action.type) {
             case 'INCREMENT':
             return {
@@ -59,6 +96,8 @@
     /*InfoReducer，一个子reducer*/
     /*注意：countReducer 接收的 state 是 state.info*/
     function infoReducer(state, action) {
+        console.log(' 数据替换 ============================== ')
+        console.log(state,action)
         switch (action.type) {
             case 'SET_NAME':
             return {
@@ -74,69 +113,33 @@
             return state;
         }
     }
-    //  接收reducer
+    //  接收reducer传入的reducers结合的函数
     function combineReducers(reducers) {
         /* reducerKeys = ['counter', 'info'] 获取key值 */
         const reducerKeys = Object.keys(reducers)
-        /*返回合并后的新的reducer函数*/
-        return function combination(state = {}, action) {         
-        /* 生成的新的state */
+        /* 返回合并后的新的reducer函数 */
+        return function combination(state = {}, action) { 
+            console.log(state,action) 
+            // state 初始化数据 action 状态改变     
+            /* 生成的新的state */
             const nextState = {}
-
             /* 遍历执行所有的reducers，整合成为一个新的state */
             for (let i = 0; i < reducerKeys.length; i++) {
                 const key = reducerKeys[i]
                 // counterReducer infoReducer方法 
                 const reducer = reducers[key]         
-                /* 之前的 key 的 state */
+                /* 之前的 对应key的state状态 旧值 */
                 const previousStateForKey = state[key];
-                /* 执行 分 reducer，获得新的state */
+                console.log(previousStateForKey)
+                /* 执行 分 reducer，获得新的state 传入曾经的值 改变的值 */
                 const nextStateForKey = reducer(previousStateForKey, action)
                 nextState[key] = nextStateForKey
             }
+            console.log('修改后的数据 ============================================')
+            console.log(nextState)
             return nextState;
         }
     }   
-    // 合并
-    const reducer = combineReducers({
-        counter: counterReducer,
-        info: infoReducer
-    });
-    // 初始状态
-    let initState = {
-        counter: {
-            count: 0
-        },
-        info: {
-            name: '前端九部',
-            description: 'A项目已经开始构建'
-        }
-    }
-    // 仓库
-    let store = createStore(reducer, initState);
-    // 输出，回调函数
-    store.subscribe(() => {
-        // 获取数据
-        let state = store.getState();
-        console.log('修改后：'+state.counter.count, state.info.name, state.info.description);
-    });
-    /* 自增 */
-
-    /*
-    store.dispatch({
-        type: 'INCREMENT'
-    });
-    */
-
-    /* 修改状态 */
-    
-    store.dispatch({
-        type: 'SET_NAME',
-        name: '前端九部更改前端核心一部'
-    });    
-    
-    
-
 </script>
 </body>
 </html>

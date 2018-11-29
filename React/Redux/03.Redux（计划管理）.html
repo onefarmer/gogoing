@@ -8,23 +8,25 @@
 </head>
 <body>
 <script>
-    // 封装 这个状态管理器只能管理 count，不通用
+    // 封装 这个状态管理器只能管理
     const createStore = function(plan,initState){
         let state = initState;
-        let listeners = [];
-        /*订阅*/
+        let listeners = [];    
+        /* 订阅 */
         function subscribe(listener){
             listeners.push(listener)
-        }
+        }    
+        // 状态改变 之前传递新数据 这次直接传递动作，附带类型
         function changeState(action){
-            /*请按照我的计划修改 state*/  
+            /* 请按照我的计划修改state */  
             state = plan(state,action);
-            /*通知*/
+            /* 通知 */
             for( let i=0; i<listeners.length;i++){
                 const listener = listeners[i];
                 listener()
             }
         }
+        // 状态返回
         function getState(){
             //console.log(state)
             return state;
@@ -40,22 +42,25 @@
         count:0
     }
     let store = createStore(plan,initState);
-    
+    // 读取状态
     store.subscribe(()=>{
         let state = store.getState();
         console.log( state.count )
     })
-
     // 设置一个 plan 函数，接收现在的 state，和一个 action，返回经过改变后的新的 state。
     /* 注意：action = {type:'',other:''}, action 必须有一个 type 属性 */
+
+    // state 旧数据 action 动作附带限制类型
     function plan(state,action){
         switch(action.type){
+            // 增
             case 'INCREMENT':{
                 return {
                     ...state,
-                    count:state.count + 1
+                    count:state.count + 100
                 }
             }
+            // 减
             case 'DECREMENT':{
                 return {
                     ...state,
@@ -74,10 +79,11 @@
     store.changeState({
         type: 'DECREMENT'
     });
-    /* 我想随便改 计划外的修改是无效的！*/
+    /* 随意类型 计划外的修改是无效的！*/
     store.changeState({
         count: 'abc'
     });
+
 </script>
 </body>
 </html>
