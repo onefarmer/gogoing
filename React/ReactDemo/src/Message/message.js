@@ -39,7 +39,7 @@ export default class Message extends Component{
     render(){
         return(
             <div className = "msg">
-                <h2>留言板</h2>
+                <h2>Message Board</h2>
                 <div className = "comments"></div>
                 {
                     this.state.comments.map((item,index)=>{

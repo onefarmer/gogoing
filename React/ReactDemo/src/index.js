@@ -23,17 +23,20 @@ const reducer = (state={list:[]},action={}) =>{
 */
 
 // 拆分（2）
+
 const reducer = combineReducers({
     // 数据拆分化
     list:TodoListReducer,
     // 中间件（3)
     count:CountReducer
 })
+
 // -------------------------------------------------> （1）
 const store = createStore(reducer,{list:[]},applyMiddleware(thunk));
 
 // const state = store.getState()
 function renderPage(){
+    //<App store={store}/>
     ReactDOM.render(<App store={store}/>, document.getElementById('root'));
 }
 // 刷新

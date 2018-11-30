@@ -8,10 +8,10 @@ import {
     Switch
   } from 'react-router-dom'
 
-import Home from './../pages/home'
-import News from './../pages/news'
-import Others from './../pages/others'
-import Detail from './../pages/detail'
+import Home from './../NavPages/home'
+import News from './../NavPages/news'
+import Others from './../NavPages/others'
+import Detail from './../NavPages/detail'
 import './../themes/nav.css';
 
 export default class RouterNav extends Component{

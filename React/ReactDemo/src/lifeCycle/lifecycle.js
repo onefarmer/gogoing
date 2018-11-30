@@ -48,6 +48,7 @@ export default class LifeCycle extends Component{
         console.log('render');
         return(
             <div className = 'lifeApp'>
+                <h3>LifeCycle</h3>
                 <button onClick = {this.toggle}>切换</button>
                 {this.state.flag ? <Child/> : null}
             </div>

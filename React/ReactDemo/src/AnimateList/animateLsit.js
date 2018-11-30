@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import ReactCSSTranstionGroup from 'react-addons-css-transition-group'
 import './../themes/reactAnim.css';
 
-export default class AnimateCont extends Component{
+export default class AnimateList extends Component{
     constructor(){
         super();
         this.state = {
-            list:['导航']
+            list:[]
         }
         this.addTodo = this.addTodo.bind(this)
     }
@@ -28,6 +28,7 @@ export default class AnimateCont extends Component{
         })
         return(
             <div className = "animateApp">
+                <h2>Animate List</h2>
                 <input type = "text" ref = "todoVal"/>
                 <button onClick = {this.addTodo}>添加</button>
                 <ul>
