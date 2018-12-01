@@ -61,3 +61,6 @@ mkdir new-react-demo
 cd new-react-demo
 yo react-webpack
 
+5--------
+npm install -g yarn
+

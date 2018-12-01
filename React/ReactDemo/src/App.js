@@ -6,16 +6,18 @@ import Message from './Message/message'// message board
 import LifeCycle from './lifeCycle/lifecycle' // 生命周期
 import AnimateCont from './AnimateList/animateLsit' // Animate List
 import RouterNav from './Router/router' // Router
-
+//
+import Demo from './Components/demo'
 import './App.css'; // 样式
 
 class App extends Component {
   constructor(){
     super();
-    this.addTodo = this.addTodo.bind(this)
+    //this.addTodo = this.addTodo.bind(this)
     this.addOne = this.addOne.bind(this)  
   }
-  addTodo(){
+  // 修改指针不需要bind
+  addTodo=()=>{
     this.props.store.dispatch({
       type:"ADD_TODO",
       payload:this.refs.todoVal.value
@@ -49,6 +51,8 @@ class App extends Component {
         <AnimateCont/>
         <hr/>
         <RouterNav/> 
+        <hr/>
+        <Demo/>
         <hr/>
         <div className = "StoreApp">
           <input type="text" ref="todoVal"/>
