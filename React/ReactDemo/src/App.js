@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 
-import TitleChange from './title/parents' // Child Change Parent
-import List from './List/list' // List Pros Send Data
-import Message from './Message/message'// message board
-import LifeCycle from './lifeCycle/lifecycle' // 生命周期
-import AnimateCont from './AnimateList/animateLsit' // Animate List
+import TitleChange from './Components/ChildSendParent/parents' // Child Change Parent
+import Message from './Components/Message'// message board
+import LifeCycle from './Components/lifecycle' // 生命周期
+import AnimateCont from './Components/animateLsit' // Animate List
 import RouterNav from './Router/router' // Router
-//
-import Demo from './Components/demo'
-import './App.css'; // 样式
+// New Lesson
+import ImgShow from './Components/imgShow'
+import Form from './Components/form'
+import GotoList from './Components/GodoList'
+import PropsTrans from './Components/props/News'
+// 样式
+import './assets/css/App.css'; 
 
 class App extends Component {
   constructor(){
@@ -39,10 +42,14 @@ class App extends Component {
      const list = this.props.store.getState().list;
      const count = this.props.store.getState().count;
     return (  
-      <div className = "App">      
+      <div className = "App"> 
+        <PropsTrans/>
+        <hr/>     
         <TitleChange/>
         <hr/>
-        <List title = "List Data" />
+        <ImgShow title = "img output"/>
+        <hr/>
+        <GotoList title = "GotoList Data"/>
         <hr/>
         <Message/>
         <hr/>
@@ -52,7 +59,7 @@ class App extends Component {
         <hr/>
         <RouterNav/> 
         <hr/>
-        <Demo/>
+        <Form/>
         <hr/>
         <div className = "StoreApp">
           <input type="text" ref="todoVal"/>

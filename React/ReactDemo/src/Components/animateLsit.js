@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactCSSTranstionGroup from 'react-addons-css-transition-group'
-import './../themes/reactAnim.css';
+import '../assets/css/reactAnim.css';
+import storage from '../model/storage' // 本地储存
 
 export default class AnimateList extends Component{
     constructor(){
@@ -24,6 +25,8 @@ export default class AnimateList extends Component{
     }
     render(){
         let items = this.state.list.map((item,index)=>{
+            // local storage
+            storage.set(index,item)
             return <li key={item}>{item}<button onClick = {() => this.delateTodo(index)}>X</button></li>
         })
         return(

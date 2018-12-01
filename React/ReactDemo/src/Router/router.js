@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import {
     BrowserRouter as Router,
     Route,
-    Link,
+    //Link,
     NavLink,
     Redirect,
     Switch
   } from 'react-router-dom'
 
-import Home from './../NavPages/home'
-import News from './../NavPages/news'
-import Others from './../NavPages/others'
-import Detail from './../NavPages/detail'
-import './../themes/nav.css';
+import Home from './NavPages/home'
+import News from './NavPages/news'
+import Others from './NavPages/others'
+import Detail from './NavPages/detail'
+import './nav.css';
 
 export default class RouterNav extends Component{
     render(){
