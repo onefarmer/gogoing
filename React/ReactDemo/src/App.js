@@ -13,6 +13,9 @@ import PropsTrans from './Components/props/News'
 // 样式
 import './assets/css/App.css'; 
 
+// public
+import Communication from './public/communication/news'
+
 class App extends Component {
   constructor(){
     super();
@@ -43,6 +46,8 @@ class App extends Component {
      const count = this.props.store.getState().count;
     return (  
       <div className = "App"> 
+        <Communication/>
+        <hr/>
         <PropsTrans/>
         <hr/>     
         <TitleChange/>

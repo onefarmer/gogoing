@@ -18,8 +18,8 @@ class Home extends Component {
     constructor(props){
         super(props);        
         this.state={
-          msg:'我是一个首页组件',
-          title:'首页组件'
+          msg:'首页组件 Message',
+          title:'首页组件 Title'
         }
     }
     render() {
