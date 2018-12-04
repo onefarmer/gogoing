@@ -6,7 +6,8 @@ class Parent extends Component{
         super()
         this.sendDataFromChild = this.sendDataFromChild.bind(this)
         this.state = {
-            title:'Change Data From Child'
+            title:'Change Data From Child',
+            num:999
           }
     }
     sendDataFromChild(val){
@@ -18,7 +19,7 @@ class Parent extends Component{
         return(
             <div>
                 <h1>{this.state.title}</h1>
-                <Children sendDataFromChild = {this.sendDataFromChild}/>
+                <Children sendDataFromChild = {this.sendDataFromChild} num = {this.state.num} />
             </div>
             
         )

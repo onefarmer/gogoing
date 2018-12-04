@@ -3,18 +3,16 @@ import React, { Component } from 'react';
 import TitleChange from './Components/ChildSendParent/parents' // Child Change Parent
 import Message from './Components/Message'// message board
 import LifeCycle from './Components/lifecycle' // 生命周期
-import AnimateCont from './Components/animateLsit' // Animate List
+import AnimateCont from './Components/TransitionGroup/animateLsit' // Animate List
 import RouterNav from './Router/router' // Router
 // New Lesson
 import ImgShow from './Components/imgShow'
 import Form from './Components/form'
 import GotoList from './Components/GodoList'
-import PropsTrans from './Components/props/News'
 // 样式
 import './assets/css/App.css'; 
 
-// public
-import Communication from './public/communication/news'
+import Communication from './Components/Communication/news'
 
 class App extends Component {
   constructor(){
@@ -47,8 +45,6 @@ class App extends Component {
     return (  
       <div className = "App"> 
         <Communication/>
-        <hr/>
-        <PropsTrans/>
         <hr/>     
         <TitleChange/>
         <hr/>

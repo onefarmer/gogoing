@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactCSSTranstionGroup from 'react-addons-css-transition-group'
-import '../assets/css/reactAnim.css';
-import storage from '../model/storage' // 本地储存
+import './reactAnim.css';
+import storage from '../../model/storage' // storag
 
 export default class AnimateList extends Component{
     constructor(){
