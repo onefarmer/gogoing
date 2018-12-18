@@ -6,10 +6,11 @@ class Parent extends Component{
         super()
         this.sendDataFromChild = this.sendDataFromChild.bind(this)
         this.state = {
-            title:'Change Data From Child',
+            title:'数据改变（从子传父）',
             num:999
           }
     }
+    // 传入子组件的方法
     sendDataFromChild(val){
         this.setState({
             title:val
@@ -18,8 +19,9 @@ class Parent extends Component{
     render(){
         return(
             <div>
-                <h1>{this.state.title}</h1>
+                {/* 传入方法于子组件 */}
                 <Children sendDataFromChild = {this.sendDataFromChild} num = {this.state.num} />
+                <h1>{this.state.title}</h1>
             </div>
             
         )

@@ -15,13 +15,13 @@ class Header extends Component{
         return(
             <div className="header_C">
                 <h2 className="parentTitle">{this.props.title}</h2>
-                <button onClick={this.props.run}>Get parent's News fnc run</button>
+                <button onClick={this.props.run}>获取NEWS方法</button>
                 <br/><br/>
-                <button onClick={this.props.news.getData}>Get news Component's getData Fnc</button>
+                <button onClick={this.props.news.getData}>获取GETDATA方法</button>
                 <br/><br/>
-                <button onClick={this.getNews}>get News Comnponent Fnc</button>
+                <button onClick={this.getNews}>props调用NEWS组件方法</button>
                 <br/><br/>
-                <button onClick={ this.props.news.getChildData.bind(this,'Header=>News') }>Child Comnponent send data to Parent</button>
+                <button onClick={ this.props.news.getChildData.bind(this,'Header=>News') }>改变NEWS父组件值</button>
             </div>
         )
     }

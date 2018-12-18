@@ -45,7 +45,6 @@ export default class LifeCycle extends Component{
         console.log('更新完毕')
     }
     render(){
-        console.log('render');
         return(
             <div className = 'lifeApp'>
                 <h3>LifeCycle</h3>

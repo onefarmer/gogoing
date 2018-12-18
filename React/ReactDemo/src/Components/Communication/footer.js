@@ -8,12 +8,12 @@ export default class Footer extends Component{
         }
     }
     run(){
-        alert('I am footer,s run fnc')
+        alert('Footer组件 Run方法')
     }
     render(){
         return(
             <div className = "footer">
-                <h2>I am Foot Component</h2>
+                <h2>Footer组件</h2>
             </div>
         )
     }

@@ -7,12 +7,13 @@ export default class News extends Component{
     constructor(props){
         super(props)
         this.state = {
-            title:'Communication',
+            title:'父子传值',
             description:'News Component'
         }
     }
+    // 箭头写法不需要BIND
     run=()=>{
-        alert('i am parent run func')
+        alert('NewsPage Run 方法')
     }
     // 获取子组件数据
     getChildData=(result)=>{
@@ -23,9 +24,9 @@ export default class News extends Component{
     }
     // 传入this 亦能获取子级数据
     getData=()=>{
-        alert(this.state.title+'getData');    
+        alert('我是NEWS GETDATA');    
     }
-    // 获取Footer组件run方法
+    // 通过ref => 获取Footer组件run方法
     getFooter=()=>{
         this.refs.footer.run()
     }
@@ -34,11 +35,11 @@ export default class News extends Component{
             <div className='news_C'>
                 <Header title={this.state.title}  run={this.run}  news={this} />
                 <br/>
-                <span>Home Content -- >Get Child data=> {this.state.description}</span>
-                <br/>
+                <span>获取子组件值： {this.state.description}</span>
+                <br/><br/>
                 <button onClick={this.getFooter}>Get Footer Component run fnc</button>
                 <br/>
-                <Footer  ref='footer'/>
+                <Footer ref='footer'/>
             </div>
         )
     }
