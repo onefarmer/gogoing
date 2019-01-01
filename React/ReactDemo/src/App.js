@@ -3,19 +3,18 @@ import React, { Component } from 'react';
 import PropsTransfer from './Components/PropsTransfer/parents' // 父子传值与方法，以及定义值与类型
 import Communication from './Components/Communication/news'
 import Message from './Components/Message'// message board
-import LifeCycle from './Components/lifecycle' // 生命周期
 import AnimateCont from './Components/TransitionGroup/animateLsit' // Animate List
 import RouterNav from './Router/router' // Router
 // New Lesson
-import ImgShow from './Components/imgShow'
+
 import Form from './Components/form'
 import GotoList from './Components/GodoList'
-import Axios from './Components/Data/Axios'
-import FetchJsonp from './Components/Data/FetchJsonp'
+
+import FetchJsonp from './Me/Ajax/FetchJsonp'
+import Axios from './Me/Ajax/Axios'
+import LifeCycle from './Me/Lifecycle/LifeIndex'// 生命周期
 // 样式
 import './assets/css/App.css'; 
-
-
 
 class App extends Component {
   constructor(){
@@ -47,26 +46,15 @@ class App extends Component {
      const count = this.props.store.getState().count;
     return (  
       <div className = "App"> 
-        <PropsTransfer/>
-        <hr/>     
-        <Communication/>
+        <Axios/>
         <hr/>
-        <ImgShow title = "img output"/>
-        <hr/>
-        <GotoList title = "GotoList Data"/>
-        <hr/>
-        <Message/>
+        <FetchJsonp/>
         <hr/>
         <LifeCycle/>
         <hr/>
-        <AnimateCont/>
+        <GotoList/>
         <hr/>
-        <RouterNav/> 
         <hr/>
-        <Form/>
-        <hr/>
-        <Axios/>
-        <FetchJsonp/>
         <hr/>
         <div className = "StoreApp">
           <input type="text" ref="todoVal"/>
