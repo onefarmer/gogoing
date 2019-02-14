@@ -12,7 +12,7 @@
         .ab{position:absolute;background: #FFF;transition: transform .8s linear}	
         .pic{transition: transform .8s linear}
     </style>   
-    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script> 
+    <script src="../../../Jquery/jquery/jquery-1.11.3.min.js"></script> 
 </head>
 <body>
     <div class="box center"></div>
@@ -52,7 +52,7 @@
                 if(bg){	
                     // pic 每张图的内层盒子
                     $('.pic').eq(i).css({
-                        "background-image":'url(../../images/'+num+'.jpg)',
+                        "background-image":'url(../../../Public/images/'+num+'.jpg)',
                         // 容器980 / 5列 = 196 容器高度500 / 5行 = 100
                         "backgroundPositionX":-l*196,
                         "backgroundPositionY":-t*100,
@@ -64,7 +64,7 @@
                 }
                 else{
 					$('.pic').eq(i).css({
-                        "background-image":'url(../../images/'+i+'.jpg)',
+                        "background-image":'url(../../../Public/images/'+i+'.jpg)',
                         // 图片覆盖
                         "backgroundSize":'cover',
                         // 内盒子缩小，大盒子背景色作为边框

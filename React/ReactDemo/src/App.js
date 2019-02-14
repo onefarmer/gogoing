@@ -13,6 +13,7 @@ import GotoList from './Components/GodoList'
 import FetchJsonp from './Me/Ajax/FetchJsonp'
 import Axios from './Me/Ajax/Axios'
 import LifeCycle from './Me/Lifecycle/LifeIndex'// 生命周期
+import RouterComponent from './router4/route'
 // 样式
 import './assets/css/App.css'; 
 
@@ -54,6 +55,7 @@ class App extends Component {
         <hr/>
         <GotoList/>
         <hr/>
+        <RouterComponent/>
         <hr/>
         <hr/>
         <div className = "StoreApp">
