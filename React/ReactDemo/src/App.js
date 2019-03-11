@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import PropsTransfer from './Components/PropsTransfer/parents' // 父子传值与方法，以及定义值与类型
-import Communication from './Components/Communication/news'
 import Message from './Components/Message'// message board
 import AnimateCont from './Components/TransitionGroup/animateLsit' // Animate List
 import RouterNav from './Router/router' // Router
@@ -16,6 +15,8 @@ import LifeCycle from './Me/Lifecycle/LifeIndex'// 生命周期
 import RouterComponent from './router4/route'
 // 样式
 import './assets/css/App.css'; 
+
+import Entry from './entry'
 
 class App extends Component {
   constructor(){
@@ -47,17 +48,7 @@ class App extends Component {
      const count = this.props.store.getState().count;
     return (  
       <div className = "App"> 
-        <Axios/>
-        <hr/>
-        <FetchJsonp/>
-        <hr/>
-        <LifeCycle/>
-        <hr/>
-        <GotoList/>
-        <hr/>
-        <RouterComponent/>
-        <hr/>
-        <hr/>
+        <Entry/>
         <div className = "StoreApp">
           <input type="text" ref="todoVal"/>
           <button onClick = {this.addTodo}>ADD TODO</button>

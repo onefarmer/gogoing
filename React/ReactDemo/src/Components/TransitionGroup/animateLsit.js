@@ -31,7 +31,7 @@ export default class AnimateList extends Component{
         })
         return(
             <div className = "animateApp">
-                <h2>Animate List</h2>
+                <h2>动画列表</h2>
                 <input type = "text" ref = "todoVal"/>
                 <button onClick = {this.addTodo}>添加</button>
                 <ul>

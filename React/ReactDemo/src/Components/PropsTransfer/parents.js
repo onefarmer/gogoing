@@ -6,8 +6,8 @@ class Parent extends Component{
         super()
         this.sendDataFromChild = this.sendDataFromChild.bind(this)
         this.state = {
-            title:'数据改变（从子传父）',
-            num:999
+            num:1,
+            title:'初始父级原始数据'
           }
     }
     // 传入子组件的方法
@@ -16,14 +16,20 @@ class Parent extends Component{
             title:val
         })
     }
+    // 子级执行
+    run=()=>{
+        alert('子级执行父传子Run函数，非bind')
+    }
+    // 传入this 亦能获取子级数据
+    getData=()=>{
+        alert('子级执行父级GetData函数');    
+    }
     render(){
         return(
-            <div>
-                {/* 传入方法于子组件 */}
-                <Children sendDataFromChild = {this.sendDataFromChild} num = {this.state.num} />
-                <h1>{this.state.title}</h1>
+            <div className='parentsWarp'>
+                <p>{this.state.title}</p>
+                <Children sendDataFromChild = {this.sendDataFromChild} num = {this.state.num} run={this.run} myself={this}/>             
             </div>
-            
         )
     }
 }

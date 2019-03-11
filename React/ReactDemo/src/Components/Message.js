@@ -10,11 +10,11 @@ export default class Message extends Component{
                     time:new Date().getTime(),
                     comment:"这是一个很好的电影"                    
                 }
-
             ]
         }
         this.addComment = this.addComment.bind(this)
     }
+    // 添加内容
     addComment(){
         let commentObj = {              
             author:this.refs.author.value,
@@ -26,6 +26,7 @@ export default class Message extends Component{
             comments:this.state.comments
         })
     }
+    // 计算时间
     formatTime(timestamp){
         let minutes = (new Date() - timestamp)/1000/60;
         minutes = Math.floor(minutes);
@@ -39,19 +40,18 @@ export default class Message extends Component{
     render(){
         return(
             <div className = "msg">
-                <h2>Message Board</h2>
                 <div className = "comments"></div>
                 {
                     this.state.comments.map((item,index)=>{
                         return <div key={item.time}>
-                            <span>{item.author}</span>
-                            <span>{this.formatTime(item.time)}</span>
-                            <p>{item.comment}</p>
+                            <span>主演：{item.author}</span><br/><br/>
+                            <span>发表时间：{this.formatTime(item.time)}</span>
+                            <p>评论：{item.comment}</p>
                         </div>
                     })
                 }
-                <input type="text" ref="author"/><br/>
-                <textarea ref="comment"/>
+                <input type="text" ref="author"/><br/><br/>
+                <textarea ref="comment"/><br/><br/>
                 <button onClick = {this.addComment}>发表留言</button>
             </div>
         )
