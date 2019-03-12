@@ -22,7 +22,7 @@ class Pcontent extends Component {
           console.log(error);
         })
     }
-    componentWillMount(){
+    componentDidMount(){
         let id=this.props.match.params.id;
         this.requestData(id);
     }
@@ -32,7 +32,7 @@ class Pcontent extends Component {
                 <div className="back">  <Link to='/'>返回</Link></div>
                 <div className="p_content">
                     <div className="p_info">				
-                        <img src={`${this.state.domain}${this.state.list.img_url}`} />	
+                        {this.state.list.img_url?<img src={`${this.state.domain}${this.state.list.img_url}`}/>:null}
                         <h2>{this.state.list.title}</h2>				
                         <p className="price">{this.state.list.price}/份</p>
                     </div>

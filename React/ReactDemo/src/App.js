@@ -14,23 +14,25 @@ import Axios from './Me/Ajax/Axios'
 import LifeCycle from './Me/Lifecycle/LifeIndex'// 生命周期
 import RouterComponent from './router4/route'
 // 样式
-import './assets/css/App.css'; 
-
-import Entry from './entry'
+import './App.css'; 
+import Nav from './Nav/nav'
 
 class App extends Component {
   constructor(){
     super();
     //this.addTodo = this.addTodo.bind(this)
-    this.addOne = this.addOne.bind(this)  
+    //this.addOne = this.addOne.bind(this)  
   }
   // 修改指针不需要bind
+  /*
   addTodo=()=>{
     this.props.store.dispatch({
       type:"ADD_TODO",
       payload:this.refs.todoVal.value
     })
   }
+  */
+ /*
   addOne(){
     // 中间件可以放置方法
     this.props.store.dispatch((dispatch,state)=>{
@@ -43,13 +45,14 @@ class App extends Component {
       },2000)
     })
   }
+  */
   render() {
-     const list = this.props.store.getState().list;
-     const count = this.props.store.getState().count;
+    //==>const list = this.props.store.getState().list;
+    //==>const count = this.props.store.getState().count;
     return (  
       <div className = "App"> 
-        <Entry/>
-        <div className = "StoreApp">
+        <Nav/>
+        {/* <div className = "StoreApp">
           <input type="text" ref="todoVal"/>
           <button onClick = {this.addTodo}>ADD TODO</button>
           <ul>
@@ -62,7 +65,7 @@ class App extends Component {
           <hr/>
           {count}
           <button onClick={this.addOne}>+1</button>
-        </div>
+        </div> */}
       </div>
     );
   }
