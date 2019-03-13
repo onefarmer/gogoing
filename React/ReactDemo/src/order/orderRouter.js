@@ -9,7 +9,7 @@ export default class Order extends Component {
         return(
             <Router>
                 <div>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/order" component={Home} />
                     <Route path="/pcontent/:id" component={Pcontent} />                    
                 </div>
             </Router>

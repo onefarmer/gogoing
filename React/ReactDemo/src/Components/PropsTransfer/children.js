@@ -7,8 +7,8 @@ class Children extends Component{
             <div className="ChildTitle">
                 <p>defaultProps：{this.props.title}</p>
                 <p>PropTypes.number：{this.props.num}</p>
-                <button onClick = { this.props.sendDataFromChild.bind(this,"子执行父级方法-更新内容") }>子级执行父级函数</button><br/><br/>
-                <button onClick = { this.props.run }>子级执行父级Run，非bind</button><br/><br/>    
+                <button onClick = { this.props.sendDataFromChild.bind(this,"子执行父级方法-更新内容") }>子级执行父级函数</button><br/>
+                <button onClick = { this.props.run }>子级执行父级Run，非bind</button><br/>
                 <button onClick = { this.props.myself.getData}>父级传入this,子级执行</button> 
             </div>
         )

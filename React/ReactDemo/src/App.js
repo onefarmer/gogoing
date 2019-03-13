@@ -1,18 +1,5 @@
 import React, { Component } from 'react';
 
-import PropsTransfer from './Components/PropsTransfer/parents' // 父子传值与方法，以及定义值与类型
-import Message from './Components/Message'// message board
-import AnimateCont from './Components/TransitionGroup/animateLsit' // Animate List
-import RouterNav from './Router/router' // Router
-// New Lesson
-
-import Form from './Components/form'
-import GotoList from './Components/GodoList'
-
-import FetchJsonp from './Me/Ajax/FetchJsonp'
-import Axios from './Me/Ajax/Axios'
-import LifeCycle from './Me/Lifecycle/LifeIndex'// 生命周期
-import RouterComponent from './router4/route'
 // 样式
 import './App.css'; 
 import Nav from './Nav/nav'

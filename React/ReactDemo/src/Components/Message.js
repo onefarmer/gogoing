@@ -43,15 +43,17 @@ export default class Message extends Component{
                 <div className = "comments"></div>
                 {
                     this.state.comments.map((item,index)=>{
-                        return <div key={item.time}>
-                            <span>主演：{item.author}</span><br/><br/>
-                            <span>发表时间：{this.formatTime(item.time)}</span>
-                            <p>评论：{item.comment}</p>
-                        </div>
+                        return(
+                            <div key={item.time}>
+                                <span>主演：{item.author}</span><br/>
+                                <span>发表时间：{this.formatTime(item.time)}</span>
+                                <p>评论：{item.comment}</p>
+                            </div>
+                        )
                     })
                 }
-                <input type="text" ref="author"/><br/><br/>
-                <textarea ref="comment"/><br/><br/>
+                作者：<input type="text" ref="author"/><br/>
+                留言：<textarea ref="comment"/><br/>
                 <button onClick = {this.addComment}>发表留言</button>
             </div>
         )

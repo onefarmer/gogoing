@@ -29,7 +29,7 @@ class Pcontent extends Component {
     render(){
         return(
             <div className="pcontent">
-                <div className="back">  <Link to='/'>返回</Link></div>
+                <div className="back">  <Link to='/order'>返回</Link></div>
                 <div className="p_content">
                     <div className="p_info">				
                         {this.state.list.img_url?<img src={`${this.state.domain}${this.state.list.img_url}`}/>:null}
