@@ -11,7 +11,6 @@ export default class routerShop extends Component {
                     <nav>
                         <Link to = "/">父子传值实例</Link>
                         <Link to = "/message">留言板</Link>
-                        <Link to = "/animate">动画导航</Link>
                         <Link to = "/routeNav">路由</Link>
                         <Link to = "/routeNew">新路由</Link>
                         <Link to = "/form">表单</Link>

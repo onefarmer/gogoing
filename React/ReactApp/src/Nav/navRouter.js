@@ -1,9 +1,8 @@
 import PropsTransfer from '../Components/PropsTransfer/parents' // 父子传值与方法，以及定义值与类型
 import Message from '../Components/Message'// 留言板
-import AnimateCont from '../Components/TransitionGroup/animateLsit' // 动画导航
 import RouterNav from '../Router/router' 
 import Form from '../Components/form'
-import GotoList from '../Components/GodoList'
+import GotoList from '../Components/GodoList' // 列表+动画
 import FetchJsonp from '../Me/Ajax/FetchJsonp'
 import Axios from '../Me/Ajax/Axios'
 import LifeCycle from '../Me/Lifecycle/LifeIndex'// 生命周期
@@ -20,10 +19,6 @@ let routes = [
     {
         path: "/message",
         component: Message
-    },
-    {
-        path: "/animate",
-        component: AnimateCont       
     },
     {
         path: "/routeNav",
