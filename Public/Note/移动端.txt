@@ -31,3 +31,39 @@ _html.style.fontSize = w/6.4 +"px";
 }
 fontSize();
 window.onresize=fontSize;
+    width: 812px;
+    height: 375px;
+    overflow: hidden;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    position: relative;
+    transform-origin: 187.5px 187.5px;
+
+
+        // ¼àÌýºáÊúÆÁ
+        /*
+        var evt = "onorientationchange" in window ? "orientationchange" : "resize";
+        window.addEventListener(evt, function() {
+            var width = document.documentElement.clientWidth;// È¡·´
+            var height =  document.documentElement.clientHeight;
+            var $rotatingPage =  document.getElementById("rotatingPage");
+            var style = "";
+            if( width > height ){   
+                style += "width:" + width + "px;"; 
+                style += "height:" + height + "px;"; 
+                style += "top:" + 0 + "px;"; 
+                style += "left:" + 0 + "px;"; 
+                style += "transform:" + "none";
+                style += "transform-origin:" + "50% 50%";
+            }
+            else{
+                style += "width:" + height + "px;"; 
+                style += "height:" + width + "px;"; 
+                style += "top:" + (height-width)/2 + "px;"; 
+                style += "left:" + -(height-width)/2 + "px;"; 
+                style += "-webkit-transform: rotate(90deg); transform: rotate(90deg);";
+                style += "transform-origin: 50% 50%"; 
+            }
+            $rotatingPage.style = style;
+        }, false);   
+        */  
