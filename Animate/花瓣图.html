@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .index{ height: 350px;position: relative;width: 700px;margin: 50px;}
+        .iphone-bj-1, 
+        .iphone-bj-2, 
+        .iphone-bj-3, 
+        .iphone-bj-4, 
+        .iphone-bj-5
+        { 
+            position: absolute;top: 0;z-index: 1;width: 100%;display: inline-block;height: 100%;left: 0;
+        }
+        .active .iphone-bj-1, 
+        .active .iphone-bj-2, 
+        .active .iphone-bj-3, 
+        .active .iphone-bj-4, 
+        .active .iphone-bj-5
+        {
+            animation-name: bjAnimation;
+            animation-iteration-count: 1;/* 定义动画播放次数的数值。 */
+            animation-fill-mode:both;/*属性规定动画在播放之前或之后，其动画效果是否可见。*/
+        }
+        @keyframes bjAnimation{
+            0%{opacity:0;transform:scale(0.8);}
+            50%{opacity:0;transform:scale(0.8);}
+            100%{opacity:1;transform:scale(1);}
+        }
+        @-webkit-keyframes bjAnimation{
+            0%{opacity:0;transform:scale(0.8);}
+            50%{opacity:0;transform:scale(0.8);}
+            100%{opacity:1;transform:scale(1);}
+        }
+        .iphone-bj-1{background: url(img/cs_r_1.png);animation-duration: 2s;}
+        .iphone-bj-2{background: url(img/cs_l_1.png);animation-duration: 2.5s;}
+        .iphone-bj-3{background: url(img/cs_r_2.png);animation-duration: 2s;}
+        .iphone-bj-4{background: url(img/cs_l_2.png);animation-duration: 2.5s;}
+        .iphone-bj-5{background: url(img/cs_all.png);animation-duration: 3s;}
+    </style>
+</head>
+<body>
+    <div class="index active" id="index">
+        <div class="iphone-bj-1"></div>
+        <div class="iphone-bj-2"></div>
+        <div class="iphone-bj-3"></div>
+        <div class="iphone-bj-4"></div>
+        <div class="iphone-bj-5"></div>
+    </div>
+</body>
+</html>

@@ -1,5 +1,0 @@
-https://ant.design/docs/react/introduce-cn
-
-安装antd   npm install antd --save    /   yarn add antd     /  cnpm install antd --save
-npm install antd-mobile --save
-App.css 引入 @import '~antd/dist/antd.css';

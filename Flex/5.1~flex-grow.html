@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul{list-style: none;}
+			.box{
+				display:flex;
+				border: 1px purple solid;
+				width:600px;
+				height: 300px;
+				margin: 0 auto;
+				flex-direction:row;	
+				padding: 10px;
+			}	
+			.box li{
+				background: yellowgreen;
+				font-size: 30px;
+				text-align: center;
+				line-height: 50px;
+				flex-grow: 1;
+				width: 100px;
+			}	
+			.box li.grow{
+				flex-grow:2;
+				background: green;
+			}	
+			/*
+				占多少分量,flex-grow属性定义项目的放大比例，
+				默认为0，即如果存在剩余空间，也不放大  
+				li 长度100px 容器box 600px，剩余空间300px,
+				grow盒子为grow:2,占300/4*2 150px;
+				中间盒子占250px
+			 */		
+		</style>
+	</head>
+	<body>
+		<ul class="box">
+			<li>1</li>
+			<li class="grow">2</li>
+			<li>3</li>
+		</ul>
+	</body>
+</html>

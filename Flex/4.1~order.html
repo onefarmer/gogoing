@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}	
+			ul{	list-style: none;}
+			.box
+			{
+				display:flex;
+				border: 1px yellow solid;
+				width:600px;
+				height: 300px;
+				margin: 0 auto;
+				flex-direction:row;
+			}			
+			.box li{
+				width:150px;
+				height: 150px;
+				border: 1px green solid;
+				font-size:30px;
+				text-align:center;
+				line-height:50px;
+				order: 6;/* 定义总顺序 */
+			}
+			.box li.order_1st{order: 1;}	
+			.box li.order_2nd{order: 2;}	
+			.box li.order_3rd{order: 3;}	
+			/* 排列顺序 */	
+		</style>
+	</head>
+	<body>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li class="order_2nd">3</li>
+			<li class="order_1st">4</li>
+			<li>5</li>
+			<li class="order_3rd">6</li>
+		</ul>
+	</body>
+</html>

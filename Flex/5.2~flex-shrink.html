@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{margin: 0;padding: 0;}
+			ul{list-style: none;}
+			.box{
+				display:flex;
+				height: 200px;
+				border: 1px purple solid;
+				width:600px;
+				margin: 0 auto;
+				flex-direction:row;
+			}
+			.box li{
+				width:300px;
+				height: 100px;
+				font-size: 30px;
+				text-align: center;
+				line-height: 50px;	
+				background: yellow;
+				flex-shrink: 1;
+			}	
+			.box li:nth-child(1){
+				flex-shrink: 2;
+				background: red
+			}
+			/*
+
+				如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
+				负值对该属性无效。
+
+				本人已懂：
+				每个盒子长 300 总共900 容器600 多出300
+				第一个盒子 flex-shrink: 2;其他1
+				300/(2+1+1) = 75 第一个盒子减去150 其他75
+			 */
+
+		</style>
+	</head>
+	<body>
+		
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		
+	</body>
+</html>

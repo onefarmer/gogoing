@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>左右渐入</title>
+    <style>
+    @-webkit-keyframes leftIn{
+        from{opacity:0;-webkit-transform:translateX(-30px);transform:translateX(-30px);}
+        to{opacity:1;-webkit-transform:translateX(0);transform:translateX(0);}
+        }
+        @keyframes leftIn{
+        from{opacity:0;-webkit-transform:translateX(-30px);transform:translateX(-30px);}
+        to{opacity:1;-webkit-transform:translateX(0);transform:translateX(0);}
+        }
+        @-webkit-keyframes rightIn{
+        from{opacity:0;-webkit-transform:translateX(30px);transform:translateX(30px);}
+        to{opacity:1;-webkit-transform:translateX(0);transform:translateX(0);}
+        }
+        @keyframes rightIn{
+        from{opacity:0;-webkit-transform:translateX(30px);transform:translateX(30px);}
+        to{opacity:1;-webkit-transform:translateX(0);transform:translateX(0);}
+    }
+    div{
+        margin: 10px;
+        width: 200px;
+        height: 50px;
+        background: #000;
+        display: inline-block;
+    }
+    div:nth-child(1){animation: leftIn 1s;}
+    div:nth-child(2){animation: rightIn 1s;}
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>	
+			*{ margin: 0; padding: 0;}	
+			ul{ list-style: none; }	
+			.box{
+				display:flex;
+				margin: 50px;
+				border: 1px red solid;
+				width:500px;
+				height: 300px;
+				align-items:center;
+			}
+			.box li{
+				width:100px;
+				height: 100px;
+				line-height: 100px;	
+				border: 1px green solid;
+				font-size: 30px;
+				text-align: center;	
+			}			
+			/*
+				flex-start：交叉轴的起点对齐。
+				flex-end：交叉轴的终点对齐。
+				center：交叉轴的中点对齐。
+				baseline: 项目的第一行文字的基线对齐。
+				stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+			*/
+		</style>
+	</head>
+	<body>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>
+	</body>
+</html>

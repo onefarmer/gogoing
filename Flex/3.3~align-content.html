@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>	
+			*{ margin: 0; padding: 0;}	
+			ul{ list-style: none; }	
+			.box{
+				display:flex;
+				margin: 50px;
+				border: 1px red solid;
+				width:400px;
+				height: 200px;
+                flex-wrap: wrap;
+                align-content: center;
+			}
+			.box li{
+				width:100px;
+				height: 100px;
+				line-height: 100px;	
+				border: 1px green solid;
+				font-size: 30px;
+				text-align: center;	
+			}			
+			/*
+                align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+                flex-start：与交叉轴的起点对齐。
+                flex-end：与交叉轴的终点对齐。
+                center：与交叉轴的中点对齐。
+                space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
+                space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+                stretch（默认值）：轴线占满整个交叉轴。
+			*/
+		</style>
+	</head>
+	<body>
+		<ul class="box">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+		</ul>	
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex-direction</title>
+    <style type="text/css">
+        .box{
+            display: flex;
+            width: 400px;
+            height: 300px;
+            margin: 10px auto;
+            flex-direction:row; /* 默认 */
+        }
+        .box div{
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            font-size: 20px;
+            background-color: darkmagenta;
+            text-align: center;
+            border-radius: 10px;
+            margin: 1px;			
+		}
+        /*
+            row（默认值）：主轴为水平方向，起点在左端。
+            row-reverse：主轴为水平方向，起点在右端。
+            column：主轴为垂直方向，起点在上沿。
+            column-reverse：主轴为垂直方向，起点在下沿。
+        */
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+</html>
