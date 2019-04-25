@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6 let</title>
+</head>
+<body>
+<script>
+    // var关键字声明变量，无论声明在何处，都会被视为声明在函数的--最顶部--
+    // let只在函数括号内的块级作用域 , 其他地方找不到 。
+
+    // for循环中会污染i的全局，输出10次10
+    var facus = [];
+    // 第二次循环，这时var i=1;覆盖了前面的var i=0；即现在i为1;
+    for(var i=0; i<10; i++){ //由于var来声明变量i，所以for循环代码块不具备块级作用域，因此i认为是全局变量，直接放在全局变量中。
+        //这里之所以i为i而不是0；是因为我们只是定义了该函数，未被调用，所以没有进入该函数执行环境，i当然不会沿着作用域链向上搜索找到i的值。
+        facus.push( function(){ console.log('Es5中的i值：' + i) })
+    }
+    // 由于不具备块级作用域，所以该函数定义就是全局作用域。
+    facus.forEach( function(item,index){ item() })
+
+    // Es5输出 0-9
+    var facus2 = [];
+    for(var t=0;t<10;t++){
+        facus2.push(
+            (function(val){
+                return function(){
+                    console.log('Es5输出0-9：' + val)
+                }
+            }(t))
+        )
+    }
+    facus2.forEach(function(item,index){ item() })
+    
+    // ------------------------------------------------- Es6 0-9
+    var facus3 = [];
+    //注意：因为使用let使得for循环为块级作用域，此次let i=0在这个块级作用域中，而不是在全局环境中。
+    for(let i=0;i<10;i++){
+         //注意：由于循环时，let声明i,所以整个块是块级作用域,这个函数就成了一个闭包。
+        facus3.push(function(){
+            console.log('es6：' + i)
+        })
+    }
+    facus3.forEach( item => { item() })
+
+    // es6 -> es5
+    /*
+        var facus3 = [];
+        var _loop = function _loop(m) {
+            facus3.push(function () {
+                console.log(m);
+            });
+        };
+        for (var m = 0; m < 10; m++) {
+            _loop(m);
+        }
+        facus3.forEach(function (itemFn) {
+            itemFn();
+        });
+    */
+</script>
+</body>
+</html>

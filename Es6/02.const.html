@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Es6 const</title>
+</head>
+<body>
+<script>
+    /*
+        const命令用来声明常量，一旦声明，其值就不能改变。初次之外，
+        const和let十分相似。也就是说前者是用于声明常量的，后者是用于声明变量的。
+    */
+
+    // 1.const声明常量，一旦声明，不可改变。
+    const a=10;
+    // a=100; //报错
+
+    // 2.既然const一旦声明不可改变，所以在声明时必须初始化。
+    // const a; //报错
+
+    //　3.const所在的代码块为块级作用域，所以其变量只在块级作用域内使用或其中的闭包使用。
+    if(true){
+        const b=10;
+    }
+    // console.log(b); // b is not defined
+
+    // 4.const声明的变量不存在变量提升。
+    if(true){
+        // console.log(c);
+        // const c=10; //c is not defined
+    }
+
+    // 5.const不可重复声明常量。
+    var d=10;
+    //const d=5; // Identifier 'd' has already been declared
+
+    // 6.const命令只是保证了变量名指向的地址不变，并不保证该地址的数据不变。
+    const e={};
+    e.name="骚";
+    console.log(e.name); 
+
+    const f=[];
+    f.push("骚");
+    console.log(f);
+
+    const g={};
+    //g={name:"骚"}; 指向发生变化
+
+    //　7.如果希望将对象本身冻结，可以使用Object.freeze()方法。
+    const h=Object.freeze({});
+    h.name="骚";
+    console.log(h.name); //undefined
+</script>
+</body>
+</html>
