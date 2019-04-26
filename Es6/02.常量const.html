@@ -38,15 +38,15 @@
 
     // 6.const命令只是保证了变量名指向的地址不变，并不保证该地址的数据不变。
     const e={};
-    e.name="骚";
+    e.name="Hello World";
     console.log(e.name); 
 
     const f=[];
-    f.push("骚");
+    f.push("Hello World");
     console.log(f);
 
     const g={};
-    //g={name:"骚"}; 指向发生变化
+    //g={name:"Hello World"}; 指向发生变化
 
     //　7.如果希望将对象本身冻结，可以使用Object.freeze()方法。
     const h=Object.freeze({});

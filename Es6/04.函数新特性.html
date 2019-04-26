@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 函数name
+    let fn = function sayGoing(){}
+    console.log('函数名为：' + fn.name)
+
+    // 、es5 如果num传入0 则为false, num=200
+    function action(num){
+        num = num || 200;
+        return num;
+    }
+    console.log( action(0) )
+    // 、es6 默认定值
+    function action2( num = 200){
+        console.log(num)
+    }
+    action2(0) //0
+    action2() //200
+    action2(300) //300
+
+    /*
+        function action2() {
+            var num = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 200;
+        }
+    */
+</script>
+</body>
+</html>
