@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 预处理机制
+    let pro = new Proxy(
+        // 对象体
+        {
+            add:function(num){
+                return num + 100;
+            },
+            name:'i am YooNa'        
+        },
+        // 预处理函数
+        {
+            get:function(target,key,property){
+                //console.log('我是Get');
+                //console.log(target);
+                //console.log(key);
+                //console.log(property);
+                return target[key]
+            },
+            // target实例 key值 value改变的值，receiver以前的值
+            set:function(target,key,value,receiver){
+                console.log('我是Set');
+                console.log(target)
+                console.log(key)
+                console.log(value)
+                console.log(receiver)
+                console.log(`${key},${value}`)
+                // 一定return 不然无法改变
+                return target[key] = value + '呀'
+            }
+        }
+    )
+    // Get 
+    // console.log(pro.name)
+    // Set
+    pro.name = '我是允儿' // 改变值
+    console.log(pro.name)
+
+</script>
+</body>
+</html>

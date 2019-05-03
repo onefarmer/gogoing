@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{width: 200px;height: 200px;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // call 和 apply 都是为了解决改变 this 的指向。作用都是相同的，只是传参的方式不同。
+        let a = { value:1 }
+        function getValue(name,age){
+            console.log(name)
+            console.log(age)
+            console.log(this.value)
+        }
+        //getValue.call(a,'yck','24')
+        //getValue.apply(a,['yck','24'])
+
+        // 模拟call,apply
+        Function.prototype.myCall = function(context){
+            var context = context || window
+            console.log(context)
+            // 给 context 添加一个属性
+            context.fn = this;
+            console.log(this,context.fn)
+            // 将 context 后面的参数取出来
+            var args = [...arguments].slice(1)
+            // getValue.call(a, 'yck', '24') => a.fn('yck', '24')
+            var result = context.fn(...args)
+            // 删除 fn
+            delete context.fn;
+            return result
+        }
+        //getValue.myCall(a,'yck','24')
+
+        var box = document.getElementById('box')
+        function changeStyle(attr,val){
+            this.style[attr] = val;
+        }
+        changeStyle.myCall(box,'backgroundColor','pink')
+    </script>
+</body>
+</html>

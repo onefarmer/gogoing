@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //1、 Json -> 数组 from
+    let json = {
+        '0':'Yoona',
+        1:'Gavin',
+        2:'Alisa',
+        length:3
+    }
+    console.log( 'Json对象转数组：' + Array.from(json) )
+
+    // 2、
+    /*
+        let string = '[1,2,3,4,5]';
+        let stringJson = eval(string);
+        console.log(stringJson)
+    */
+
+    //  字符串 -> 数组
+    let str = '1,2,3,4,5';
+    console.log(Array.of(str)) // ['1,2,3,4,5']
+    console.log(Array.of(1,2,3,4,5)) // [1,2,3,4,5]
+
+    // 3、 实例方法，查找 find(val,index,arr)
+    let names = ['Ming','MLXG','Uzi','xiaoHu','letme']
+    console.log(
+        names.find(function(val,index,names){
+            return val == 'Uzi'
+        })
+    )
+    let numbers = [1,3,5,7,9,2,4,6,8]
+    console.log(
+        numbers.find(function(val,index,arr){
+            return val > 8;
+    }))
+
+    // 4、 替换 fill(替换内容，替换元素下标，到什么位置)
+    console.log([1,2,3,4].fill('替换',1,3))
+
+    // 5、for of
+    console.log( 'For Of --------------------------------------------')
+    let arrParent = [10,9,8,7,6]
+    // 值
+    for( let item of arrParent){ console.log('值：'+ item) }
+    // 下标
+    for( let item of arrParent.keys() ){ console.log('下标：'+ item) }
+    // 下标+值
+    for( let item of arrParent.entries() ){ console.log('下标+值：'+ item) }
+    // 下标和值
+    for( let [index,val] of arrParent.entries() ){console.log(`下标和值：${index}:${val}`) }
+
+    // 6、单独输出，条目化
+    let arrZi = ['儿子','孙子','犊子','狗子','铁子'].entries()
+    console.log(arrZi.next().value)
+    console.log(arrZi.next().value)
+    console.log(arrZi.next().value)
+    console.log(arrZi.next().value)
+    console.log(arrZi.next().value)
+
+</script>
+</body>
+</html>

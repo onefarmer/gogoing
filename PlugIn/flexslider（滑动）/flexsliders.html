@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{padding: 0;margin: 0;list-style: none}
+        .warp{width: 1000px;position: relative;margin:0 auto}
+        .slide{
+            height: 100%;overflow: hidden
+        }
+        .slides{
+            height: 100%;
+        }
+        .slides li{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .flex-control-nav{
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            bottom: 0;
+            font-size: 14px;
+            color: #333;
+            line-height: 40px;
+            text-align: center;
+            z-index: 2;
+        }
+        .flex-control-nav li{
+            position: relative;
+            width: 12.5%;
+            height: 100%;
+            margin: 5px;
+            padding: 0;
+            float: left;
+            cursor: pointer;
+            color: transparent
+        }
+        .flex-control-nav li a{
+            width: 100%;            
+            color:#fff;
+            display: block;
+            background:#ff0000;}
+    </style>
+    <script src="../../../Jquery/jquery/jquery-1.11.3.min.js"></script>
+    <script src="./assets/jquery.flexslider.js"></script>
+</head>
+<body>
+<div class="warp">
+    <div class="slide">
+        <ul class="slides">
+            <li><img src="../../../Public/images/0.jpg" alt=""></li>
+            <li><img src="../../../Public/images/1.jpg" alt=""></li>
+            <li><img src="../../../Public/images/2.jpg" alt=""></li>
+            <li><img src="../../../Public/images/3.jpg" alt=""></li>
+            <li><img src="../../../Public/images/4.jpg" alt=""></li>
+        </ul>
+        <ul class="flex-control-nav"></ul>
+    </div>
+</div>
+<script>
+    $('.slide').flexslider({
+        animation: "slide",
+        direction: "horizontal",
+        slideshowSpeed: 5000,
+        animationSpeed: 1000,
+        pauseOnHover: "false",
+        mousewheel: false,
+        controlNav: true,
+        directionNav: false,
+        touch: false,
+    });
+</script>
+</body>
+</html>

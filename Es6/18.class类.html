@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 类
+    class Chef{
+        // 实例初始化
+        constructor(food){
+            this.food = food;
+            this.dish = [];
+        }
+        // 获取
+        get menu(){
+            return this.dish;
+        }
+        // 设置
+        set menu(dish){
+            this.dish.push(dish)
+        }
+        intro(){
+            return `${this.food},${this.dish}`
+        }
+        static cook(food){
+            console.log(food)
+        }
+    }
+    // 实例
+    let cooker = new Chef();
+    console.log(cooker.menu = '食圣')
+    console.log(cooker.menu = '食神')
+    console.log(cooker.menu)
+
+    Chef.cook('Apple')
+
+    // 继承
+    class Person extends Chef {
+        constructor(food,dish){
+            super(food,dish);
+        }
+    }
+
+    let ps = new Person('西瓜')
+    ps.menu = '冬瓜'
+    ps.menu = '西瓜'
+    ps.menu = '南瓜'
+    console.log( ps.intro())
+</script>
+</body>
+</html>

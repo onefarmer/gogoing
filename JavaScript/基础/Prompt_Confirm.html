@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // confirm
+
+    //if(confirm('do you like me')){alert('right')}
+    //else{alert("i don't'")}
+
+    // prompt
+
+	/*
+	var num = Math.round(Math.random()*10);
+	while(true){
+		var pro = prompt("猜数字1-10");
+		if(num==pro){
+			alert("good")
+			break;
+		}
+		else{
+			if(pro>num){
+				alert("biger")
+			}
+			else{
+				alert("smaller")
+			}
+		}
+	}
+    */
+   
+    // prompt
+    var i = 1;
+    var math = Math.round(Math.random()*10)
+    var num = prompt('please guess number')
+    function guess(){
+        if( num == math ){
+            alert('you are right\n'+'You have guessed '+i+' times')
+        }
+        else{
+            if(num<88){
+                num = prompt('smaller and please guess again');	
+            }
+            else{
+                num = prompt('biger and please guess again');
+            }
+            i++;
+            guess()
+        }
+    }
+    guess()
+
+</script>

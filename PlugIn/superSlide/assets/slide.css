@@ -1,0 +1,54 @@
+*{padding: 0;margin: 0;box-sizing: border-box}
+ul{list-style: none;}
+section{display: block}
+.slide{position: relative;height: 400px;width: 100%;background: transparent}
+.slide .slide-indicators{
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px
+}
+.slide .slide-inner ul{width: 100%}
+.slide .slide-inner li{overflow: hidden;text-align: center;height: 400px;width: 100%}
+.slide .slide-inner li.pic1{background:#eee url(../../../../Public/images/0.jpg) no-repeat center}
+.slide .slide-inner li.pic2{background:#eee url(../../../../Public/images/1.jpg) no-repeat center}
+.slide .slide-inner li.pic3{background:#eee url(../../../../Public/images/2.jpg) no-repeat center}
+
+.slide .slide-indicators ul{text-align: center}
+.slide .slide-indicators ul li{    
+    cursor: pointer;
+    display: inline-block;
+    zoom: 1;
+    width: 42px;
+    height: 11px;
+    margin: 3px;
+    overflow: hidden;
+    background: #000;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    line-height: 999px;
+}
+.slide .slide-indicators ul .active{background-color: #ff0000}
+.slide .prev, .slide .next {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    margin-top: -30px;
+    width: 40px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 2em;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+    display: none;
+    font-size: 50px
+}
+.slide .next{right: 12%;}
+.slide .prev{left: 12%;}

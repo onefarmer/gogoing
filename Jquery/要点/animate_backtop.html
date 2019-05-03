@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../Jquery/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{height: 3000px;position: relative;}
+			.backtop{position: absolute;bottom: 50px;right: 50px;background: red;width: 50px;height: 50px;display: none;}
+		</style>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	var tool = {};
+	tool.backTop = function(){
+		var oBack = $('<div class="backtop">')
+		$(document.body).append(oBack)
+		$(window).scroll(function(){
+			if($(window).scrollTop()>1000){oBack.show()}	
+			else{oBack.hide()}
+		})
+		oBack.click(function(){
+			$(this).hide();
+			$('html,body').animate({"scrollTop":"0"},1000)
+		})						
+	}
+	tool.backTop()
+
+</script>

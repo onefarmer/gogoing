@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 1、
+
+    /*
+        let name = 'Yoona';
+        let age = 28;
+        var obj = {name,age}
+    */
+
+    // 2、key值构建
+
+    let key = 'name';
+    let yoona = { [key]:'yooNa' }
+
+
+    // 3、比较值 is(严格相等) === 同值相等
+    
+    console.log(-0===+0) // true
+    console.log(NaN===NaN) // false
+    console.log('object is +0 -0：' + Object.is(-0,+0)) // false
+    console.log('object is NaN：' + Object.is(NaN,NaN)) // true
+
+    // 4、合并
+    let whatJob = {job:'lolPlayer'};
+    let whatPosition = {skill:'Adc'};
+    let whatAge = {age:20};
+    let onePerson = Object.assign(whatJob,whatPosition,whatAge)
+    console.log('4-------------------------------')
+    console.log(onePerson)
+
+    // 5、补缺：1补缺2，2覆盖1
+    let player1 = {
+        name:'faker',
+        age:20,
+    }
+    let player2 = {
+        name:'uzi',
+    }
+    console.log('5-------------------------------')
+    let player = Object.assign(player1,player2)
+    console.log(player)
+
+    // 添加带空格的key值
+    let foods = {};
+    foods['hot drink'] = '蛋糕';
+    console.log(foods)
+
+    let dinner = {
+        getDrink(){
+            return '啤酒'
+        }
+    }
+    let breakFast = {
+        getDrink(){
+            return '稀饭'
+        }
+    }
+    console.log('6-------------------------------')
+    //  Object.getPropertyOf(obj)是用来得到obj对象的原型对象的标准方法。
+    let sunday = Object.create(breakFast);
+    console.log(sunday.getDrink());
+    console.log(Object.getPrototypeOf(sunday) === breakFast);
+    // 构造函数设置原型
+    Object.setPrototypeOf(sunday,dinner);
+    console.log(sunday.getDrink())
+    console.log(Object.getPrototypeOf(sunday) === dinner);
+
+    console.log('7-------------------------------')
+    let ss = {
+        __proto__:breakFast
+    }
+    console.log(ss.getDrink())
+    console.log(Object.getPrototypeOf(sunday) === breakFast);
+    ss.__proto__ = dinner;
+    console.log(ss.getDrink())
+    console.log(Object.getPrototypeOf(ss)=== dinner)
+
+    console.log('8-------------------------------')
+    // 覆盖掉原本的方法
+    let friday = {
+        __proto__:breakFast,
+        getDrink(){
+            return super.getDrink() + '呀呀呀'
+        }
+    }
+    console.log(friday.getDrink())
+</script>
+</body>
+</html>

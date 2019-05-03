@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #stars div{width: 20px;height: 20px;background-repeat: no-repeat;background-size: cover;margin: 0 5px;display: inline-block}
+        #stars .on{ background-image: url("./on.png") }
+        #stars .half{ background-image: url("./half.png") }
+        #stars .off{ background-image: url("./off.png") }
+    </style>
+</head>
+<body>
+    <div id="stars"></div>
+    <script>
+        // 常用值
+        const LENGTH = 5;
+        const CLS_ON = 'on';
+        const CLS_HALF = 'half';
+        const CLS_OFF = 'off';
+        // 计算星
+        function itemClass(val){
+            let result = [];
+            /*
+                假设传入3.9,
+                Math.floor -> 7
+                score = 3.5,为小数，3颗+半颗星
+            */
+            let score = Math.floor(val*2)/2 // 计算是否存在半颗颗
+            let hasDecimal = score % 1 !==0; // 不是小数   
+            let integer = Math.floor(score); // 计算完整星
+            for(let i=0;i<integer;i++){
+                // 添加整星
+                result.push(CLS_ON)
+            }
+            if(hasDecimal){
+                // 添加半星
+                result.push(CLS_HALF)              
+            }
+            while (result.length < LENGTH){
+                console.log(1)
+                result.push(CLS_OFF) // 如果数组长度小于规定长度，添加空星星
+            }
+            return result;
+        }
+        let classArr = itemClass(3.9);
+        // 遍历元素
+       for(item of classArr){
+            if(item=='on'){
+                createDiv(item)
+            }
+            else if(item=='half'){
+                createDiv(item)
+            }
+            else{
+                createDiv(item)
+            }
+       }
+       function createDiv(classname){
+            let oDiv = document.createElement('div');
+            oDiv.className = classname;
+            document.getElementById('stars').appendChild(oDiv)             
+       }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>无标题文档</title>
+	</head>
+<body>
+	<select>
+		<option value="2016">2016</option>
+	    <option value="2017">2017</option>
+	    <option value="2018">2018</option>
+	    <option value="2019">2019</option>
+	    <option value="2020">2020</option>
+	</select>年
+	<select>
+		<option value="0">1</option>
+	    <option value="1">2</option>
+	    <option value="2">3</option>
+	    <option value="3">4</option>
+	    <option value="4">5</option>
+	    <option value="5">6</option>
+	    <option value="6">7</option>
+	    <option value="7">8</option>
+	    <option value="8">9</option>
+	    <option value="9">10</option>
+	    <option value="10">11</option>
+	    <option value="11">12</option>
+	</select>月
+	<select>
+		<option value="1">1</option>
+	</select>日
+</body>
+</html>
+<script>
+	var	sel=document.getElementsByTagName('select');//取得下拉表数组
+	var monthDays=[31,28,31,30,31,30,31,31,30,31,30,31];//月
+	var oDate=new Date;//gmt
+	var year=oDate.getFullYear();//年
+	var month=oDate.getMonth();//月
+	var today=oDate.getDate();//日
+	var allDay=monthDays[month];//多少天
+	//插入日
+	function insertDay(y,m,d){//年 月 日
+		if((y%4==0 && y%100!=0 || y%400==0) && m==1){//判断闰年,并且是2月
+			d=29;
+		};
+		for(var i=0; i<d; i++){
+			var opt=document.createElement('option');//创建下拉表单
+			opt.value=opt.innerHTML=i+1;
+			sel[2].appendChild(opt);
+		};
+	};
+	//初始插入
+	insertDay(year,month,allDay);
+	//初始状态
+	sel[0].value=year;
+	sel[1].value=month;
+	sel[2].value=today;
+	//切换
+	function change(y,m){ //年 月
+		sel[2].innerHTML="";
+		var days=monthDays[m];//每月总天数
+		insertDay(y,m,days);
+		//如果今天是30，而2月没有30，日期设置为第1天
+		//sel[2].value= today>days ? 1:today;
+	};
+	//
+	sel[0].onchange=function(){
+		change(this.value,sel[1].value);//传入年月
+	};
+	sel[1].onchange=function(){
+		change(sel[0].value,this.value);//传入年月
+	};
+</script>

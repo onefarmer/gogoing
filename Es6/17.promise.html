@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 解决Es5，地狱回调函数
+    // resolve 解决，reject 拒绝。
+
+    let state = true;
+    function start(resolve,reject){
+        if(state){
+            resolve('开始')
+        }else{
+            reject('未准备')
+        }
+    }
+    function middle(resolve,reject){
+        if(state){
+            resolve('过程')
+        }else{
+            reject('过程中断')
+        }
+    }    
+    function end(resolve,reject){
+        if(state){
+            resolve('结束')
+        }else{
+            reject('无法结束')
+        }
+    }
+    
+    // 实例
+    new Promise(start).then(
+        function(val){
+            console.log(val)
+            return new Promise(middle)
+        }
+    ).then(
+        function(val){
+            console.log(val);
+            return new Promise(end)           
+        }
+    ).then(
+        val => console.log(`${val}`)
+    )
+</script>
+</body>
+</html>

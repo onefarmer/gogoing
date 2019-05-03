@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 迭代器Iterator
+        function chefIterator(foods){
+            // index
+            let i = 0;
+            return {
+                // 方法
+                next(){
+                    // 迭代
+                    let done = ( i >= foods.length );
+                    // 如果done为true,val为undefined
+                    let value = !done ? foods[i++] : undefined;
+                    // 返回对象
+                    return{
+                        value:value,
+                        done:done
+                    }
+                }
+            }
+        }        
+        let objA = chefIterator(['苹果','煎蛋'])
+        console.log( objA.next() )
+        console.log( objA.next() )
+        console.log( objA.next() )
+        console.log( objA )
+        
+        console.log('生成器----------------------------------------------')
+        
+        // 生成器 Generator
+        function* chefGenerator(){
+            yield '苹果';
+            yield '栗子'
+        }
+        let wg = chefGenerator();
+        console.log( wg.next() )
+        console.log( wg.next() )
+        console.log( wg.next() )
+
+        function* beef(beefs){
+           for( var i = 0; i < beefs.length; i++){
+               yield beefs[i]
+           }
+        }
+        let bf = chefGenerator(['牛根','牛排']);
+        console.log( bf.next() )
+        console.log( bf.next() )
+        console.log( bf.next() )
+    </script>
+</body>
+</html>

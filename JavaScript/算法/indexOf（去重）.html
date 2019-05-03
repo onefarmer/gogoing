@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //indexOf检索匹配的值前有多少位 如果没有返回-1
+    var str = 'Hello World'
+    document.write(str.indexOf('Hello') +'</br>')
+    document.write(str.indexOf('hello') +'</br>')
+    document.write(str.indexOf('World') +'</br>')
+
+    //去重
+    var arr = new Array('a',1,2,3,4,5,6,7,8,9,2,4,6,7,'a')
+    Array.prototype.unRepeat = function(){
+        //临时数组
+        var tem = [];
+        for(var i = 0; i < this.length; i++){
+            //this数组本身
+            //if (this.indexOf(this[i]) == i)
+            if( tem.indexOf(this[i]) == -1 ){
+                tem.push(this[i])
+            }
+        }
+        return tem;
+    }
+    var fn = arr.unRepeat();
+    document.write(fn +'</br>')
+</script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {width: 980px; height: 500px; transform-style: preserve-3d;}
+        .center {position: absolute; margin: auto; left: 0; right: 0; top: 0; bottom: 0;}
+        .item {height: 100%; position: absolute; transition: transform .4s;}
+    </style>
+    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div class="box center"></div>
+    <script>
+        $(function(){
+            // 声明一个变量，来记录每一个面分成多少块
+            var itemCount = 5;
+            init();	
+            function init(){
+                var box = $('.box');
+                // 列宽
+                var w = box.width() / itemCount;
+                // 添加4个面
+                for (var i = 0; i < 4; i++){
+                    var slide = $("<div class='slide'></div>").appendTo(box);
+                    // 添加四个面上的小div
+                    for (var j = 0; j < itemCount; j++){
+                        $("<div class='item'></div>")
+                        // 设置宽度
+                        .width(w)
+                        // 位置
+                        .css({
+							'left': w*j+'px',
+							'background-image': 'url(../../images/ysw'+ i +'.jpg)',
+							'background-position': -w*j+'px',
+                            // 先翻转 1-4张分别是 0 90 180 270
+							'transform': 'rotateX('+ i*90 +'deg) translateZ(250px)',
+                            // 执行时间，延迟
+							'transition' :'transform .4s '+ j*0.1 +'s'
+						})
+						.appendTo(slide);
+                    }
+                }
+            }
+            var count = 0;
+            function move(){
+                // 角度控制 count = 4 第一张图-360 等于没翻转
+                count++;
+                $('.slide').each(function (i) {
+                    // 角度 0-90 90-90 180-90 270-90
+                    var degree = i*90 - count*90;
+                    // slide 创建图片盒子，每次点击后翻转每一张图角度
+                    $(this).find('.item').css('transform', 'rotateX('+degree+'deg) translateZ(250px)');
+                })
+            }
+            $('body').click(move);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{width: 200px;height: 200px;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    /*
+    （1） 不传，或者传null,undefined， 函数中的this指向window对象
+    （2） 传递另一个函数的函数名，函数中的this指向这个函数的引用
+    （3） 传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如 String、Number、Boolean
+    （4） 传递一个对象，函数中的this指向这个对象
+    */
+    // 让sub获得add的方法
+    function add(a,b){
+        console.log(a+b);
+        // this 指向sub
+        console.log(this)
+    }
+    function sub(a,b){
+        console.log(a-b)
+    }
+    add.call(sub,1,1);
+    
+    // call改变this
+    var box = document.getElementById('box')
+    function changeStyle(attr,val){
+        console.log(attr,val)
+        this.style[attr] = val;
+    }
+    // changeStyle方法在Window上，将this指向BOX
+    changeStyle.call(box,'backgroundColor','pink')
+    // 参数改变this
+    window.color = 'red';
+    document.color = 'yellow';
+    var s = {color:'blue'};
+    function changeColor(){
+        console.log(this.color)
+    }
+    changeColor();
+    changeColor.call();//RED
+    changeColor.call(window)//RED
+    changeColor.call(document)//YELLOW
+    changeColor.call(this)//RED
+    changeColor.call(s)//BLUE
+    //例
+    var Pet = {
+        words:'...',
+        speak:function(say){
+            console.log(say + '' + this.words)
+        }
+    }
+    Pet.speak('its me');
+    var Dog = {
+        words:'汪汪汪'
+    }
+    Pet.speak.call(Dog,'泰迪')
+</script>

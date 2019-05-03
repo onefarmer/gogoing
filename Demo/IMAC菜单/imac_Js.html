@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0}
+        .box{position: absolute;bottom: 50px;text-align: center;width: 100%}
+        .box img{margin: 0 20px;}
+    </style>
+    <script src="../../Jquery/jquery/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <img src="img/01.png" alt="">
+        <img src="img/02.png" alt="">
+        <img src="img/03.png" alt="">
+        <img src="img/01.png" alt="">
+        <img src="img/02.png" alt="">
+    </div>
+    <script>
+        window.onload = function(){
+            var oDiv = document.querySelector('.box')//父级盒子
+            var oImg = document.getElementsByTagName('img');//所有的图片
+            var t = oDiv.offsetTop//父级离浏览器的高度
+            document.onmousemove = function(event){
+                for( var i = 0; i < oImg.length ; i++){
+                    //每张IMG 离浏最左边（父级）的距离
+                    oImg[i].nowLeft = oImg[i].offsetLeft + oImg[i].offsetWidth/2
+                    //鼠标触发区域离每一张图的XY轴的距离差
+                    oImg[i].nowMouseX = event.pageX - oImg[i].nowLeft;
+                    oImg[i].nowMouseY =  event.pageY - ( t  + oImg[i].offsetHeight/2 );
+                    //沟谷定理算出鼠标触发区域离每张图片中心区域的距离
+                    oImg[i].distance = Math.sqrt( oImg[i].nowMouseX*oImg[i].nowMouseX + oImg[i].nowMouseY*oImg[i].nowMouseY);
+                    // 图片原本宽度64，可以自定,0.5恢复原来大小
+                    var $range = 1 - oImg[i].distance/300;
+                    if( $range < 0.5 ){
+                        $range = 0.5;
+                    }		
+                    oImg[i].style.width = 128*$range + 'px'	
+                }
+            }
+        }                   
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{width: 200px}
+        .box input{width: inherit }
+        .box ul{margin: 0;padding: 0;list-style: none; border-bottom: 1px solid #55d0c4;border-left: 1px solid #55d0c4;border-right: 1px solid #55d0c4;width: inherit;margin-top: -1px;display: none}
+        .box ul li{cursor: pointer;width: inherit;padding: 1px 0}
+        .box ul li:hover{background:grey }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="text" id="keyword">
+        <ul id="list"></ul>
+    </div>
+    <script>
+        var inputText = document.getElementById("keyword");
+        var list = document.getElementById('list');
+        // value 改变时触发,
+        inputText.oninput = function(){
+            // AJAX实例
+            var xhr = new XMLHttpRequest;
+            // 获取数据，获取方式，接口，true同步
+            xhr.open('GET','data/data.html',true)
+            xhr.onreadystatechange = function(){
+                // 状态
+                if( xhr.readyState == 4 && xhr.status == 200){
+                    // 数据处理
+                    setResult(xhr.responseText)
+                }
+            }
+            xhr.send()
+        };
+        function setResult(ret){
+            // JSON方法，解析成JSON格式
+            // JSON.parse(text[, reviver])
+            // text:必需， 一个有效的 JSON 字符串。
+            // reviver: 可选，一个转换结果的函数， 将为对象的每个成员调用此函数。
+            var data = JSON.parse(ret);
+            var div = document.createElement('div')
+            // 遍历数据
+            for( var key in data ){
+                var li = document.createElement('li');
+                // textContent 属性设置或返回指定节点的文本内容
+                li.textContent = data[key];
+                div.appendChild(li);
+            }
+            //赋值
+            list.innerHTML=div.innerHTML;
+            list.style.display = "block"
+        }
+        // 数据选择
+        list.addEventListener('click',event=>{
+            // 数据选择值
+            inputText.value = event.target.innerHTML;
+            list.style.display = "none"
+        })
+    </script>
+</body>
+</html>
