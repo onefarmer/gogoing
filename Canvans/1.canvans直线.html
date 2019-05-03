@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="cav"></canvas>
+    <script>
+        var cav = document.getElementById('cav');
+        var pen = cav.getContext('2d');
+        //画布大小
+        cav.width = window.innerWidth;
+	    cav.height = window.innerHeight;
+        //起始坐标
+        var starx = 300;
+	    var stary = 300;
+        //鼠标移动
+        document.onmousemove = function(e){
+            pen.beginPath();
+            pen.strokeStyle = creatColor();
+            pen.lineWidth = 1;
+            pen.moveTo(starx,stary);
+            pen.lineTo(e.clientX,e.clientY);
+		    pen.stroke();
+        }
+        //颜色
+        function creatColor(){
+            var r = parseInt(Math.random()*255);
+            var g = parseInt(Math.random()*255);
+            var b = parseInt(Math.random()*255);
+            var rgb = 'rgb('+r+','+g+','+b+')';
+            return rgb;
+	    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+npm install -g expo-cli 通用 ios
+npm install -g yarn react-native-cli
+npm install -g react-native-cli
+react-native --help 查看软命令

@@ -1,0 +1,29 @@
+ol.childNodes，//所有节点，空格为文本节点
+ol.childNodes.item(1)，返回第一个元素节点以及内容,会选中包括文本节点 
+parentNode，父节点
+lastChild，最后一个节点  
+nextSibling，下一个节点
+previousSibling，上一个节点
+children，子节点 不包括文本节点children(兼容IE6\7\8)
+children.item(1)，第二个节点 不包括文本节点
+
+parentElement，父节点
+firstElementChild，第一个元素节点
+lastElementChild，最后一个元素节点
+nextElementSibling，下一个元素节点
+previousElementSibling，上一个元素节点
+childElementCount，有多少个子节点
+
+tagName，元素标签名
+nodeType，节点类型：1元素节点2属性节点3文本节点8注释节点9Document,DOM树的根节点
+nodeName，//返回节点类型名称 比如div 
+nodeValue，文本元素的值，
+
+document.createElement("div")，创建DIV
+document.createTextNode("标签内容")，内容
+ol.removeChild(ol)，删除
+document.el.appendChild() 包含
+replaceChild() 替换
+
+//克隆节点：cloneNode( 布尔值 ) true：复制本节点以及所有子节点false：只复制节点本身
+var i = el.cloneNode(true)

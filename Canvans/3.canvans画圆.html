@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #cav{width: 800px;height: 500px;border: 1px solid #ff0000;}
+    </style>
+</head>
+<body>
+    <canvas id="cav"></canvas>
+    <script>
+        var cav = document.getElementById('cav');
+        var pen = cav.getContext('2d');
+        // 动态画圆
+        var i=0.0;
+        var t=setInterval(function(){
+            pen.fillStyle = 'pink'
+            pen.beginPath();
+            pen.arc(80,80,30,0,i*Math.PI,false);
+            i=i+0.1;
+            // 0.5PI为4分之1个圆
+            if(i>2.1){ 
+                clearInterval(t);    
+            }
+            // 字体大小，样式，颜色
+            pen.font="20px Arial red";
+            // 字体书写，内容，XY坐标
+            pen.fillText("我是画布",30,30);
+            // 线条绘画完毕
+            pen.stroke();
+            // 填充完毕
+            pen.fill()
+        },60)
+    </script>
+</body>
+</html>

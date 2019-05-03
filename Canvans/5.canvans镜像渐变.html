@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        body{padding: 10px;text-align: center;}		
+        #cav{box-shadow: 0 0 10px #C81623;}
+    </style>
+</head>
+<body>
+    <canvas id="cav" width="900" height="700">
+        <span>浏览器低版本不兼容</span>
+    </canvas>
+    <script type="text/javascript">
+        var cav = document.getElementById('cav');//获得canvas对象
+	    var pen = cav.getContext('2d');//2d方法
+        //镜像渐变
+        //渐变的开始圆的 x 坐标,
+        //渐变的开始圆的 y 坐标,
+        //开始圆的半径,
+        //渐变的结束圆的 x 坐标,
+        //渐变的结束圆的 y 坐标,
+        //结束圆的半径
+        var mirror = pen.createRadialGradient(155,50,10,90,60,100);
+        //颜色
+        //介于 0.0 与 1.0 之间的值，表示渐变中开始与结束之间的位置。
+        //在结束位置显示的 CSS 颜色值
+        mirror.addColorStop(0,'blue');
+        mirror.addColorStop(1,'green');
+        // 填充的颜色值
+        pen.fillStyle = mirror;
+        // 矩形函数，填充矩形，X,Y开始，X,y结束
+        pen.fillRect(50,50,300,300)
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+//Fn声明 函数引用引入下面
+var say = function(){}
+say();
+
+if(el.releaseCapture) el.releaseCapture();//取消获捕
+//if(el.setCapture)	el.setCapture();//设置捕获
+
+//return结束整个函数,break结束整个循环体,continue结束当前循环.
+
+//禁止点击
+a{pointer-events: none;}
+
+
+//css
+document.writeln("<link rel=\"stylesheet\" href=\""+cdnUrl+"/css/csino-style.css\" />");
+
+window.location.href = './a.html' 
+window.location.replace('a.html')
+
+// attr
+getAttribute('data-value')
+setAttribute('data-value',data)
+
+
+//event.keyCode
+左-37 上-38 右-39 下-40
+

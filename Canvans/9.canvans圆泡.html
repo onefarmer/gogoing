@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{padding:20px;}
+        #cav{box-shadow:0 0 10px #C81623;}
+    </style>
+</head>
+<body>
+    <canvas id="cav" width="800" height="600"></canvas>
+    <script>
+        var cav = document.getElementById('cav');
+        var draw = cav.getContext('2d');
+        // 构造函数
+        function Round(x,y,r,c,s){
+            this.x = x;
+            this.y = y;
+            // 半径
+            this.r = r;
+            // 颜色
+            this.c = c;
+            // 半径上限
+            this.max = 40;
+            // 速度
+            this.speed = s;
+            // 状态
+            this.state = true;
+            this.draw = function(){
+                draw.beginPath();
+                draw.fillStyle= this.c;
+                //圆
+                draw.arc(this.x,this.y,this.r,0,Math.PI*2,true);
+                draw.fill()
+                if(this.state)
+                {
+                    // 半径递增
+                    this.r += this.speed;
+                    // 半径最大值
+                    if(this.r > this.max){
+                        this.state = !this.state;
+                    }
+                }
+                else
+                {
+                    // 半径递减
+                    this.r -= this.speed;
+                    if(this.r<0)
+                    {
+                        // 半径归0
+                        this.r = 0;
+                        this.state = !this.state;
+				    }
+                }
+            }       
+        }
+        var rounds = [];
+        var many = 200;
+        // 初始化
+        function init(){
+            // 创建多少个圆
+            for(var i=0;i<many;i++){
+                // x,y开始坐标
+                var xClient = Math.round(Math.random()*cav.width);
+                var yClient = Math.round(Math.random()*cav.height);
+                // 半径
+                var roundNum = Math.round(Math.random()*40 + 10 );
+                // 颜色
+                var the_color =  createColor();
+                // 半径增长速度
+                var speed = Math.ceil( Math.random()*3 );
+                // 实例化
+                rounds.push( new Round(xClient,yClient,roundNum,the_color,speed) );
+                // 执行实例方法
+                rounds[i].draw();
+            }
+        }
+        init()
+        function change(){
+            //清除画布
+            draw.clearRect(0,0,cav.width,cav.height)
+            for(var i=0;i<many;i++)
+            {
+                //再执行画圆方法
+                rounds[i].draw();
+            }
+	    }
+        setInterval(change,30);
+        function createColor(){
+            var r = parseInt(Math.random()*255);
+            var g = parseInt(Math.random()*255);
+            var b = parseInt(Math.random()*255);
+            var rgb = 'rgb('+r+','+g+','+b+')';
+            return rgb;
+	    }
+    </script>
+</body>
+</html>

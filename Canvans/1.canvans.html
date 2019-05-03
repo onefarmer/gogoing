@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        body{padding: 10px}
+        #cav{width: 600px;height: 400px;box-shadow: 0 0 5px #ff0000}
+    </style>
+</head>
+<body>
+    <canvas id="cav" width="" height="">
+        <span>浏览器低版本不兼容</span>
+    </canvas>
+    <script>
+        var cav = document.getElementById('cav');
+        //2d
+        var pen = cav.getContext('2d');
+        //开始
+        pen.beginPath();
+        // 线条宽度
+        pen.lineWidth = 5;
+        // 颜色
+        pen.strokeStyle = 'pink';
+        // 填充颜色
+        pen.fillStyle = '#ff0000';
+        // 落笔，XY轴开始坐标
+        pen.moveTo(50,20);
+        // 结束坐标
+        pen.lineTo(50,70);
+        pen.lineTo(100,70);
+        pen.lineTo(100,20);
+        //属性设置或返回线条末端线帽的样式。 butt平角,round圆角,squave方角
+        pen.lineCap = 'round';
+        //设置拐角  miter尖角,bevel平角,round圆角
+        pen.lineJoin = 'bevel'
+        // 回到原点
+        pen.closePath();
+        // 线条绘画结束
+        pen.stroke();
+        // 填充绘画完毕
+        pen.fill()
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+
+1、-----------------------------------------------
+Es6 Bable
+npm init -y
+npm install -g babel-cli
+npm install --save-dev babel-preset-es2015 babel-cli
+.babelrc
+{
+    "presets":[
+        "es2015"
+    ],
+    "plugins":[]
+}
+babel src/index.js -o dist/index.js
+修改package.json
+  "scripts": {
+    "bulid": "babel src/index.js -o dist/index.js"
+  },
+=======
+npm run build 
+全局更新
+npm install npm -g
+
+2、-----------------------------------------------------
+安装完成后，输入“node -v”查看是否安装成功
+"npm install webpack -g"
+Vue cli
+npm -v 查看版本 需要安装node npm
+npm install vue-cli -g 全局安装 可使用“npm vue”查看是否安装成功
+vue -V 查看 cue-cli版本
+vue init webpack vuecliText 安装webpack vuecliText项目名 ("npm install webpack -g")
+1-起名
+2-项目介绍
+3-作者
+4-vue-router 是否安装
+5-是否用Eslint no
+6-单元测试 no
+7-e2e 模拟用户测试 no
+npm install 依赖项
+npm run dev启动
+npm run build 打包
+
+Vue router
+npm insetall vue-router dev
+
+
+3、-----------------------------------------------------
+React,
+windows系统下： npm install -g create-react-app
+Liunx和Mac电脑下：sudo npm install -g create-react-app
+create-react-app my-app (my-app 文件夹名字)
+
+4、-----------------------------------------------------
+generator-react-webpack 需要yeoman的支持的。
+全局安装generator-react-webpack 先安装yeoman 
+cmd全局安装
+npm install -g yo
+npm install -g generator-react-webpack
+创建文件夹
+mkdir new-react-demo
+cd new-react-demo
+yo react-webpack
+
+5--------
+npm install -g yarn
+
