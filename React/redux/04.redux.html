@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>redux手写过程4</title>
+</head>
+<body>
+    <div id="title"></div>
+    <div id="content"></div>
+    <script>
+        //1、 redux 状态管理 数据集中存放
+        //2、 组件当前状态
+        //3、 如此状态，组件都可以被更改，对其进行封闭
+        function createStore(){
+            let state = {
+                title:{content:'你好',color:'red'},
+                content:{content:'再见',color:'yellow'}
+            }      
+            let getState = ()=>JSON.parse(JSON.stringify(state)) // 返回拷贝对象
+            // 派发动作 action 状态改变参数
+            let dispatch = (action)=> {
+                switch(action.type){
+                    case 'change_title_color':
+                        console.log('颜色：',action.color) // 输出改变的状态（颜色）
+                        state.title.color = action.color
+                    break;
+                }
+            }
+            /*
+                return {}  相当于createStore下的一个匿名对象
+                var createStore ={
+                    getState:function(){ ... }
+                }
+            */
+            return {
+                getState,
+                dispatch
+            }  
+        }
+        let store = createStore()
+        // 改变颜色
+        setTimeout(()=>{
+            store.dispatch(
+                {
+                    type:'change_title_color', // 动作类型
+                    color:'pink'
+                }
+            )
+            renderApp() // 重新更变状态
+        },1000)
+        // 1、redux不能直接操作状态
+        // 2、如果任意一个组件想要更新，需要派发一个动作， dispatch 实现状态更新方法
+        function renderTitle(){
+            let title = document.getElementById('title');
+            title.innerHTML = store.getState().title.content;
+            title.style.background = store.getState().title.color;
+        }
+        function renderContent(){
+            let content = document.getElementById('content')
+            content.innerHTML = store.getState().content.content;
+            content.style.background = store.getState().content.color;
+        }
+        function renderApp(){
+            renderTitle();
+            renderContent()
+        }
+        renderApp()
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>redux手写过程2</title>
+</head>
+<body>
+    <div id="title"></div>
+    <div id="content"></div>
+    <script>
+        // redux 状态管理 数据集中存放
+
+        // 当前组件状态
+        // 状态会被更改，任何组件都可以修改，对其封闭
+        // 这里还是改变状态
+        function createStore(){
+            let state = {
+                title:{content:'你好',color:'red'},
+                content:{content:'再见',color:'yellow'}
+            }      
+            /*
+                function getState(){
+                    return state
+                }
+            */
+            let getState = ()=>state; // return state
+            /*
+                return {}  相当于createStore下的一个匿名对象
+                var createStore ={
+                    getState:function(){ ... }
+                }
+            */
+            return {getState}  
+        }
+        let store = createStore()
+        // redux不能直接操作状态
+        function renderTitle(){
+            let title = document.getElementById('title');
+            title.innerHTML = store.getState().title.content;
+            title.style.background = store.getState().title.color;
+        }
+        function renderContent(){
+            let content = document.getElementById('content')
+            content.innerHTML = store.getState().content.content;
+            content.style.background = store.getState().content.color;
+        }
+        function renderApp(){
+            renderTitle();
+            renderContent()
+        }
+        renderApp()
+    </script>
+</body>
+</html>

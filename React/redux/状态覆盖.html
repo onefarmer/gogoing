@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            faker:{job:'mid',power:'sss'},
+            theshy:{job:'top',power:'ssss'},
+            uzi:{job:'bottom',power:'ss'}
+        }
+        let changeObj = {
+            job:'everyWhere',
+            power:'sssss'
+        }
+        function changeData(state,action){
+            return{
+                ...state,
+                faker:{
+                    ...state.faker,
+                    job:action.job,
+                    power:action.power,
+                }
+            }
+        }
+        setTimeout(()=>{
+            obj = changeData(obj,changeObj);
+            console.log(obj)
+        },1000)
+    </script>
+</body>
+</html>

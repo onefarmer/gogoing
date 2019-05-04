@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>redux手写过程1</title>
+</head>
+<body>
+    <div id="title"></div>
+    <div id="content"></div>
+    <script>
+        // redux 状态管理 数据集中存放
+
+        // 当前组件状态
+        let state = {
+            title:{content:'你好',color:'red'},
+            content:{content:'再见',color:'yellow'}
+        }
+        function renderTitle(){
+            let title = document.getElementById('title');
+            title.innerHTML = state.title.content;
+            title.style.background = state.title.color;
+        }
+        function renderContent(){
+            let content = document.getElementById('content')
+            content.innerHTML = state.content.content;
+            content.style.background = state.content.color;
+        }
+        function renderApp(){
+            renderTitle();
+            renderContent()
+        }
+        renderApp()
+    </script>
+</body>
+</html>

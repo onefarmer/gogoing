@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>redux手写过程8</title>
+</head>
+<body>
+    <div id="title"></div>
+    <div id="content"></div>
+    <script>
+        // 初始数据
+        let initstate = {
+            title:{content:'你好',color:'red'},
+            content:{content:'再见',color:'yellow'}            
+        }
+        // 状态封闭 传入reducer
+        function createStore(reducer){
+            let state; // 存放状态
+            let listeners = [] // 订阅 存放订阅的回调
+            let getState = ()=>JSON.parse(JSON.stringify(state)) // 返回拷贝对象
+            // 派发动作 action 状态改变参数
+            let dispatch = (action)=> {
+                state = reducer(state,action);// 调用reducer返回新的state
+                listeners.forEach( item=>item() ) // 执行订阅者方法，实质重新读取数据，发布所有订阅的回调
+            }
+            let subscribe = (fn)=>{
+                //订阅回调，并返回一个从listeners删除回调的函数
+                listeners.push(fn);
+                return()=>{
+                    // es6数组方法 filter遍历 filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+                    listeners = listeners.filter(l=>l!==fn); // 只留着rederApp改变数据的方法，其他方法全部清理
+                }
+            }    
+            // 派发初始动作，type为reducer中没有的类型，目的是初始化状态为用户设置的状态
+            dispatch({type:'@INIT'}) // 测试
+            return {
+                getState,
+                dispatch,
+                subscribe
+            }  
+        }
+        // 状态处理，防止状态缺失,状态默认等于初始状态
+        function reducer(state=initstate,action){
+            switch(action.type){
+                case 'change_title_color':
+                    console.log('要求改变的状态：',action.color)
+                    // state.title.color = action.color 不要直接进行修改
+                    return {
+                        ...state,
+                        title:{
+                            ...state.title,
+                            color:action.color // 派发动作改变颜色
+                        }
+                    }
+                case 'change_content_content':       
+                    console.log('要求改变的状态：',action.content)
+                    return {...state,content:{...content.content,content:action.content}}
+            }
+            return state
+        }
+        // 创建仓库
+        let store = createStore(reducer)
+        store.subscribe(renderApp); // 重新更变状态，方便订阅者读取状态 。。 
+        let unsub  = store.subscribe(()=>{console.log('呵呵呵呵呵')});
+        // 改变颜色
+        setTimeout(()=>{
+            store.dispatch(
+                {
+                    type:'change_title_color', // 动作类型
+                    color:'pink'
+                }
+            )
+            // renderApp() // 更改状态，有了listeners的存在， 拜拜了
+        },1000)
+        setTimeout(()=>{
+            unsub() // 删除订阅者方法，删除呵呵，
+            store.dispatch({type:'change_content_content',content:'这是新值'})
+        },1500)
+        /*
+            1、 redux不能直接操作状态
+            2、 如果任意一个组件想要更新，需要派发一个动作， dispatch 实现状态更新方法
+            3、 中间有个状态缺失，reducer。为什么要有这个环节？我想复用createStore();逻辑都写在这里面那么导致，
+                原文件会被不断的修改，需要将 用户的数据提取出来。
+            4、 每次更新状态，最好用一个新的状态对象覆盖掉，每次状态改了，记录一下，可以对比一下。，
+                如果直接修改那它引用一样，对比就没有了。
+            5、每次状态更新后，需要手动调用renderApp，通过订阅后，状态更改后自动触发
+            6、隔2s我取消订阅，怎么做？ unsub()
+        */
+
+        function renderTitle(){
+            let title = document.getElementById('title');
+            title.innerHTML = store.getState().title.content;
+            title.style.background = store.getState().title.color;
+        }
+        function renderContent(){
+            let content = document.getElementById('content')
+            content.innerHTML = store.getState().content.content;
+            content.style.background = store.getState().content.color;
+        }
+        function renderApp(){
+            renderTitle();
+            renderContent()
+        }
+        renderApp()
+    </script>
+</body>
+</html>
