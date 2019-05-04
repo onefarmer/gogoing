@@ -1,7 +1,5 @@
 function launchParticlesJS(tag_id, params){
-
   var canvas_el = document.querySelector('#'+tag_id+' > canvas');
-
   /* particles.js variables with default values */
   pJS = {
     canvas: {
@@ -245,16 +243,13 @@ function launchParticlesJS(tag_id, params){
       else if(p.x + p.radius < 0) p.x = pJS.canvas.w + p.radius;
       if(p.y - p.radius > pJS.canvas.h) p.y = p.radius;
       else if(p.y + p.radius < 0) p.y = pJS.canvas.h + p.radius;
-
       /* Check distance between each particle and mouse position */
       for(var j = i + 1; j < pJS.particles.array.length; j++){
         var p2 = pJS.particles.array[j];
-
         /* link particles if enable */
         if(pJS.particles.line_linked.enable_auto){
           pJS.fn.vendors.distanceParticles(p,p2);
         }
-
         /* set interactivity if enable */
         if(pJS.interactivity.enable){
 
@@ -264,10 +259,7 @@ function launchParticlesJS(tag_id, params){
               pJS.fn.vendors.interactivity.grabParticles(p,p2);
             break;
           }
-
         }
-
-
       }
     }
   };
@@ -530,5 +522,4 @@ window.particlesJS = function(tag_id, params){
   if(canvas != null){
     launchParticlesJS(tag_id, params);
   }
-
 };
