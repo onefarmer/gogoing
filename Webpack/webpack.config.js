@@ -4,9 +4,21 @@ console.log( path.resolve(__dirname,'dist') )
 // 导出模块
 module.exports = {
     // 入口配置
+    // entry:['./src/index.js','./src/index2.js'] // 多入口
     entry:{
         entry:'./src/index.js'// 入口文件，命名随意
     },
+    /*  
+        // 多入口,webpack4不得取名index
+        entry:{
+            index:'./src/index.js',
+            index2:'./src/index2.js',
+        },  
+        output:{
+            path:path.resolve(__dirname,'dist'),
+            filename:'[name].bundle.js'
+        }
+    */
     // 出口配置
     output:{
         //path:__dirname+'/dist',// Node提供的__dirname为绝对路径，
