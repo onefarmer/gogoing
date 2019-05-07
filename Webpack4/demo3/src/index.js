@@ -1,2 +1,1 @@
-var oRoot = document.querySelector('#root')
-document.write('welcome to my world')
+document.write(' == nmb, this is your father,mother,and GrandFather ......')
