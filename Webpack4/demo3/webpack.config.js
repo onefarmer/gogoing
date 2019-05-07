@@ -1,8 +1,9 @@
 
 const path = require('path') // node自带,path模块引入，路径问题
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 自动打包
-const CleanWebpackPlugin = require('clean-webpack-plugin') // 清楚打包
+const CleanWebpackPlugin = require('clean-webpack-plugin') // 清除旧的打包文件
 const webpack = require('webpack')
+const Uglify = require('uglifyjs-webpack-plugin')
 
 // 导出模块
 module.exports = {
@@ -19,6 +20,7 @@ module.exports = {
         // CleanWebpackPlugin,HtmlWebpackPlugin等插件api官网具体查看
         new CleanWebpackPlugin(), // new CleanWebpackPlugin(['dist'])-报错 
         new webpack.HotModuleReplacementPlugin(), // 启动热更新，有的会报错，目前新版本不需要
+        new Uglify(),// 打包JS压缩
         new HtmlWebpackPlugin({
             // 各个页面对应各自模板文件（打包的JS），如果没有所有打包的JS都会到这个页面
             chunks:['index'],
@@ -34,6 +36,27 @@ module.exports = {
             template:'./src/index.html'// 模板地址       
         })
     ],
+    /*
+        loader 加载器，转化器
+        处理css style-loader css-loader
+    */
+    module:{
+        // 规则
+        rules:[
+            {
+                test:/\.css$/,  // 以.css结尾的正则
+                //use:['style-loader','css-loader']
+                loader:['style-loader','css-loader'] // 第二种写法
+                /*
+                    第三种写法
+                    use:[
+                        {loader:"style-loader"},
+                        {loader:"css-loader"},
+                    ]
+                */
+            }
+        ]
+    },
     devServer:{
         //设置服务器访问的基本目录
         contentBase:path.resolve(__dirname,'dist'),
@@ -45,5 +68,7 @@ module.exports = {
         open:true, // 自动打开页面
         // 热更新
         hot:true
-    }
+    },
+    //模板环境
+    //mode:'development'  如果package.json 已配置--mode development"，无需要配置
 }
