@@ -37,6 +37,9 @@
         })
     )
     let numbers = [1,3,5,7,9,2,4,6,8]
+    numbers.reduce(function(prev,item){
+        console.log('mimi',prev,item)
+    })
     console.log(
         numbers.find(function(val,index,arr){
             return val > 8;
