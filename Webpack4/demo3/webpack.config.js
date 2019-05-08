@@ -2,8 +2,10 @@
 const path = require('path') // node自带,path模块引入，路径问题
 const HtmlWebpackPlugin = require('html-webpack-plugin') // 自动打包
 const CleanWebpackPlugin = require('clean-webpack-plugin') // 清除旧的打包文件
-const webpack = require('webpack')
-const Uglify = require('uglifyjs-webpack-plugin')
+const webpack = require('webpack') // 模板
+const Uglify = require('uglifyjs-webpack-plugin') // 压缩打包JS
+const ExtractTextPlugin = require('extract-text-webpack-plugin') // 分离CSS
+const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 新的分离CSS插件
 
 // 导出模块
 module.exports = {
@@ -21,6 +23,10 @@ module.exports = {
         new CleanWebpackPlugin(), // new CleanWebpackPlugin(['dist'])-报错 
         new webpack.HotModuleReplacementPlugin(), // 启动热更新，有的会报错，目前新版本不需要
         new Uglify(),// 打包JS压缩
+        //new ExtractTextPlugin('css/index.css'),// 分离CSS，打包到指定路径
+        new MiniCssExtractPlugin({// 新插件分离CSS，效果同ExtractTextPlugin
+            filename:'css/index.css',// 提取文件名
+        }), 
         new HtmlWebpackPlugin({
             // 各个页面对应各自模板文件（打包的JS），如果没有所有打包的JS都会到这个页面
             chunks:['index'],
@@ -46,7 +52,7 @@ module.exports = {
             {
                 test:/\.css$/,  // 以.css结尾的正则
                 //use:['style-loader','css-loader']
-                loader:['style-loader','css-loader'] // 第二种写法
+                //loader:['style-loader','css-loader'], // 第二种写法
                 /*
                     第三种写法
                     use:[
@@ -54,6 +60,35 @@ module.exports = {
                         {loader:"css-loader"},
                     ]
                 */
+               // 如果分离css，以上不需要，如果使用MiniCssExtractPlugin，此配置不需要
+               /*
+               use:ExtractTextPlugin.extract({
+                   fallback:'style-loader', // 类似于回滚
+                   use:'css-loader',
+                   publicPath:'../'  //配置图片路径
+               })
+               */
+              use:[
+                  {
+                      loader:MiniCssExtractPlugin.loader,
+                      options:{
+                          publicPath:'../'
+                      }
+                  },
+                  'css-loader'
+              ]
+            },
+            {
+                test:/\.(.png|jpg|gif)$/,
+                use:[
+                        {
+                            loader:'url-loader',
+                            options:{
+                                limit:50, // 转化Img,控制字节，取消base64 
+                                outputPath:'image' // 图片出口文件
+                            }   
+                        }
+                ]
             }
         ]
     },

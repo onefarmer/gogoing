@@ -2,3 +2,11 @@ body{
     padding: 10px;
     background: #ccc
 }
+img{
+    width: 200px;
+}
+.you{
+    background: url("../images/you.jpg") no-repeat center / contain;
+    width: 400px;
+    height: 400px;
+}
