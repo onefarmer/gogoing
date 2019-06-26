@@ -4,9 +4,15 @@ body{
 }
 img{
     width: 200px;
+    transform: rotate(45deg)
 }
 .you{
     background: url("../images/you.jpg") no-repeat center / contain;
     width: 400px;
     height: 400px;
+    transform: rotate(45deg)
+}
+/* 没用，冗余的CSS*/
+.fl{
+    float: left;
 }

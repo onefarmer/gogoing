@@ -6,6 +6,13 @@ const webpack = require('webpack') // 模板
 const Uglify = require('uglifyjs-webpack-plugin') // 压缩打包JS
 const ExtractTextPlugin = require('extract-text-webpack-plugin') // 分离CSS
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // 新的分离CSS插件
+const PurifyCssPlugin = require("purifycss-webpack") // 消除CSS冗余 打包时有用
+const glob = require('glob')
+/*
+    Node知识,以下区别不大
+    path.join(_dirname,'src/index.html')
+    path.resolve(_dirname,'src/index.html')
+*/
 
 // 导出模块
 module.exports = {
@@ -23,10 +30,13 @@ module.exports = {
         new CleanWebpackPlugin(), // new CleanWebpackPlugin(['dist'])-报错 
         new webpack.HotModuleReplacementPlugin(), // 启动热更新，有的会报错，目前新版本不需要
         new Uglify(),// 打包JS压缩
-        //new ExtractTextPlugin('css/index.css'),// 分离CSS，打包到指定路径
+        new ExtractTextPlugin('css/index.css'),// 分离CSS，打包到指定路径
         new MiniCssExtractPlugin({// 新插件分离CSS，效果同ExtractTextPlugin
             filename:'css/index.css',// 提取文件名
         }), 
+        //new PurifyCssPlugin(
+            //path:glob.sync(path.join(_dirname,'src/*.html'))// 同步 有问题--
+        //),// 消除CSS冗余
         new HtmlWebpackPlugin({
             // 各个页面对应各自模板文件（打包的JS），如果没有所有打包的JS都会到这个页面
             chunks:['index'],
@@ -52,31 +62,43 @@ module.exports = {
             {
                 test:/\.css$/,  // 以.css结尾的正则
                 //use:['style-loader','css-loader']
-                //loader:['style-loader','css-loader'], // 第二种写法
+                //loader:['style-loader','css-loader'], // 第二种写法              
+                // 第三种写法
+                
+                // use:[
+                //     {loader:"style-loader"},
+                //     {loader:"css-loader"},
+                //     {loader:'postcss-loader'} // 自动处理前缀
+                // ]
+                
+                //  处理前缀并分离CSS
+                
+                use:ExtractTextPlugin.extract({
+                    fallback:'style-loader', // 分离提取CSS
+                    use:['css-loader','postcss-loader'],
+                    publicPath:'../'  //配置图片路径
+                })
+                
+                // 如果分离css，以上不需要，如果使用MiniCssExtractPlugin，此配置不需要
+                
+                // use:ExtractTextPlugin.extract({
+                //     fallback:'style-loader', // 类似于回滚,分离提取CSS
+                //     use:'css-loader',
+                //     publicPath:'../'  //配置图片路径
+                // })
+                
+                // 新的提取CSS的插件 MiniCss
                 /*
-                    第三种写法
-                    use:[
-                        {loader:"style-loader"},
-                        {loader:"css-loader"},
-                    ]
+                use:[
+                    {
+                        loader:MiniCssExtractPlugin.loader,
+                        options:{
+                            publicPath:'../'
+                        }
+                    },
+                    'css-loader'
+                ]
                 */
-               // 如果分离css，以上不需要，如果使用MiniCssExtractPlugin，此配置不需要
-               /*
-               use:ExtractTextPlugin.extract({
-                   fallback:'style-loader', // 类似于回滚
-                   use:'css-loader',
-                   publicPath:'../'  //配置图片路径
-               })
-               */
-              use:[
-                  {
-                      loader:MiniCssExtractPlugin.loader,
-                      options:{
-                          publicPath:'../'
-                      }
-                  },
-                  'css-loader'
-              ]
             },
             {
                 test:/\.(.png|jpg|gif)$/,
@@ -89,6 +111,36 @@ module.exports = {
                             }   
                         }
                 ]
+            },
+            // less
+            
+            {
+                test:/\.less$/,
+                //use:['style-loader','css-loader','less-loader']
+                use:ExtractTextPlugin.extract({
+                    fallback:'style-loader',// 分离
+                    use:['css-loader','less-loader']
+                })
+            },
+            
+            // scss/sass
+            {
+                //test:/\.(sass|scss)$/,
+                //use:['style-loader','css-loader','sass-loader']
+                /*
+                use:ExtractTextPlugin.extract({
+                    fallback:'style-loader',// 分离
+                    use:['css-loader','sass-loader']
+                })
+                */
+            },
+            {
+                test:/\.(js|jsx)$/,
+                //use:['babel-loader'],
+                use:{
+                    loader:'babel-loader',
+                },//  配置react
+                exclude:/node_modules/ // 不检测这个文件
             }
         ]
     },
