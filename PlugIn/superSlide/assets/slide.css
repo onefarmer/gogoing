@@ -13,9 +13,9 @@ section{display: block}
 }
 .slide .slide-inner ul{width: 100%}
 .slide .slide-inner li{overflow: hidden;text-align: center;height: 400px;width: 100%}
-.slide .slide-inner li.pic1{background:#eee url(../../../../Public/images/0.jpg) no-repeat center}
-.slide .slide-inner li.pic2{background:#eee url(../../../../Public/images/1.jpg) no-repeat center}
-.slide .slide-inner li.pic3{background:#eee url(../../../../Public/images/2.jpg) no-repeat center}
+.slide .slide-inner li.pic1{background:#eee url(../../../Images/0.jpg) no-repeat center}
+.slide .slide-inner li.pic2{background:#eee url(../../../Images/1.jpg) no-repeat center}
+.slide .slide-inner li.pic3{background:#eee url(../../../Images/2.jpg) no-repeat center}
 
 .slide .slide-indicators ul{text-align: center}
 .slide .slide-indicators ul li{    

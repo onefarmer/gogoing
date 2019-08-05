@@ -279,28 +279,30 @@
 </main>
 <script>
         jQuery(".live-slide").slide({
-        titCell: ".slide-indicators ul li",
-        mainCell: ".slide-inner ul",
-        effect: "fade",
-        autoPlay: true,
-        interTime: 2500,
-        autoPage: false,
-        trigger: "mouseover",
-        startFun: function(i) {
-            $(".live-slide .slide-inner li").removeClass("active");
-            $(".live-slide .slide-inner li").eq(i).addClass("active");
-            $('.slide-indicators li').eq(i).find('.circle .ring').circleProgress({
-                value: 100,
-                size: 90,
-                thickness: 6,
-                fill: "rgba(255,255,255,0.5)",
-                emptyFill: "transparent",
-                animation: {
-                    duration: 250000,
-                    easing: "linear"
-                }
-            });
-        }
+            titCell: ".slide-indicators ul li",
+            mainCell: ".slide-inner ul",
+            effect: "fade",
+            autoPlay: true,
+            interTime: 2500,
+            autoPage: false,
+            trigger: "mouseover",
+            startFun: function(i) {
+                //$(".live-slide .slide-inner li").removeClass("active");
+                //$(".live-slide .slide-inner li").eq(i).addClass("active");
+                
+                $('.slide-indicators li').eq(i).find('.circle .ring').circleProgress({
+                    value: 100,
+                    size: 90,
+                    thickness: 6,
+                    fill: "rgba(255,255,255,0.5)",
+                    emptyFill: "transparent",
+                    animation: {
+                        duration: 250000,
+                        easing: "linear"
+                    }
+                });
+                
+            }
     });
 </script>
 </body>

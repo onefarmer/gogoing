@@ -19,7 +19,7 @@
     <script>
             $(function(){
                 function pao_rain() {
-                    var wh=$(".box").height();
+                    //var wh=$(".box").height();
                     var rain = setInterval(function(){
                         var f=$(window).width();
                         var e=Math.random()*f-100; //雪花的定位left值
@@ -48,7 +48,7 @@
                             left:l+"px",
                             opacity:1,
                         },k,"linear",function(){$(this).remove()})
-                    },1000)
+                    },500)
                 }
                 pao_rain();
             })

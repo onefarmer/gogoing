@@ -28,7 +28,7 @@
             //http://www.w3school.com.cn/html5/canvas_drawimage.asp 具体参数详解
             pen.drawImage(this,0,0,640,468)
             //data中存储的是[r,g,b,a,r,g,b,a]--以此循环。
-            var cavData = pen.getImageData(0,0,cav.width,cav.height); 
+            //var cavData = pen.getImageData(0,0,cav.width,cav.height); 
             console.log(cavData)
 			for(var i=0;i<cavData.data.length;i++){
                 //自由设置颜色
@@ -39,13 +39,13 @@
                 cavData.data[i*4+2] = 155; //b  
                 */
                 //设置灰色    
-                var r = cavData.data[i*4];
-                var g = cavData.data[i*4+1];
-                var b = cavData.data[i*4+2];   
+                //var r = cavData.data[i*4];
+                //var g = cavData.data[i*4+1];
+                //var b = cavData.data[i*4+2];   
                 //设置反色
-                cavData.data[i*4] = 255 - r;
-                cavData.data[i*4+1] = 255 - g;
-                cavData.data[i*4+2] = 255 - b;
+                //cavData.data[i*4] = 255 - r;
+                //cavData.data[i*4+1] = 255 - g;
+                //cavData.data[i*4+2] = 255 - b;
                 
                 /*
                 var colors = r*0.3 + g*0.4 + b*0.3;
@@ -55,11 +55,11 @@
                 */
                 
                 // i*4+3 透明度
-                cavData.data[i*4+3] = 100;     
+                //cavData.data[i*4+3] = 100;     
                  
             }
             // 设置颜色,对象,x,y
-            pen.putImageData(cavData,0,0)
+            //pen.putImageData(cavData,0,0)
         }
     </script>
 </body>
